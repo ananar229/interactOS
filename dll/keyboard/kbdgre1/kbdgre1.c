@@ -1,5 +1,5 @@
 ﻿/*
- * ReactOS German Extended (E1) Keyboard layout
+ * InteractOS German Extended (E1) Keyboard layout
  * Copyright (C) 2025 ReactOS
  * License: LGPL, see: LGPL.txt
  *

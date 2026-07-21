@@ -372,7 +372,7 @@ StartDlgProc(
             /* Set title font */
             SetDlgItemFont(hwndDlg, IDC_STARTTITLE, pSetupData->hTitleFont, TRUE);
 
-            // TEMPTEMP: Set the ReactOS-Alpha information in bold.
+            // TEMPTEMP: Set the InteractOS-Alpha information in bold.
             // TODO: Remove once we reach 0.5/Beta :)
             SetDlgItemFont(hwndDlg, IDC_WARNTEXT1, pSetupData->hBoldFont, TRUE);
             SetDlgItemFont(hwndDlg, IDC_WARNTEXT2, pSetupData->hBoldFont, TRUE);
@@ -477,7 +477,7 @@ TypeDlgProc(
 
                 case PSN_QUERYINITIALFOCUS:
                 {
-                    /* Focus on "Install ReactOS" */
+                    /* Focus on "Install InteractOS" */
                     SetWindowLongPtr(hwndDlg, DWLP_MSGRESULT, (LONG_PTR)GetDlgItem(hwndDlg, IDC_INSTALL));
                     return TRUE;
                 }
@@ -2686,7 +2686,7 @@ BOOL LoadSetupData(
     pSetupData->USetupData.LanguageList = CreateLanguageList(pSetupData->USetupData.SetupInf, pSetupData->DefaultLanguage);
 
     /* If not unattended, overwrite language and locale with
-     * the current ones of the running ReactOS instance */
+     * the current ones of the running InteractOS instance */
     if (!IsUnattendedSetup)
     {
         LCID LocaleID = GetUserDefaultLCID();
@@ -2710,7 +2710,7 @@ BOOL LoadSetupData(
                                                                  pSetupData->DefaultKBLayout);
 
     /* If not unattended, overwrite keyboard layout with
-     * the current one of the running ReactOS instance */
+     * the current one of the running InteractOS instance */
     if (!IsUnattendedSetup)
     {
         C_ASSERT(_countof(pSetupData->DefaultKBLayout) >= KL_NAMELENGTH);

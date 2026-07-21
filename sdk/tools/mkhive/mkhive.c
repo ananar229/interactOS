@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS hive maker
+ * PROJECT:         InteractOS hive maker
  * FILE:            tools/mkhive/mkhive.c
  * PURPOSE:         Hive maker
  * PROGRAMMERS:     Eric Kohl

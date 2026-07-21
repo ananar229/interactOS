@@ -516,7 +516,7 @@ NtUserProcessConnect(
         // FIXME: Instead of assuming that the mapping of the heap desktop
         // also holds there, we **MUST** create and map instead the shared
         // section! Its client base must be stored in W32Process->pClientBase.
-        // What is currently done (ReactOS-specific only), is that within the
+        // What is currently done (InteractOS-specific only), is that within the
         // IntUserHeapCommitRoutine()/MapGlobalUserHeap() routines we assume
         // it's going to be also called early, so that we manually add a very
         // first memory mapping that corresponds to the "global user heap",

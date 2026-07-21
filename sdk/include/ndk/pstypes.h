@@ -78,7 +78,7 @@ extern POBJECT_TYPE NTSYSAPI PsJobType;
 #define FLG_ENABLE_HANDLE_TYPE_TAGGING          0x01000000
 #define FLG_HEAP_PAGE_ALLOCS                    0x02000000
 #define FLG_DEBUG_INITIAL_COMMAND_EX            0x04000000
-#define FLG_DISABLE_DEBUG_PROMPTS               0x08000000 // ReactOS-specific
+#define FLG_DISABLE_DEBUG_PROMPTS               0x08000000 // InteractOS-specific
 #define FLG_VALID_BITS                          0x0FFFFFFF
 
 //
@@ -826,7 +826,7 @@ typedef enum _APPCOMPAT_FLAGS_HIGHPART
 {
     PosixDeleteDisabled = 0x1,
 
-    // ReactOS-specific
+    // InteractOS-specific
     RendererFull3D = 0x80000000,    // CORE-20322
 } APPCOMPAT_FLAGS_HIGHPART;
 

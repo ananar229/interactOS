@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS Hid User Library
+ * PROJECT:         InteractOS Hid User Library
  * FILE:            lib/hid/hid.c
- * PURPOSE:         ReactOS Hid User Library
+ * PURPOSE:         InteractOS Hid User Library
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>
  *
  * UPDATE HISTORY:

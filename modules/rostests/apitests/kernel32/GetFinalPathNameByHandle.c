@@ -64,7 +64,7 @@ static void Test_File(void)
     }
 
     /* Expected string for VOLUME_NAME_DOS:
-       L"\\\\?\\C:\\ReactOS\\bin\\kernel32_apitest.exe" */
+       L"\\\\?\\C:\\InteractOS\\bin\\kernel32_apitest.exe" */
     wcscpy(ExpectedString, L"\\\\?\\");
     wcscat(ExpectedString, FilePath);
     ExpectedStringLength = wcslen(ExpectedString);
@@ -135,7 +135,7 @@ static void Test_File(void)
     }
 
     /* Expected string for VOLUME_NAME_GUID:
-       L"\\\\?\\Volume{cd4317d4-A62f-53d7-b36c-73f935c37280}\\ReactOS\\bin\\kernel32_apitest.exe" */
+       L"\\\\?\\Volume{cd4317d4-A62f-53d7-b36c-73f935c37280}\\InteractOS\\bin\\kernel32_apitest.exe" */
     VolumeRelativePath = &FilePath[wcslen(L"C:\\")];
     wcscat(ExpectedString, VolumeRelativePath);
     ExpectedStringLength = wcslen(ExpectedString);
@@ -155,7 +155,7 @@ static void Test_File(void)
     ok_err(0);
 
     /* Expected string for VOLUME_NAME_NT (2):
-       L"\\Device\\HarddiskVolume1\\ReactOS\\bin\\kernel32_apitest.exe" */
+       L"\\Device\\HarddiskVolume1\\InteractOS\\bin\\kernel32_apitest.exe" */
     ExpectedStringLength = wcslen(L"\\Device\\HarddiskVolume*\\") +
                            wcslen(VolumeRelativePath);
 
@@ -176,7 +176,7 @@ static void Test_File(void)
     ok_err(0xdeadbeef);
 
     /* Expected string for VOLUME_NAME_NONE:
-       L"\\ReactOS\\bin\\kernel32_apitest.exe" */
+       L"\\InteractOS\\bin\\kernel32_apitest.exe" */
     ExpectedStringLength = wcslen(VolumeRelativePath - 1);
 
     SetLastError(0xdeadbeef);

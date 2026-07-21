@@ -26,7 +26,7 @@
 extern "C" {
 #endif /* defined(__cplusplus) */
 
-// Because ReactOS installs as Server by default, we ignore OS_SERVERADMINUI
+// Because InteractOS installs as Server by default, we ignore OS_SERVERADMINUI
 // in certain places to present a Client/Server hybrid UI.
 
 // Windows defaults to FVM_DETAILS for Administrators on OS_ANYSERVER (instead of FVM_ICON).

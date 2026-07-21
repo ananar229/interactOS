@@ -10,7 +10,7 @@
 #include <ntoskrnl.h>
 #include "../kdb.h"
 
-/* ReactOS compatibility stuff. */
+/* InteractOS compatibility stuff. */
 #define PARAMS(X) X
 #define PTR void*
 typedef enum bfd_flavour

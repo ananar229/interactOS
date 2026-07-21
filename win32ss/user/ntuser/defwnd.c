@@ -1321,7 +1321,7 @@ IntDefWindowProc(
           return 0;
       }
 
-      /* ReactOS only. */
+      /* InteractOS only. */
       case WM_CBT:
       {
          switch (wParam)

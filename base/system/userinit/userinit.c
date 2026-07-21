@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- * PROJECT:     ReactOS Userinit Logon Application
+ * PROJECT:     InteractOS Userinit Logon Application
  * FILE:        base/system/userinit/userinit.c
  * PROGRAMMERS: Thomas Weidenmueller (w3seek@users.sourceforge.net)
  *              Hervé Poussineau (hpoussin@reactos.org)
@@ -494,7 +494,7 @@ NotifyLogon(VOID)
 }
 
 /*
- * Expands the path for the ReactOS Installer "reactos.exe".
+ * Expands the path for the InteractOS Installer "reactos.exe".
  * See also base/setup/welcome/welcome.c!ExpandInstallerPath()
  */
 BOOL
@@ -595,7 +595,7 @@ ExpandInstallerPath(
 
     /*
      * We failed. Try to find the installer from either the current
-     * ReactOS installation directory, or from our current directory.
+     * InteractOS installation directory, or from our current directory.
      */
     *lpInstallerPath = UNICODE_NULL;
     /* Alternatively one can use SharedUserData->NtSystemRoot */

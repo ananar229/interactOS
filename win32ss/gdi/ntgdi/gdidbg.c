@@ -584,7 +584,7 @@ QueryEnvironmentVariable(PUNICODE_STRING Name,
    PPEB Peb;
    PWSTR Environment;
 
-   /* Ugly HACK for ReactOS system threads */
+   /* Ugly HACK for InteractOS system threads */
    if(!NtCurrentTeb())
    {
        return(STATUS_VARIABLE_NOT_FOUND);

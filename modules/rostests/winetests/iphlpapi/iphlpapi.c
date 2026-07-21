@@ -1473,7 +1473,7 @@ static void testIcmpSendEcho(void)
     */
 #if defined(__REACTOS__) && defined(_MSC_VER)
     /* The call to IcmpSendEcho2() below with the invalid APC context causes
-     * stack corruption on WS03 and ReactOS when compiled with MSVC but not GCC. */
+     * stack corruption on WS03 and InteractOS when compiled with MSVC but not GCC. */
     if (LOBYTE(LOWORD(GetVersion())) >= 6) {
 #endif
     ret = IcmpSendEcho2(icmp, NULL, apc, (void*)0xdeadc0de, address, senddata, sizeof(senddata), NULL, replydata2, replysz, 1000);
@@ -1523,7 +1523,7 @@ static void testIcmpParseReplies( void )
     ok( !reply.Reserved, "reserved %d\n", reply.Reserved );
 
 #if defined(__REACTOS__) && defined(_MSC_VER)
-    /* This crashes on WS03 when compiled with MSVC. It does work on ReactOS. */
+    /* This crashes on WS03 when compiled with MSVC. It does work on InteractOS. */
     if (LOBYTE(LOWORD(GetVersion())) >= 6) {
 #endif
     reply.Reserved = 3;

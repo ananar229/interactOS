@@ -43,7 +43,7 @@ START_TEST(NtQueryOpenSubKeys)
      * memory address of the object attributes so that it resides in the boundary
      * of the UM memory range so the function lets this NULL parameter
      * slide through until ObOpenObjectByName hits this parameter as being
-     * NULL and returns STATUS_INVALID_PARAMETER. Currently ReactOS follows
+     * NULL and returns STATUS_INVALID_PARAMETER. Currently InteractOS follows
      * the behavior of Windows 10.
      */
     Status = NtQueryOpenSubKeys(NULL, &Subkeys);

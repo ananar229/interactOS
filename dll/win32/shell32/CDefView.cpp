@@ -382,7 +382,7 @@ public:
 
     static inline bool IsSupportedFolderViewMode(int Mode)
     {
-        // We don't support Tile nor Thumbstrip. Miller Columns (ReactOS
+        // We don't support Tile nor Thumbstrip. Miller Columns (InteractOS
         // extension, see FVM_MILLERCOLUMNS) is not a real FOLDERVIEWMODE
         // value, so it is explicitly allowed alongside the real range.
         return (Mode >= FVM_FIRST && Mode <= FVM_DETAILS) || Mode == FVM_MILLERCOLUMNS;
@@ -2012,7 +2012,7 @@ HRESULT CDefView::CheckViewMode(HMENU hmenuView)
         CheckMenuRadioItem(hmenuView, iItemFirst, iItemLast, iItem, MF_BYCOMMAND);
     }
 
-    // Miller Columns (ReactOS extension) sits outside the FVM_FIRST..FVM_LAST
+    // Miller Columns (InteractOS extension) sits outside the FVM_FIRST..FVM_LAST
     // radio group handled above, so it needs its own explicit check state.
     CheckMenuItem(hmenuView, FCIDM_SHVIEW_MILLERCOLUMNS,
                   MF_BYCOMMAND | (m_FolderSettings.ViewMode == FVM_MILLERCOLUMNS ? MF_CHECKED : MF_UNCHECKED));

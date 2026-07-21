@@ -484,7 +484,7 @@ static CONST COLORREF EgaPalette__HiRes[VGA_MAX_COLORS / 4] =
  */
 #if defined(USE_REACTOS_COLORS)
 
-// ReactOS colors
+// InteractOS colors
 static CONST COLORREF VgaPalette[VGA_MAX_COLORS] =
 {
     RGB(0x00, 0x00, 0x00), RGB(0x00, 0x00, 0xAA), RGB(0x00, 0xAA, 0x00), RGB(0x00, 0xAA, 0xAA),

@@ -111,7 +111,7 @@ enum
     XFORM_FORMAT_LTOL = 0x20,
     XFORM_NO_TRANSLATION = 0x40,
 
-    /* ReactOS specific */
+    /* InteractOS specific */
     XFORM_INTEGER = 0x1000,
 };
 
@@ -660,8 +660,8 @@ typedef struct _DRIVER_FUNCTIONS
     PVOID                          Reserved10;
     PVOID                          Reserved11; /* 92 */
 
-    /* ReactOS specify */
-    PFN_DrvEnableDriver            EnableDriver; //ReactOS Extra
+    /* InteractOS specify */
+    PFN_DrvEnableDriver            EnableDriver; //InteractOS Extra
 } DRIVER_FUNCTIONS, *PDRIVER_FUNCTIONS;
 
 #define ASSERT_PFN(pfn) \

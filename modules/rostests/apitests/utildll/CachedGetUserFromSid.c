@@ -63,7 +63,7 @@ START_TEST(CachedGetUserFromSid)
     const char szFunction[] = "CachedGetUserFromSid";
     void* pFunction;
 
-    // TODO: Dynamically checking, until ReactOS implements this dll.
+    // TODO: Dynamically checking, until InteractOS implements this dll.
     HMODULE hModule;
     DWORD dwLE;
 

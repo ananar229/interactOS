@@ -157,7 +157,7 @@ FdoEnumerateDevices(
                     Device->IsDebuggingDevice = TRUE;
 
                     /*
-                     * ReactOS-specific: apply a hack
+                     * InteractOS-specific: apply a hack
                      * to prevent driver installation for the debugging device.
                      * NOTE: Nothing to do for IEEE 1394 devices; NT5.1 and NT5.2
                      * support IEEE 1394 debugging.

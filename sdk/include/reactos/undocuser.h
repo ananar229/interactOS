@@ -61,7 +61,7 @@ extern "C" {
 #define WM_DRAGMOVE	        0x0000022F
 #define WM_POPUPSYSTEMMENU  0x00000313
 #define WM_UAHINIT          0x0000031b
-#define WM_CBT              0x000003FF // ReactOS only.
+#define WM_CBT              0x000003FF // InteractOS only.
 #define WM_MAXIMUM          0x0001FFFF
 
 /* Non SDK DCE types */

@@ -306,7 +306,7 @@ CreateMainShortcut(const CStringW &Target)
     }
 
     // SHPathPrepareForWrite will prepare the necessary directories.
-    // Windows and ReactOS SHPathPrepareForWrite do not support '/'.
+    // Windows and InteractOS SHPathPrepareForWrite do not support '/'.
     rel.Replace('/', '\\');
     path = BuildPath(path, rel.GetString());
     UINT SHPPFW = SHPPFW_DIRCREATE | SHPPFW_IGNOREFILENAME;

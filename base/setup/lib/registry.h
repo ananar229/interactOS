@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS Setup Library
+ * PROJECT:         InteractOS Setup Library
  * FILE:            base/setup/lib/registry.h
  * PURPOSE:         Registry creation functions
  * PROGRAMMERS:     ...

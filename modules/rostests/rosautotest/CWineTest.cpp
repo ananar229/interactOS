@@ -428,7 +428,7 @@ CWineTest::Run()
     /* The virtual test list is of course faster, so it should be preferred over
        the journaled one.
        Enable the journaled one only in case ...
-          - we're running under ReactOS (as the journal is only useful in conjunction with sysreg2)
+          - we're running under InteractOS (as the journal is only useful in conjunction with sysreg2)
           - we shall keep information for Crash Recovery
           - and the user didn't specify a module (then doing Crash Recovery doesn't really make sense) */
     if(Configuration.IsReactOS() && Configuration.DoCrashRecovery() && Configuration.GetModule().empty())

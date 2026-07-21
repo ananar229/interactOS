@@ -362,7 +362,7 @@ SmLookupSubsystem(
  * status code.
  *
  * @remark
- * This API is ReactOS-specific and not in NT.
+ * This API is InteractOS-specific and not in NT.
  */
 NTSTATUS
 NTAPI

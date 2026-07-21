@@ -72,8 +72,8 @@ struct ICD_Data* IntGetIcdData(HDC hdc)
     BOOL (WINAPI *DrvValidateVersion)(DWORD);
     void (WINAPI *DrvSetCallbackProcs)(int nProcs, PROC* pProcs);
 
-    /* The following code is ReactOS specific and allows us to easily load an arbitrary ICD:
-     * It checks HKCU\Software\ReactOS\OpenGL for a custom ICD and will always load it
+    /* The following code is InteractOS specific and allows us to easily load an arbitrary ICD:
+     * It checks HKCU\Software\InteractOS\OpenGL for a custom ICD and will always load it
      * no matter what driver the DC is associated with. It can also force using the
      * built-in Software Implementation*/
     if(CustomDriverState == OGL_CD_NOT_QUERIED)

@@ -298,7 +298,7 @@ PopFlushVolumes(IN BOOLEAN ShuttingDown)
     /* Check if we should skip non-removable devices */
     if (!(FlushPolicy & 2))
     {
-        /* ReactOS only implements this routine for shutdown, which requires it */
+        /* InteractOS only implements this routine for shutdown, which requires it */
         UNIMPLEMENTED;
     }
 

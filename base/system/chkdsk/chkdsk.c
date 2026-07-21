@@ -29,13 +29,13 @@
 // --------------------------------------------------------------------
 //
 // 1999 February (Emanuele Aliberti)
-//      Adapted for ReactOS and lcc-win32.
+//      Adapted for InteractOS and lcc-win32.
 //
 // 1999 April (Emanuele Aliberti)
-//      Adapted for ReactOS and egcs.
+//      Adapted for InteractOS and egcs.
 //
 // 2008 July (Aleksey Bragin)
-//      Cleanup, use ReactOS's fmifs.h
+//      Cleanup, use InteractOS's fmifs.h
 //
 //======================================================================
 

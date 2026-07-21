@@ -134,7 +134,7 @@ static MUI_ENTRY heILWelcomePageEntries[] =
     {
         8,
         17,
-     // "\x07  Press R to repair a ReactOS installation using the Recovery Console.",
+     // "\x07  Press R to repair a InteractOS installation using the Recovery Console.",
         "\x07  .ReactOS \232\220\227\232\204 \217\227\232\214 \211\203\213 R \225\207\214",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC

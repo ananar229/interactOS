@@ -567,7 +567,7 @@ CmpCreateControlSet(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
     PLOADER_PARAMETER_EXTENSION LoaderExtension;
     PAGED_CODE();
 
-    /* ReactOS Hack: Hard-code current to 001 for SetupLdr */
+    /* InteractOS Hack: Hard-code current to 001 for SetupLdr */
     if (LoaderBlock->RegistryBase == NULL)
     {
         /* Build the ControlSet001 key */
@@ -692,7 +692,7 @@ CmpCreateControlSet(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
         goto Cleanup;
     }
 
-    /* ReactOS Hack: Hard-code current to 001 for SetupLdr */
+    /* InteractOS Hack: Hard-code current to 001 for SetupLdr */
     if (LoaderBlock->RegistryBase == NULL)
     {
         HwProfile = 0;
@@ -870,7 +870,7 @@ CmpLinkHiveToMaster(IN PUNICODE_STRING LinkName,
     /* Mark the hive as clean */
     RegistryHive->Hive.DirtyFlag = FALSE;
 
-    /* ReactOS Hack: Keep alive */
+    /* InteractOS Hack: Keep alive */
     Status = ObReferenceObjectByHandle(KeyHandle,
                                        0,
                                        CmpKeyObjectType,

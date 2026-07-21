@@ -3637,7 +3637,7 @@ static void test_verify_ecc_signature(void)
     bret = CryptImportPublicKeyInfo(0, X509_ASN_ENCODING, &cert->pCertInfo->SubjectPublicKeyInfo, &key);
     ok(!bret && GetLastError() == CRYPT_E_ASN1_BADTAG, "got ret %d, error %#lx.\n", bret, GetLastError());
 
-#ifndef __REACTOS__ // FIXME: ReactOS has no implementation for CryptImportPublicKeyInfoEx2
+#ifndef __REACTOS__ // FIXME: InteractOS has no implementation for CryptImportPublicKeyInfoEx2
     bret = CryptImportPublicKeyInfoEx2(X509_ASN_ENCODING, &cert->pCertInfo->SubjectPublicKeyInfo, 0, NULL, &bkey);
     ok(bret, "failed, error %#lx.\n", GetLastError());
     BCryptDestroyKey(bkey);

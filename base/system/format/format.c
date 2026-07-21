@@ -29,10 +29,10 @@
 // --------------------------------------------------------------------
 //
 // 1999 February (Emanuele Aliberti)
-//      Adapted for ReactOS and lcc-win32.
+//      Adapted for InteractOS and lcc-win32.
 //
 // 1999 April (Emanuele Aliberti)
-//      Adapted for ReactOS and egcs.
+//      Adapted for InteractOS and egcs.
 //
 // 2003 April (Casper S. Hornstrup)
 //      Reintegration.

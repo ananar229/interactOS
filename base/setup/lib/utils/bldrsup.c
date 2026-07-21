@@ -340,7 +340,7 @@ FreeLdrMigrateBootDrivePart(
         /* Check for boot type to migrate */
         if (!IniGetKey(OsIniSection, L"BootType", &KeyData) || !KeyData)
         {
-            /* Certainly not a ReactOS installation */
+            /* Certainly not a InteractOS installation */
             DPRINT1("No BootType value present\n");
             continue;
         }
@@ -1483,7 +1483,7 @@ FreeLdrEnumerateBootEntries(
         /* Check for supported boot type */
         if (!IniGetKey(OsIniSection, L"BootType", &KeyData) || !KeyData)
         {
-            /* Certainly not a ReactOS installation */
+            /* Certainly not a InteractOS installation */
             DPRINT1("No BootType value present\n");
             goto DoEnum;
         }

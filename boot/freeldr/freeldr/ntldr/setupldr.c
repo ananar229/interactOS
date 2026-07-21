@@ -176,7 +176,7 @@ SetupLdrScanBootDrivers(
             InfGetDataField(&InfContext, 0, &DriverName) &&
             InfGetDataField(&InfContext, 13, &dirIndex))
         {
-            if ((strcmp(Media, "x") == 0) && // HACK: ReactOS-specific
+            if ((strcmp(Media, "x") == 0) && // HACK: InteractOS-specific
                 InfFindFirstLine(InfHandle, "Directories", dirIndex, &dirContext) &&
                 InfGetDataField(&dirContext, 1, &ImagePath))
             {

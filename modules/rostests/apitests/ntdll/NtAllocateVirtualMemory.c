@@ -747,7 +747,7 @@ CheckSomeDefaultAddresses(VOID)
 
         /* Reserve memory at 0x00400000:
          * Windows NT legacy default DLL image base,
-         * (ReactOS and) Windows 95 new default executable image base */
+         * (InteractOS and) Windows 95 new default executable image base */
         BaseAddress = UlongToPtr(0x00400000);
         Size = 0x1000;
         Status = NtAllocateVirtualMemory(NtCurrentProcess(),

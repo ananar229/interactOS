@@ -8,7 +8,7 @@
 #ifndef SHIMENG_H
 #define SHIMENG_H
 
-/* This header is ReactOS specific */
+/* This header is InteractOS specific */
 
 /* Structure that allows dynamic growing.
    Be aware, the data may move! */

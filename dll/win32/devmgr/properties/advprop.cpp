@@ -18,9 +18,9 @@
  */
 /*
  *
- * PROJECT:         ReactOS devmgr.dll
+ * PROJECT:         InteractOS devmgr.dll
  * FILE:            lib/devmgr/advprop.c
- * PURPOSE:         ReactOS Device Manager
+ * PURPOSE:         InteractOS Device Manager
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>
  *                  Ged Murphy <gedmurphy@reactos.org>
  * UPDATE HISTORY:

@@ -76,7 +76,7 @@ ULONGLONG MiLastPoolDumpTime;
  *
  * For now, I will leave these checks on all the time, but later they are likely
  * to be DBG-only, at least until there are enough kernel-mode security attacks
- * against ReactOS to warrant the performance hit.
+ * against InteractOS to warrant the performance hit.
  *
  * For now, these are not made inline, so we can get good stack traces.
  */
@@ -840,7 +840,7 @@ ExpRemovePoolTracker(IN ULONG Key,
 
     //
     // And finally this path is hit when all the buckets are full, and we need
-    // some expansion. This path is not yet supported in ReactOS and so we'll
+    // some expansion. This path is not yet supported in InteractOS and so we'll
     // ignore the tag
     //
     DPRINT1("Out of pool tag space, ignoring...\n");
@@ -874,7 +874,7 @@ ExpInsertPoolTracker(IN ULONG Key,
     if (ExStopBadTags) ASSERT(Key & 0xFFFFFF00);
 
     //
-    // ASSERT on ReactOS features not yet supported
+    // ASSERT on InteractOS features not yet supported
     //
     ASSERT(!(PoolType & SESSION_POOL_MASK));
 
@@ -957,7 +957,7 @@ ExpInsertPoolTracker(IN ULONG Key,
 
     //
     // And finally this path is hit when all the buckets are full, and we need
-    // some expansion. This path is not yet supported in ReactOS and so we'll
+    // some expansion. This path is not yet supported in InteractOS and so we'll
     // ignore the tag
     //
     DPRINT1("Out of pool tag space, ignoring...\n");
@@ -1009,7 +1009,7 @@ ExInitializePoolDescriptor(IN PPOOL_DESCRIPTOR PoolDescriptor,
     }
 
     //
-    // Note that ReactOS does not support Session Pool Yet
+    // Note that InteractOS does not support Session Pool Yet
     //
     ASSERT(PoolType != PagedPoolSession);
 }
@@ -1337,7 +1337,7 @@ ExpGetPoolTagInfoTarget(IN PKDPC Dpc,
                       Context->PoolTrackTableSize * sizeof(POOL_TRACKER_TABLE));
 
         //
-        // This is here because ReactOS does not yet support expansion
+        // This is here because InteractOS does not yet support expansion
         //
         ASSERT(Context->PoolTrackTableSizeExpansion == 0);
     }
@@ -1923,7 +1923,7 @@ ExAllocatePoolWithTag(IN POOL_TYPE PoolType,
     ExpCheckPoolIrqlLevel(PoolType, NumberOfBytes, NULL);
 
     //
-    // Not supported in ReactOS
+    // Not supported in InteractOS
     //
     ASSERT(!(PoolType & SESSION_POOL_MASK));
 

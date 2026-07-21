@@ -762,7 +762,7 @@ PiCallDriverAddDevice(
         driverEntry = CONTAINING_RECORD(listEntry, ADD_DEV_DRIVERS_LIST, ListEntry);
         PDRIVER_OBJECT driverObject = driverEntry->DriverObject;
 
-        // FIXME: ReactOS is not quite ready for this assert
+        // FIXME: InteractOS is not quite ready for this assert
         // (legacy drivers should not have AddDevice routine)
         // ASSERT(!(DriverObject->Flags & DRVO_LEGACY_DRIVER));
 
@@ -781,7 +781,7 @@ PiCallDriverAddDevice(
         else
         {
             // HACK: the driver doesn't have a AddDevice routine. We shouldn't be here,
-            // but ReactOS' PnP stack is not that correct yet
+            // but InteractOS' PnP stack is not that correct yet
             DeviceNode->Flags |= DNF_LEGACY_DRIVER;
             Status = STATUS_UNSUCCESSFUL;
         }

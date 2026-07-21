@@ -49,7 +49,7 @@ DxDdStartupDxGraphics(  ULONG ulc1,
      * no code have been writen for it yet
      */
 
-    /* FIXME: ReactOS does not loading the dxapi.sys or import functions from it yet */
+    /* FIXME: InteractOS does not loading the dxapi.sys or import functions from it yet */
     // DxApiGetVersion()
 
     /* Loading the kernel interface of DirectX for win32k */

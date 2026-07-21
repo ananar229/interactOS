@@ -8383,7 +8383,7 @@ static void testImportPublicKey(HCRYPTPROV csp, PCERT_PUBLIC_KEY_INFO info)
         ok(ret, "CryptImportPublicKeyInfoEx failed: %08lx\n", GetLastError());
         CryptDestroyKey(key);
 
-#ifndef __REACTOS__ // FIXME: ReactOS has no implementation for CryptImportPublicKeyInfoEx2
+#ifndef __REACTOS__ // FIXME: InteractOS has no implementation for CryptImportPublicKeyInfoEx2
         ret = CryptImportPublicKeyInfoEx2(X509_ASN_ENCODING,
          &context->pCertInfo->SubjectPublicKeyInfo, 0, NULL, &key2);
         ok(ret, "CryptImportPublicKeyInfoEx2 failed: %08lx\n", GetLastError());

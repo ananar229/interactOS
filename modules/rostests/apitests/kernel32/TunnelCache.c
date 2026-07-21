@@ -61,7 +61,7 @@ Test_VeryLongTests(void)
     CloseHandle(hFile);
 
     /* Wait a least 10ms (resolution of FAT) */
-    /* XXX: Increased to 1s for ReactOS... */
+    /* XXX: Increased to 1s for InteractOS... */
     Sleep(1000);
 
     hFile = CreateFile("file2",
@@ -151,7 +151,7 @@ Test_LongTests(void)
     CloseHandle(hFile);
 
     /* Wait a least 10ms (resolution of FAT) */
-    /* XXX: Increased to 1s for ReactOS... */
+    /* XXX: Increased to 1s for InteractOS... */
     Sleep(1000);
 
     hFile = CreateFile("file2",

@@ -661,7 +661,7 @@ IntMsgCreateStructW(
     WindowName = (PLARGE_STRING)   Cs->lpszName;
     ClassName  = (PUNICODE_STRING) Cs->lpszClass;
 
-    // Based on the assumption this is from "unicode source" user32, ReactOS, answer is yes.
+    // Based on the assumption this is from "unicode source" user32, InteractOS, answer is yes.
     if (!IS_ATOM(ClassName->Buffer))
     {
         if (ClassName->Length)

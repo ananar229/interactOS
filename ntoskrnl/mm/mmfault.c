@@ -248,7 +248,7 @@ MmAccessFault(IN ULONG FaultCode,
         return MmArmAccessFault(FaultCode, Address, Mode, TrapInformation);
     }
 
-    /* Is there a ReactOS address space yet? */
+    /* Is there a InteractOS address space yet? */
     if (MmGetKernelAddressSpace())
     {
         if (Address > MM_HIGHEST_USER_ADDRESS)
@@ -292,7 +292,7 @@ MmAccessFault(IN ULONG FaultCode,
     }
 
 Retry:
-    /* Keep same old ReactOS Behaviour */
+    /* Keep same old InteractOS Behaviour */
     if (!MI_IS_NOT_PRESENT_FAULT(FaultCode))
     {
         /* Call access fault */

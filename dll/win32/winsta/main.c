@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS winsta.dll
+ * PROJECT:         InteractOS winsta.dll
  * FILE:            lib/winsta/main.c
  * PURPOSE:         WinStation
  * PROGRAMMER:      Emanuele Aliberti <ea@reactos.com>

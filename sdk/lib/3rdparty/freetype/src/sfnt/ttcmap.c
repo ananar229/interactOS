@@ -1234,7 +1234,7 @@
 
 #ifdef __REACTOS__
     static FT_UInt bWarnOnce = 0;
-    /* FIXME: HACK for ReactOS not updating fonts when new font copied
+    /* FIXME: HACK for InteractOS not updating fonts when new font copied
      * over existing one. Verify that the table number is 4. CORE-12549 */
     if (TT_PEEK_USHORT(cmap->data) != 4)
     {

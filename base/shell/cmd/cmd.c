@@ -1134,7 +1134,7 @@ GetEnhancedVar(
     }
 
     /* Next step is to change the path to fix letter case (e.g.
-     * C:\ReAcToS -> C:\ReactOS) and, if requested with the S modifier,
+     * C:\ReAcToS -> C:\InteractOS) and, if requested with the S modifier,
      * replace long filenames with short. */
 
     In = FullPath;

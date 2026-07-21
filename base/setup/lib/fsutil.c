@@ -155,7 +155,7 @@ typedef struct _FILE_SYSTEM
     PULIB_CHKDSK ChkdskFunc;
 } FILE_SYSTEM, *PFILE_SYSTEM;
 
-/* The list of file systems on which we can install ReactOS */
+/* The list of file systems on which we can install InteractOS */
 static FILE_SYSTEM RegisteredFileSystems[] =
 {
     /* NOTE: The FAT formatter will automatically

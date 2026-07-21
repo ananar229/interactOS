@@ -688,7 +688,7 @@
     SVC_(UserSetDbgTagCount, 1)	//
     SVC_(UserSetRipFlags, 1)	//
     SVC_(UserSetScrollBarInfo, 3)	//
-// ReactOS Display Driver Model
+// InteractOS Display Driver Model
     SVC_(GdiDdDDICheckExclusiveOwnership, 0)
     SVC_(GdiDdDDICreateAllocation, 1)
     SVC_(GdiDdDDICheckMonitorPowerState, 1)

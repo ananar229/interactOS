@@ -180,7 +180,7 @@ IopCreateArcNamesCd(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
      * Currently, Windows 2003 provides an ARC names creation based
      * on both enabled drives and not enabled drives (lack from
      * the driver).
-     * Given the current ReactOS state, that's good for us.
+     * Given the current InteractOS state, that's good for us.
      * To sum up, this is NOT a hack or whatsoever.
      */
     Status = IopFetchConfigurationInformation(&SymbolicLinkList,

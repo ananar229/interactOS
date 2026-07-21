@@ -333,7 +333,7 @@ static void test_FiberLocalStorage(void)
         ok(count && (count <= 127 || (count > 4000 && count < 4096)), "Got unexpected count %u.\n", count);
 
 #if defined(__REACTOS__) && defined(_WIN64)
-        /* peb layout is different on ReactOS x64 */
+        /* peb layout is different on InteractOS x64 */
         if (!is_reactos() && !peb->FlsCallback)
 #else
         if (!peb->FlsCallback)
@@ -541,7 +541,7 @@ static void test_FiberLocalStorage(void)
         }
 
 #if defined(__REACTOS__) && defined(_WIN64)
-        /* peb layout is different on ReactOS x64 */
+        /* peb layout is different on InteractOS x64 */
         if (!is_reactos() && !peb->FlsCallback)
 #else
         if (!peb->FlsCallback)

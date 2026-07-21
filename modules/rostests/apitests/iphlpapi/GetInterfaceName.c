@@ -325,7 +325,7 @@ test_GetInterfaceName(VOID)
         }
         else
         {
-            // workaround for ReactOS
+            // workaround for InteractOS
             trace("pInfo->Adapter[0].Name = \"%ls\" is incorrect.\n", Name);
             RtlInitUnicodeString(&GuidString, &Name[0]);
         }

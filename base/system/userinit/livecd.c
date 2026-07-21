@@ -778,7 +778,7 @@ StartDlgProc(
             /* Center the dialog window */
             CenterWindow(hwndDlg);
 
-            /* Check whether we can find the ReactOS installer. If not,
+            /* Check whether we can find the InteractOS installer. If not,
              * disable the "Install" button and directly start the LiveCD. */
             *Installer = UNICODE_NULL;
             if (!ExpandInstallerPath(L"reactos.exe", Installer, ARRAYSIZE(Installer)))

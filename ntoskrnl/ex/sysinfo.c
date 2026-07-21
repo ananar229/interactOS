@@ -876,7 +876,7 @@ QSI_DEF(SystemPathInformation)
      */
 #if DBG
     DPRINT1("EX: SystemPathInformation now available via SharedUserData\n");
-    // DbgBreakPoint(); // Not needed in ReactOS.
+    // DbgBreakPoint(); // Not needed in InteractOS.
 #endif
     return STATUS_NOT_IMPLEMENTED;
 }

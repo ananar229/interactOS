@@ -680,7 +680,7 @@
     //Stray syscalls (must be placed here to be correct for both checked/free builds)
     SVC_(GdiMakeObjectXferable, 2)
     SVC_(DxEngGetRedirectionBitmap, 1)
-    // ReactOS-specific syscalls (must be at the end to not interfere!)
+    // InteractOS-specific syscalls (must be at the end to not interfere!)
     SVC_(GdiSetViewportOrgEx, 4)
     SVC_(GdiSetWindowOrgEx, 4)
     SVC_(GdiGetFontFamilyInfo, 4)
@@ -694,7 +694,7 @@
 // For Wine DX
     SVC_(GdiDdDDICreateDCFromMemory, 1)
     SVC_(GdiDdDDIDestroyDCFromMemory, 1)
-// ReactOS Display Driver Model
+// InteractOS Display Driver Model
     SVC_(GdiDdDDICheckExclusiveOwnership, 0)
     SVC_(GdiDdDDICreateAllocation, 1)
     SVC_(GdiDdDDICheckMonitorPowerState, 1)

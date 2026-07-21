@@ -130,7 +130,7 @@ NtUserCallNoParam(DWORD Routine)
             Result = !!gfIMEShowStatus;
             break;
 
-        /* this is a ReactOS only case and is needed for gui-on-demand */
+        /* this is a InteractOS only case and is needed for gui-on-demand */
         case NOPARAM_ROUTINE_ISCONSOLEMODE:
             Result = (ScreenDeviceContext == NULL);
             break;

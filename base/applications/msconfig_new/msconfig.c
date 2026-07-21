@@ -27,7 +27,7 @@
     HWND hSingleWnd __attribute__((section ("MSConfigInstance"), shared)) = NULL;
 #endif
 
-/* Defaults for ReactOS */
+/* Defaults for InteractOS */
 BOOL bIsWindows = FALSE;
 BOOL bIsPreVistaOSVersion = TRUE;
 

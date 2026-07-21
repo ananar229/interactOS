@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * FILE:             base/services/umpnpmgr/rpcserver.c
  * PURPOSE:          RPC server
  * PROGRAMMER:       Eric Kohl (eric.kohl@reactos.org)

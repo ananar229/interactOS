@@ -248,7 +248,7 @@ static void AddService(SC_HANDLE hSCManager, LPENUM_SERVICE_STATUS_PROCESS Servi
 #endif
     }
 
-    // ...and display or not the Microsoft / ReactOS services.
+    // ...and display or not the Microsoft / InteractOS services.
     BOOL bContinue = TRUE;
     if (bHideOSVendorServices)
     {

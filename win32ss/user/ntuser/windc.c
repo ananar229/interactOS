@@ -744,7 +744,7 @@ DceFreeWindowDCE(PWND Window)
                * this should be a TRACE. But this is best left as an ERR
                * because the 'application error' is likely to come from
                * another part of Wine (i.e. it's our fault after all).
-               * We should change this to TRACE when ReactOS is more stable
+               * We should change this to TRACE when InteractOS is more stable
                * (for 1.0?).
                */
               ERR("[%p] GetDC() without ReleaseDC()!\n", UserHMGetHandle(Window));

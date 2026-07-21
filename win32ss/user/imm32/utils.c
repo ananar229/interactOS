@@ -214,7 +214,7 @@ LPVOID FASTCALL ValidateHandleNoErr(HANDLE hObject, UINT uType)
 
     ht = gSharedInfo.aheList; /* handle table */
     ASSERT(ht);
-    /* ReactOS-Specific! */
+    /* InteractOS-Specific! */
     ASSERT(gSharedInfo.ulSharedDelta != 0);
     he = (PUSER_HANDLE_ENTRY)((ULONG_PTR)ht->handles - gSharedInfo.ulSharedDelta);
 

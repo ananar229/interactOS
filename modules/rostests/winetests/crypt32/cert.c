@@ -1737,7 +1737,7 @@ static void testCryptHashCert(void)
 
 static void testCryptHashCert2(void)
 {
-#ifndef __REACTOS__ // FIXME: ReactOS has no implementation for CryptHashCertificate2 (Vista+)
+#ifndef __REACTOS__ // FIXME: InteractOS has no implementation for CryptHashCertificate2 (Vista+)
     static const BYTE emptyHash[] = { 0xda, 0x39, 0xa3, 0xee, 0x5e, 0x6b, 0x4b,
      0x0d, 0x32, 0x55, 0xbf, 0xef, 0x95, 0x60, 0x18, 0x90, 0xaf, 0xd8, 0x07,
      0x09 };
@@ -4474,7 +4474,7 @@ static void test_VerifySignature(void)
     CryptDestroyKey(key);
     CryptReleaseContext(prov, 0);
 
-#ifndef __REACTOS__ // FIXME: ReactOS has no implementation for CryptImportPublicKeyInfoEx2
+#ifndef __REACTOS__ // FIXME: InteractOS has no implementation for CryptImportPublicKeyInfoEx2
     /* 3. Verify certificate signature with CNG */
     ret = CryptImportPublicKeyInfoEx2(cert->dwCertEncodingType, &cert->pCertInfo->SubjectPublicKeyInfo, 0, NULL, &bkey);
     ok(ret, "CryptImportPublicKeyInfoEx error %#lx\n", GetLastError());

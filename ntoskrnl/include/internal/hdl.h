@@ -57,7 +57,7 @@ typedef enum _HEADLESS_LOG_MESSAGE
     HeadlessLogGroupOrderListFailed,
     HeadlessLogGroupTableFailed
     //
-    // There are more, but not applicable to ReactOS, I believe
+    // There are more, but not applicable to InteractOS, I believe
     //
 } HEADLESS_LOG_MESSAGE;
 

@@ -184,7 +184,7 @@ BOOLEAN DosBuildSysEnvBlock(VOID)
          * - Ignore environment strings starting with a '=',
          *   they describe current directories.
          * - Ignore also the WINDIR environment variable since
-         *   DOS apps should ignore that we started from ReactOS.
+         *   DOS apps should ignore that we started from InteractOS.
          * - Upper-case the environment names, not their values.
          */
         if (*SourcePtr != '=' && _strnicmp(SourcePtr, "WINDIR", 6) != 0)

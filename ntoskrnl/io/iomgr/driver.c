@@ -1132,7 +1132,7 @@ IopInitializeBootDrivers(VOID)
 #if 0
             if (NT_SUCCESS(Status))
 #else // Hack still needed...
-            if ((NT_SUCCESS(Status)) || /* ReactOS HACK for SETUPLDR */
+            if ((NT_SUCCESS(Status)) || /* InteractOS HACK for SETUPLDR */
                 ((KeLoaderBlock->SetupLdrBlock) && ((KeyHandle = (PVOID)1)))) // yes, it's an assignment!
 #endif
             {

@@ -438,7 +438,7 @@ DoThreadNameTest(
     ok_long((ULONG)pNameInfo->ThreadName.MaximumLength, (ULONG)pNameInfo->ThreadName.Length);
     if (bEmptyName)
     {
-        ok(pNameInfo->ThreadName.Buffer == NULL || /* ReactOS will set the Buffer to NULL */
+        ok(pNameInfo->ThreadName.Buffer == NULL || /* InteractOS will set the Buffer to NULL */
            /* All Win10+ versions erroneously point the Buffer past the end of the data */
            broken(pNameInfo->ThreadName.Buffer == (PVOID)(&pNameInfo->ThreadName + 1)),
            "Expected NULL pointer, got 0x%p\n", pNameInfo->ThreadName.Buffer);
@@ -473,7 +473,7 @@ DoThreadNameTest(
     ok_long((ULONG)pNameInfo->ThreadName.MaximumLength, (ULONG)pNameInfo->ThreadName.Length);
     if (bEmptyName)
     {
-        ok(pNameInfo->ThreadName.Buffer == NULL || /* ReactOS will set the Buffer to NULL */
+        ok(pNameInfo->ThreadName.Buffer == NULL || /* InteractOS will set the Buffer to NULL */
            /* All Win10+ versions erroneously point the Buffer past the end of the data */
            broken(pNameInfo->ThreadName.Buffer == (PVOID)(&pNameInfo->ThreadName + 1)),
            "Expected NULL pointer, got 0x%p\n", pNameInfo->ThreadName.Buffer);
@@ -505,7 +505,7 @@ DoThreadNameTest(
         ok_long((ULONG)pNameInfo->ThreadName.MaximumLength, (ULONG)pNameInfo->ThreadName.Length);
         if (bEmptyName)
         {
-            ok(pNameInfo->ThreadName.Buffer == NULL || /* ReactOS will set the Buffer to NULL */
+            ok(pNameInfo->ThreadName.Buffer == NULL || /* InteractOS will set the Buffer to NULL */
                /* All Win10+ versions erroneously point the Buffer past the end of the data */
                broken(pNameInfo->ThreadName.Buffer == (PVOID)(&pNameInfo->ThreadName + 1)),
                "Expected NULL pointer, got 0x%p\n", pNameInfo->ThreadName.Buffer);

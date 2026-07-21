@@ -4997,7 +4997,7 @@ NtAllocateVirtualMemory(IN HANDLE ProcessHandle,
     }
 
     //
-    // This is a specific ReactOS check because we only use normal VADs
+    // This is a specific InteractOS check because we only use normal VADs
     //
     ASSERT(FoundVad->u.VadFlags.VadType == VadNone);
 
@@ -5539,7 +5539,7 @@ NtFreeVirtualMemory(IN HANDLE ProcessHandle,
                     //
                     // Now the addresses for both VADs are consistent,
                     // so insert the new one.
-                    // ReactOS: This will take care of creating a second MEMORY_AREA.
+                    // InteractOS: This will take care of creating a second MEMORY_AREA.
                     //
                     MiInsertVad(NewVad, &Process->VadRoot);
 

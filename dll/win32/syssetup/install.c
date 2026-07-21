@@ -1016,7 +1016,7 @@ EnableVisualTheme(
  * Pre-process unattended file to apply early settings.
  *
  * @param[in]   IsInstall
- * TRUE if this is ReactOS installation, invoked from InstallReactOS(),
+ * TRUE if this is InteractOS installation, invoked from InstallReactOS(),
  * FALSE if this is run as part of LiveCD, invoked form InstallLiveCD().
  **/
 static VOID
@@ -1051,7 +1051,7 @@ PreprocessUnattend(
 
     if (!bDefaultThemesOff)
     {
-        /* Retrieve the complete path to a .theme (or for ReactOS, a .msstyles) file */
+        /* Retrieve the complete path to a .theme (or for InteractOS, a .msstyles) file */
         if (!GetPrivateProfileStringW(L"Shell", L"CustomDefaultThemeFile", NULL, szValue, _countof(szValue), szPath) || !*szValue)
             bDefaultThemesOff = TRUE; // None specified, fall back to the classic theme.
     }

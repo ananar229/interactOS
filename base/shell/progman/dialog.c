@@ -21,7 +21,7 @@
  */
 
 /*
- * PROJECT:         ReactOS Program Manager
+ * PROJECT:         InteractOS Program Manager
  * COPYRIGHT:       GPL - See COPYING in the top level directory
  * FILE:            base/shell/progman/dialog.c
  * PURPOSE:         ProgMan dialog boxes

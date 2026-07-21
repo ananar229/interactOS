@@ -540,7 +540,7 @@ UserpFormatMessages(
     {
         /*
          * Fall back to unknown hard error format string.
-         * NOTE: The value used here is ReactOS-specific: it allows specifying
+         * NOTE: The value used here is InteractOS-specific: it allows specifying
          * the exact hard error status value and the parameters, contrary to
          * the one on Windows that only says: "Unknown Hard Error".
          */

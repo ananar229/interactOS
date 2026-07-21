@@ -7,7 +7,7 @@
 
 /*
  * These tests are developed and tested against the Windows Server 2003 counterpart of winprint.
- * While ReactOS implements the Standard Print Processor in a separate module winprint.dll,
+ * While InteractOS implements the Standard Print Processor in a separate module winprint.dll,
  * Windows Server 2003 puts it into the Local Print Spooler localspl.dll.
  *
  * winspool.drv also provides functions that go into winprint.dll, but as these tests show,

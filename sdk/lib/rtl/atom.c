@@ -594,7 +594,7 @@ RtlPinAtomInAtomTable(IN PRTL_ATOM_TABLE AtomTable,
  * NameLength will be set to 8.
  * If you pass in a NULL value for AtomName, the length of the string in bytes
  * (again EXCLUDING the null terminator) is returned in NameLength, at least
- * on Win2k, XP and ReactOS. NT4 will return 0 in that case.
+ * on Win2k, XP and InteractOS. NT4 will return 0 in that case.
  */
 NTSTATUS
 NTAPI

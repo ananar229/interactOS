@@ -86,7 +86,7 @@ $define(USHORT=USHORT)
 #define NTHALAPI
 #endif
 
-/* For ReactOS */
+/* For InteractOS */
 #if !defined(_NTOSKRNL_) && !defined(_BLDR_) && !defined(_NTSYSTEM_)
 #define NTKERNELAPI DECLSPEC_IMPORT
 #else

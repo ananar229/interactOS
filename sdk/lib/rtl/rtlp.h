@@ -272,7 +272,7 @@ RtlpDowncaseUnicodeChar(IN WCHAR Source);
 
 #ifndef _BLDR_
 
-/* ReactOS only */
+/* InteractOS only */
 VOID
 NTAPI
 LdrpInitializeProcessCompat(PVOID pProcessActctx, PVOID* pOldShimData);

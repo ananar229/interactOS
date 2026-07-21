@@ -122,7 +122,7 @@ LdrVerifyMappedImageMatchesChecksum(
     return (BOOLEAN)(CalcSum == HeaderSum);
 #else
     /*
-     * FIXME: Warning, this violates the PE standard and makes ReactOS drivers
+     * FIXME: Warning, this violates the PE standard and makes InteractOS drivers
      * and other system code when normally on Windows they would not, since
      * we do not write the checksum in them.
      * Our compilers should be made to write out the checksum and this function

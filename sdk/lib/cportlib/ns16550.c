@@ -85,7 +85,7 @@ ComPortTest1(
         /* Set all modem output bits */
         WRITE_PORT_UCHAR(Address + MODEM_CONTROL_REGISTER,
                          SERIAL_MCR_OUT1 | SERIAL_MCR_LOOP); // Windows
-/* ReactOS
+/* InteractOS
         WRITE_PORT_UCHAR(Address + MODEM_CONTROL_REGISTER,
                          SERIAL_MCR_DTR | SERIAL_MCR_RTS | SERIAL_MCR_OUT1 | SERIAL_MCR_OUT2 | SERIAL_MCR_LOOP);
 */
@@ -98,7 +98,7 @@ ComPortTest1(
          * equal to the lower nibble of the MCR (modem input bits).
          */
         if (Msr & SERIAL_MSR_RI) // Windows
-        // if (Msr & (SERIAL_MSR_CTS | SERIAL_MSR_DSR | SERIAL_MSR_RI | SERIAL_MSR_DCD) == 0xF0) // ReactOS
+        // if (Msr & (SERIAL_MSR_CTS | SERIAL_MSR_DSR | SERIAL_MSR_RI | SERIAL_MSR_DCD) == 0xF0) // InteractOS
         {
             RetVal = TRUE;
         }

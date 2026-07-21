@@ -194,7 +194,7 @@ IsFriendlyUIActive(VOID)
     if (lRet != ERROR_SUCCESS)
         return FALSE;
 
-    /* CORE-17282 First check an optional ReactOS specific override, that Windows does not check.
+    /* CORE-17282 First check an optional InteractOS specific override, that Windows does not check.
        We use this to allow users pairing 'Server'-configuration with FriendlyShutdown.
        Otherwise users would have to change CSDVersion or LogonType (side-effects AppCompat) */
     dwValue = 0;

@@ -536,7 +536,7 @@ SetupMoveFile(
          */
         if (Status != STATUS_NOT_SAME_DEVICE || !(Flags & MOVEFILE_COPY_ALLOWED))
         {
-            /* ReactOS hack! To be removed once all FSD have proper renaming support
+            /* InteractOS hack! To be removed once all FSD have proper renaming support
              * Just leave status to error and leave
              */
             if (Status == STATUS_NOT_IMPLEMENTED)

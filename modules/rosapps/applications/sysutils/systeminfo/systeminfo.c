@@ -463,7 +463,7 @@ AllSysInfo(VOID)
     /* Clean SMBIOS data */
     FreeSMBiosData(SMBiosBuf);
 
-    /* Getting ReactOS Directory */
+    /* Getting InteractOS Directory */
     if (!GetWindowsDirectoryW(Buf, _countof(Buf)))
         ConPrintf(StdErr, L"Error! GetWindowsDirectory failed.");
     else

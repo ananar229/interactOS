@@ -116,7 +116,7 @@ GreGetKerningPairs(
   value.
 
   MS must use a preset "compiled in" support for each language based releases.
-  ReactOS uses FreeType, this will need to be supported. ATM this is hard coded
+  InteractOS uses FreeType, this will need to be supported. ATM this is hard coded
   for GCPCLASS_LATIN!
  */
 #if 0

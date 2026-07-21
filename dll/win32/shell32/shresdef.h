@@ -861,7 +861,7 @@
 #define FCIDM_DESKBROWSER_SEARCH     0xA085
 #define FCIDM_DESKBROWSER_REFRESH    0xA220
 
-/* ReactOS extension: Miller Columns (macOS Finder style cascading column
+/* InteractOS extension: Miller Columns (macOS Finder style cascading column
  * browser). Not part of the official FOLDERVIEWMODE enum (shobjidl.idl,
  * FVM_ICON..FVM_CONTENT = 1..8) on purpose, so it can never collide with a
  * real Windows view mode value; code that switches on the FVM_FIRST..
@@ -891,7 +891,7 @@
 #define FCIDM_SHVIEW_REPORTVIEW  0x702C
 #define FCIDM_SHVIEW_TILEVIEW    0x702E
 /* 0x7030-0x703f are used by the shellbrowser */
-/* ReactOS extension: Miller Columns is not a real Windows FOLDERVIEWMODE,
+/* InteractOS extension: Miller Columns is not a real Windows FOLDERVIEWMODE,
  * so it deliberately does NOT participate in the FCIDM_SHVIEW_BIGICON..
  * 0x702F contiguous "dwCmdID - FCIDM_SHVIEW_BIGICON + 1 == FVM_*" arithmetic
  * used by CDefView::OnCommand; it gets its own explicit command handling. */

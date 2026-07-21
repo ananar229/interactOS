@@ -269,7 +269,7 @@ ExpInitNls(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
         else
         {
             /*
-            * In NT, the memory blocks are contiguous, but in ReactOS they aren't,
+            * In NT, the memory blocks are contiguous, but in InteractOS they aren't,
             * so unless someone fixes FreeLdr, we'll have to use this icky hack.
             */
             RtlCopyMemory(ExpNlsTableBase,
@@ -1337,7 +1337,7 @@ ExpInitializeExecutive(IN ULONG Cpu,
     SharedUserData->ImageNumberLow = IMAGE_FILE_MACHINE_NATIVE;
     SharedUserData->ImageNumberHigh = IMAGE_FILE_MACHINE_NATIVE;
 
-    /* ReactOS magic */
+    /* InteractOS magic */
     *(PULONG)(KI_USER_SHARED_DATA + PAGE_SIZE - sizeof(ULONG)) = 0x8eac705;
 }
 
@@ -1487,7 +1487,7 @@ Phase1InitializationDiscard(IN PVOID Context)
     if (NT_SUCCESS(MsgStatus))
     {
         /* Create the banner message */
-        /* ReactOS specific: Report ReactOS version, NtBuildLab information and reported NT kernel version */
+        /* InteractOS specific: Report InteractOS version, NtBuildLab information and reported NT kernel version */
         Status = RtlStringCbPrintfA(EndBuffer,
                                     Remaining,
                                     (PCHAR)MsgEntry->Text,
@@ -1569,7 +1569,7 @@ Phase1InitializationDiscard(IN PVOID Context)
 #ifdef CONFIG_SMP
     /*
      * IMPORTANT NOTE:
-     * Because ReactOS is a "nice" OS, we do not care _at all_
+     * Because InteractOS is a "nice" OS, we do not care _at all_
      * about any number of registered/licensed processors:
      * no usage of KeRegisteredProcessors nor KeLicensedProcessors.
      */
@@ -1583,13 +1583,13 @@ Phase1InitializationDiscard(IN PVOID Context)
         if (Option) Option = strstr(Option, "=");
         if (Option) KeNumprocSpecified = atol(Option + 1);
 
-        /* Check for BOOTPROC (NT6+ and ReactOS): maximum number
+        /* Check for BOOTPROC (NT6+ and InteractOS): maximum number
          * of logical processors that can be started at boot-time */
         Option = strstr(CommandLine, "BOOTPROC");
         if (Option) Option = strstr(Option, "=");
         if (Option) KeBootprocSpecified = atol(Option + 1);
 
-        /* Check for MAXPROC (NT6+ and ReactOS): forces the kernel to report
+        /* Check for MAXPROC (NT6+ and InteractOS): forces the kernel to report
          * as existing the maximum number of processors that can be handled */
         if (strstr(CommandLine, "MAXPROC"))
             KeMaximumProcessors = MAXIMUM_PROCESSORS;

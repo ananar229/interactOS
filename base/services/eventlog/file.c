@@ -358,7 +358,7 @@ LogfCreate(PLOGFILE* LogFile,
      * Retrieve the log file size and check whether the file is not too large;
      * this log format only supports files of theoretical size < 0xFFFFFFFF .
      *
-     * As it happens that, on Windows (and ReactOS), retrieving the End-Of-File
+     * As it happens that, on Windows (and InteractOS), retrieving the End-Of-File
      * information using NtQueryInformationFile with the FileEndOfFileInformation
      * class is invalid (who knows why...), use instead the FileStandardInformation
      * class, and the EndOfFile member of the returned FILE_STANDARD_INFORMATION

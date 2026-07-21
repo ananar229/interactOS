@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS Main Control Panel
+ * PROJECT:         InteractOS Main Control Panel
  * FILE:            dll/cpl/main/keyboard.c
  * PURPOSE:         Keyboard Control Panel
  * PROGRAMMER:      Eric Kohl

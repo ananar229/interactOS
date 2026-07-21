@@ -140,7 +140,7 @@ FrameOnCreate(HWND hwnd,
     {
         /* FIXME */
         Info->AppAuthorMode = TRUE;
-//        Info->lpConsoleTitle = TEXT("ReactOS Management Console");
+//        Info->lpConsoleTitle = TEXT("InteractOS Management Console");
     }
     else
     {

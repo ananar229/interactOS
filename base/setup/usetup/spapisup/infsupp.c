@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS text-mode setup
+ * PROJECT:         InteractOS text-mode setup
  * FILE:            base/setup/lib/infsupp.c
  * PURPOSE:         Interfacing with Setup* API .INF Files support functions
  * PROGRAMMERS:     Hervé Poussineau

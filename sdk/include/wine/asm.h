@@ -63,7 +63,7 @@
 # define __ASM_BLOCK_END
 #endif
 
-/* ReactOS */
+/* InteractOS */
 #if defined(_MSC_VER)
 # define __ASM_DEFINE_FUNC(name,code)
 #elif defined(__GNUC__)

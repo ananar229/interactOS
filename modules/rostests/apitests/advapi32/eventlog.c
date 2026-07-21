@@ -14,7 +14,7 @@ START_TEST(eventlog_supp)
         /* Input */
         ULONG MaxDataSize;
 
-        /* Output for Windows <= 2k3 | Windows Vista+ (or "old" ReactOS) */
+        /* Output for Windows <= 2k3 | Windows Vista+ (or "old" InteractOS) */
         struct
         {
             BOOL  Success;

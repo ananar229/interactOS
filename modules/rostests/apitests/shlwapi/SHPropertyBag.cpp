@@ -475,7 +475,7 @@ static void SHPropertyBag_OnRegKey(void)
     GUID guid;
     BYTE guid_and_extra[sizeof(GUID) + sizeof(GUID)];
 
-    // Create HKCU\Software\ReactOS registry key
+    // Create HKCU\Software\InteractOS registry key
     error = RegCreateKeyW(HKEY_CURRENT_USER, L"Software\\ReactOS", &hKey);
     if (error)
     {

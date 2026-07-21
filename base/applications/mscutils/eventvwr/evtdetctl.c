@@ -14,7 +14,7 @@
 
 /**
  * @brief
- * ReactOS-only feature:
+ * InteractOS-only feature:
  * Enable or disable support for copying event info text using space padding
  * between header titles and data, when pressing the SHIFT key while clicking
  * on the "Copy" button, instead of using TABs as separators.

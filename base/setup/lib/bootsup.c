@@ -73,8 +73,8 @@ CreateFreeLoaderReactOSEntries(
 
     Options->OsLoadPath = ArcPath;
 
-    /* ReactOS */
-    // BootEntry->BootEntryKey = MAKESTRKEY(L"ReactOS");
+    /* InteractOS */
+    // BootEntry->BootEntryKey = MAKESTRKEY(L"InteractOS");
     BootEntry->FriendlyName = L"\"ReactOS\"";
     Options->OsLoadOptions  = L"/FASTDETECT";
     AddBootStoreEntry(BootStoreHandle, BootEntry, MAKESTRKEY(L"ReactOS"));
@@ -129,7 +129,7 @@ CreateFreeLoaderReactOSEntries(
 #endif
 
 
-    /* DefaultOS=ReactOS */
+    /* DefaultOS=InteractOS */
 #if DBG && !defined(_WINKD_)
     if (IsUnattendedSetup)
     {
@@ -178,7 +178,7 @@ CreateFreeLoaderIniForReactOS(
     if (!NT_SUCCESS(Status))
         return Status;
 
-    /* Add the ReactOS entries */
+    /* Add the InteractOS entries */
     CreateFreeLoaderReactOSEntries(BootStoreHandle, ArcPath);
 
     /* Close the INI file */
@@ -273,7 +273,7 @@ CreateFreeLoaderIniForReactOSAndBootSector(
     if (!NT_SUCCESS(Status))
         return Status;
 
-    /* Add the ReactOS entries */
+    /* Add the InteractOS entries */
     CreateFreeLoaderReactOSEntries(BootStoreHandle, ArcPath);
 
     BootEntry->Version = FreeLdr;
@@ -298,7 +298,7 @@ CreateFreeLoaderIniForReactOSAndBootSector(
 
 //
 // I think this function can be generalizable as:
-// "find the corresponding 'ReactOS' boot entry in this loader config file
+// "find the corresponding 'InteractOS' boot entry in this loader config file
 // (here abstraction comes there), and if none, add a new one".
 //
 
@@ -333,7 +333,7 @@ EnumerateReactOSEntries(
                          RTL_FIELD_SIZE(NTOS_OPTIONS, Signature)) !=
                          RTL_FIELD_SIZE(NTOS_OPTIONS, Signature))
     {
-        /* This is not a ReactOS entry */
+        /* This is not a InteractOS entry */
         // DPRINT("    An installation '%S' of unsupported type '%S'\n",
                // BootEntry->FriendlyName, BootEntry->Version ? BootEntry->Version : L"n/a");
         DPRINT("    An installation '%S' of unsupported type %lu\n",
@@ -345,7 +345,7 @@ EnumerateReactOSEntries(
     /* BootType is Windows2003, now check OsLoadPath */
     if (!Options->OsLoadPath || !*Options->OsLoadPath)
     {
-        /* Certainly not a ReactOS installation */
+        /* Certainly not a InteractOS installation */
         DPRINT1("    A Win2k3 install '%S' without an ARC path?!\n", BootEntry->FriendlyName);
         /* Continue the enumeration */
         goto SkipThisEntry;
@@ -358,7 +358,7 @@ EnumerateReactOSEntries(
         if (!NT_SUCCESS(Status) || _wcsicmp(Options->OsLoadPath, SystemPath) != 0)
         {
             /*
-             * This entry is a ReactOS entry, but the SystemRoot
+             * This entry is a InteractOS entry, but the SystemRoot
              * does not match the one we are looking for.
              */
             /* Continue the enumeration */
@@ -424,11 +424,11 @@ UpdateFreeLoaderIni(
     //
     Status = EnumerateBootStoreEntries(BootStoreHandle, EnumerateReactOSEntries, &Data);
 
-    /* Create a new "ReactOS" entry if there is none already existing that suits us */
+    /* Create a new "InteractOS" entry if there is none already existing that suits us */
     if (!Data.UseExistingEntry)
     {
         // RtlStringCchPrintfW(Data.SectionName, ARRAYSIZE(Data.SectionName), L"ReactOS_%lu", Data.i);
-        // RtlStringCchPrintfW(Data.OsName, ARRAYSIZE(Data.OsName), L"\"ReactOS %lu\"", Data.i);
+        // RtlStringCchPrintfW(Data.OsName, ARRAYSIZE(Data.OsName), L"\"InteractOS %lu\"", Data.i);
 
         BootEntry->Version = FreeLdr;
         BootEntry->BootFilePath = NULL;
@@ -477,7 +477,7 @@ UpdateBootIni(
     Data.UseExistingEntry = TRUE;
     // Data.i = 1;
     Data.ArcPath = EntryName;
-    // RtlStringCchCopyW(Data.SectionName, ARRAYSIZE(Data.SectionName), L"ReactOS");
+    // RtlStringCchCopyW(Data.SectionName, ARRAYSIZE(Data.SectionName), L"InteractOS");
     RtlStringCchCopyW(Data.OsName, ARRAYSIZE(Data.OsName), L"\"ReactOS\"");
 
     //
@@ -1658,7 +1658,7 @@ GetDeviceInfo(
  * The installation source, where to copy the FreeLdr boot manager from.
  *
  * @param[in]   DestinationArcPath
- * The ReactOS installation path in ARC format.
+ * The InteractOS installation path in ARC format.
  *
  * @param[in]   Options
  * For BIOS-based PCs:

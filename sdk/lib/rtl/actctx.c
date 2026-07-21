@@ -6453,7 +6453,7 @@ RtlpInitializeActCtx(PVOID* pOldShimData)
 
     actctx_init();
 
-    /* ReactOS specific:
+    /* InteractOS specific:
        Now that we have found the process_actctx we can initialize the process compat subsystem */
     LdrpInitializeProcessCompat(process_actctx, pOldShimData);
 

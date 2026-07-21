@@ -357,7 +357,7 @@ UnhandledExceptionFilter(IN PEXCEPTION_POINTERS ExceptionInfo)
             return RetValue;
     }
 
-    /* ReactOS-specific: DPRINT a stack trace */
+    /* InteractOS-specific: DPRINT a stack trace */
     PrintStackTrace(ExceptionInfo);
 
     /*
@@ -479,7 +479,7 @@ UnhandledExceptionFilter(IN PEXCEPTION_POINTERS ExceptionInfo)
         NtClose(KeyHandle);
     }
 
-    // TODO: Start a ReactOS Fault Reporter (unimplemented!)
+    // TODO: Start a InteractOS Fault Reporter (unimplemented!)
     //
     // For now we are doing the "old way" (aka Win2k), that is also the fallback
     // case for Windows XP/2003 in case it does not find faultrep.dll to display
@@ -525,7 +525,7 @@ UnhandledExceptionFilter(IN PEXCEPTION_POINTERS ExceptionInfo)
     if (!NT_SUCCESS(Status) || (ErrorResponse != ResponseCancel) || IsSecondChance)
         goto Quit;
 
-    /* If the exception comes from a CSR Server, kill it (this will lead to ReactOS shutdown) */
+    /* If the exception comes from a CSR Server, kill it (this will lead to InteractOS shutdown) */
     if (BaseRunningInServerProcess)
     {
         IsSecondChance = TRUE;

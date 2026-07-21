@@ -121,7 +121,7 @@ HvpWriteLog(
 
     /*
      * FIXME: We must set a new file size for this log
-     * here but ReactOS lacks the necessary code implementation
+     * here but InteractOS lacks the necessary code implementation
      * that manages the growing and shrinking of a hive's log
      * size. So for now don't set any new size for the log.
      */
@@ -162,7 +162,7 @@ HvpWriteLog(
     Ptr += sizeof(HV_LOG_DIRTY_SIGNATURE);
 
     /*
-     * FIXME: In ReactOS a vector contains one bit per block
+     * FIXME: In InteractOS a vector contains one bit per block
      * whereas in Windows each bit within a vector is per
      * sector. Furthermore, the dirty blocks within a respective
      * hive has to be marked as such in an appropriate function

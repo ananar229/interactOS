@@ -1,5 +1,5 @@
 ﻿/*
- * ReactOS Spanish Keyboard Layout
+ * InteractOS Spanish Keyboard Layout
  * Copyright (C) 2003-2014 ReactOS
  * License: LGPL, see: LGPL.txt
  *

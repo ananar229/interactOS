@@ -37,7 +37,7 @@ typedef struct
                 WORD wType;
                 WCHAR szKey[12]; // L"CompanyName"
                 WORD Padding1;
-                WCHAR Value[16]; // L"ReactOS Project"
+                WCHAR Value[16]; // L"InteractOS Project"
             } CompanyName;
 
             struct _String_Comments

@@ -268,13 +268,13 @@ MiCheckVirtualAddress(IN PVOID VirtualAddress,
             return NULL;
         }
 
-        /* ReactOS does not handle physical memory VADs yet */
+        /* InteractOS does not handle physical memory VADs yet */
         ASSERT(Vad->u.VadFlags.VadType != VadDevicePhysicalMemory);
 
         /* Check if it's a section, or just an allocation */
         if (Vad->u.VadFlags.PrivateMemory)
         {
-            /* ReactOS does not handle AWE VADs yet */
+            /* InteractOS does not handle AWE VADs yet */
             ASSERT(Vad->u.VadFlags.VadType != VadAwe);
 
             /* This must be a TEB/PEB VAD */
@@ -294,7 +294,7 @@ MiCheckVirtualAddress(IN PVOID VirtualAddress,
         }
         else
         {
-            /* ReactOS does not supoprt these VADs yet */
+            /* InteractOS does not supoprt these VADs yet */
             ASSERT(Vad->u.VadFlags.VadType != VadImageMap);
             ASSERT(Vad->u2.VadFlags2.ExtendableFile == 0);
 
@@ -328,7 +328,7 @@ MiCheckVirtualAddress(IN PVOID VirtualAddress,
     }
     else if (MI_IS_SESSION_ADDRESS(VirtualAddress))
     {
-        /* ReactOS does not have an image list yet, so bail out to failure case */
+        /* InteractOS does not have an image list yet, so bail out to failure case */
         ASSERT(IsListEmpty(&MmSessionSpace->ImageList));
     }
 
@@ -835,7 +835,7 @@ MiCompleteProtoPteFault(IN BOOLEAN StoreInstruction,
         /* Then the page should be marked dirty */
         DirtyPage = TRUE;
 
-        /* ReactOS check */
+        /* InteractOS check */
         ASSERT(Pfn1->OriginalPte.u.Soft.Prototype != 0);
     }
 
@@ -1044,7 +1044,7 @@ MiResolveTransitionFault(IN BOOLEAN StoreInstruction,
     ASSERT(MmAvailablePages > 0);
     ASSERT(Pfn1->u4.InPageError == 0);
 
-    /* ReactOS checks for this */
+    /* InteractOS checks for this */
     ASSERT(MmAvailablePages > 32);
 
     /* Was this a transition page in the valid list, or free/zero list? */
@@ -1422,7 +1422,7 @@ MiDispatchFault(IN ULONG FaultCode,
                 (Vad->u.VadFlags.VadType != VadImageMap) &&
                 !(Vad->u2.VadFlags2.ExtendableFile))
             {
-                /* One day, ReactOS will cluster faults */
+                /* One day, InteractOS will cluster faults */
                 ASSERT(Address <= MM_HIGHEST_USER_ADDRESS);
                 DPRINT("Should cluster fault, but won't\n");
             }
@@ -1460,7 +1460,7 @@ MiDispatchFault(IN ULONG FaultCode,
                     Pfn1 = MI_PFN_ELEMENT(PageFrameIndex);
                     ASSERT(Pfn1->u3.e1.PageLocation != ActiveAndValid);
 
-                    /* Should not yet happen in ReactOS */
+                    /* Should not yet happen in InteractOS */
                     ASSERT(Pfn1->u3.e1.ReadInProgress == 0);
                     ASSERT(Pfn1->u4.InPageError == 0);
 
@@ -1768,7 +1768,7 @@ MmArmAccessFault(IN ULONG FaultCode,
             return STATUS_IN_PAGE_ERROR | 0x10000000;
         }
 
-        /* Not yet implemented in ReactOS */
+        /* Not yet implemented in InteractOS */
         ASSERT(MI_IS_PAGE_LARGE(PointerPde) == FALSE);
         ASSERT((!MI_IS_NOT_PRESENT_FAULT(FaultCode) && MI_IS_PAGE_COPY_ON_WRITE(PointerPte)) == FALSE);
 
@@ -2264,7 +2264,7 @@ UserFault:
     }
     else
     {
-        /* Not yet implemented in ReactOS */
+        /* Not yet implemented in InteractOS */
         ASSERT(MI_IS_PAGE_LARGE(PointerPde) == FALSE);
     }
 

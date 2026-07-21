@@ -193,7 +193,7 @@ ConsoleEventThread(LPVOID Parameter)
     DWORD  WaitResult;
 
     /*
-     * For optimization purposes, Windows (and hence ReactOS, too, for
+     * For optimization purposes, Windows (and hence InteractOS, too, for
      * compatibility reasons) uses a static buffer if no more than five
      * input records are read. Otherwise a new buffer is used.
      * The client-side expects that we know this behaviour.

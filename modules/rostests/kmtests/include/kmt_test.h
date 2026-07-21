@@ -9,7 +9,7 @@
  */
 
 /* Inspired by Wine C unit tests, Copyright (C) 2002 Alexandre Julliard
- * Inspired by ReactOS kernel-mode regression tests,
+ * Inspired by InteractOS kernel-mode regression tests,
  *                                Copyright (C) Aleksey Bragin, Filip Navara
  */
 

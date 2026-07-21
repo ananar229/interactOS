@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS International Control Panel
+ * PROJECT:         InteractOS International Control Panel
  * FILE:            dll/cpl/intl/date.c
  * PURPOSE:         Date property page
  * PROGRAMMERS:     Eric Kohl

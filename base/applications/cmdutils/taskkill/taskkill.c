@@ -293,7 +293,7 @@ static void taskkill_message_print_process(int msg, unsigned int index)
  * Below is the Wine method of terminating child processes.
  * Its problem is that it doesn't terminate them in either a parent-to-children
  * or children-to-parent relationship, but instead in the order in which they
- * appear in the process list. This differs from Windows' (or ReactOS) method.
+ * appear in the process list. This differs from Windows' (or InteractOS) method.
  * Wine's termination ordering can cause problems in scenarii where e.g. a
  * parent process could re-spawn killed children processes, or, where it is
  * of interest to kill the parent process first and then its children.
@@ -302,9 +302,9 @@ static void taskkill_message_print_process(int msg, unsigned int index)
  * obtained from the system, is such that any child process P[j] of a given
  * parent process P[i] is enumerated *AFTER* its parent (i.e. i < j).
  *
- * Because of these facts, the ReactOS method is employed instead.
+ * Because of these facts, the InteractOS method is employed instead.
  * Note however that the Wine method (below) has been adapted for
- * ease of usage and comparison with that of ReactOS.
+ * ease of usage and comparison with that of InteractOS.
  */
 
 static BOOL find_parent(unsigned int process_index, unsigned int *parent_index)

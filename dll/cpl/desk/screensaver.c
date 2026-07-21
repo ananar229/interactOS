@@ -570,12 +570,12 @@ EnumScreenSavers(
         SearchScreenSavers(hwndScreenSavers, pData, szLocalPath);
     }
 
-    /* Add all the screensavers in the C:\ReactOS\System32 directory */
+    /* Add all the screensavers in the C:\InteractOS\System32 directory */
     GetSystemDirectory(szSearchPath, _countof(szSearchPath));
     if (pBackSlash != NULL && _tcsicmp(szSearchPath, szLocalPath) != 0)
         SearchScreenSavers(hwndScreenSavers, pData, szSearchPath);
 
-    /* Add all the screensavers in the C:\ReactOS directory */
+    /* Add all the screensavers in the C:\InteractOS directory */
     GetWindowsDirectory(szSearchPath, _countof(szSearchPath));
     if (pBackSlash != NULL && _tcsicmp(szSearchPath, szLocalPath) != 0)
         SearchScreenSavers(hwndScreenSavers, pData, szSearchPath);

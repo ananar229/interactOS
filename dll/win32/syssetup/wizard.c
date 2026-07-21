@@ -589,7 +589,7 @@ DoWriteInstallationType(INSTALLATION_TYPE nOption)
 
     RegCloseKey(hKey);
 
-    /* open ReactOS version key */
+    /* open InteractOS version key */
     error = RegOpenKeyExW(HKEY_LOCAL_MACHINE, s_szRosVersion, 0, KEY_WRITE, &hKey);
     if (error)
     {
@@ -1499,7 +1499,7 @@ EnableVisualTheme(
 // https://pinvoke.net/default.aspx/uxtheme.SetSystemVisualStyle
 // or ApplyTheme(NULL, 0, NULL) for restoring the classic theme.
 //
-// NOTE: The '/Action:ActivateMSTheme' is ReactOS-specific.
+// NOTE: The '/Action:ActivateMSTheme' is InteractOS-specific.
 //
 
     if (ThemeFile && (fType == THEME_FILE))
@@ -2883,7 +2883,7 @@ FinishDlgProc(HWND hwndDlg,
 
 
 /*
- * GetInstallSourceWin32 retrieves the path to the ReactOS installation medium
+ * GetInstallSourceWin32 retrieves the path to the InteractOS installation medium
  * in Win32 format, for later use by syssetup and storage in the registry.
  */
 static BOOL

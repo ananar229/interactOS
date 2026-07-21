@@ -390,7 +390,7 @@ CmBattVerifyBixData(
     if (BixData.PowerUnit == ACPI_BATT_POWER_UNIT_AMPS)
     {
         /*
-         * We have got power stats in milli-ampere but ReactOS expects the values
+         * We have got power stats in milli-ampere but InteractOS expects the values
          * to be reported in milli-watts, so we have to convert them.
          * In order to do so we must expect the design voltage of the battery
          * is not unknown.
@@ -464,7 +464,7 @@ CmBattVerifyBifData(
     if (BifData.PowerUnit == ACPI_BATT_POWER_UNIT_AMPS)
     {
         /*
-         * We have got power stats in milli-ampere but ReactOS expects the values
+         * We have got power stats in milli-ampere but InteractOS expects the values
          * to be reported in milli-watts, so we have to convert them.
          * In order to do so we must expect the design voltage of the battery
          * is not unknown.

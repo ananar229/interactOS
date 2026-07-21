@@ -40,7 +40,7 @@ INTERFACE_TYPE
 NTAPI
 IopDetermineDefaultInterfaceType(VOID)
 {
-    /* FIXME: ReactOS doesn't support MicroChannel yet */
+    /* FIXME: InteractOS doesn't support MicroChannel yet */
     return Isa;
 }
 

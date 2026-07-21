@@ -150,7 +150,7 @@ PMMPTE MiSessionLastPte;
 // The system view space, on the other hand, is where sections that are memory
 // mapped into "system space" end up.
 //
-// By default, it is a 16MB region, but we hack it to be 32MB for ReactOS
+// By default, it is a 16MB region, but we hack it to be 32MB for InteractOS
 //
 PVOID MiSystemViewStart;
 SIZE_T MmSystemViewSize;
@@ -188,7 +188,7 @@ PFN_COUNT MmNumberOfSystemPtes;
 PFN_NUMBER MxPfnAllocation;
 
 //
-// Unlike the old ReactOS Memory Manager, ARM³ (and Windows) does not keep track
+// Unlike the old InteractOS Memory Manager, ARM³ (and Windows) does not keep track
 // of pages that are not actually valid physical memory, such as ACPI reserved
 // regions, BIOS address ranges, or holes in physical memory address space which
 // could indicate device-mapped I/O memory.
@@ -1773,7 +1773,7 @@ MiBuildPagedPool(VOID)
     // Make this system PTE point to the system page directory.
     // It is now essentially double-mapped. This will be used later for lazy
     // evaluation of PDEs accross process switches, similarly to how the Global
-    // page directory array in the old ReactOS Mm is used (but in a less hacky
+    // page directory array in the old InteractOS Mm is used (but in a less hacky
     // way).
     //
     TempPte = ValidKernelPte;

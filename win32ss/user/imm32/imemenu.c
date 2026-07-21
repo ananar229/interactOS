@@ -203,7 +203,7 @@ Imm32InitImeMenuView(
         pView->dwItemsOffset  = sizeof(*pView);
     }
 
-    // SECURITY: Validate dwCount (ReactOS only)
+    // SECURITY: Validate dwCount (InteractOS only)
     return pView->dwItemsOffset + pView->dwCount * sizeof(IMEMENUITEMINFOW) <= pView->dwBufferSize;
 }
 
@@ -231,7 +231,7 @@ Imm32SerializeBitmap(
     if (!pNode ||
         (PBYTE)pNode < (PBYTE)pView ||
         (PBYTE)pNode >= (PBYTE)pView + pView->dwBufferSize ||
-        // ReactOS only:
+        // InteractOS only:
         (PBYTE)pNode + sizeof(BITMAPNODE) > (PBYTE)pView + pView->dwBufferSize)
     {
         ERR("Insufficient or incorrect space\n");
@@ -521,7 +521,7 @@ Imm32DeserializeImeMenu(
     if (dwCount == 0)
         return 0;
 
-    // SECURITY: Validate dwSize (ReactOS only)
+    // SECURITY: Validate dwSize (InteractOS only)
     dwCount = min(dwCount, dwSize / sizeof(IMEMENUITEMINFOW));
 
     if (pView->dwBitmapListOffset)
@@ -568,7 +568,7 @@ Imm32DeserializeImeMenu(
         if ((PBYTE)pItemsBase < pViewBase || (PBYTE)pItemsBase >= pViewBase + pView->dwBufferSize)
             return 0;
 
-        // Boundary check (ReactOS only): ensure the whole items array fits inside the view
+        // Boundary check (InteractOS only): ensure the whole items array fits inside the view
         if (dwCount > 0)
         {
             SIZE_T offsetFromBase = (SIZE_T)((PBYTE)pItemsBase - pViewBase);

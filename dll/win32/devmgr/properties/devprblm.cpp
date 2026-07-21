@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS devmgr.dll
+ * PROJECT:         InteractOS devmgr.dll
  * FILE:            lib/devmgr/devprblm.c
- * PURPOSE:         ReactOS Device Manager
+ * PURPOSE:         InteractOS Device Manager
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>
  * UPDATE HISTORY:
  *      04-04-2004  Created

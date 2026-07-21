@@ -19,7 +19,7 @@ static int redrawComplete, WMPAINT_count;
  * Adding (6 and) more will force exception faults and terminate the test program.
  * The test is with five and this is safe for windows.
  *
- * But,,,, ReactOS compiled with GCC can handle this,,,,,,
+ * But,,,, InteractOS compiled with GCC can handle this,,,,,,
  */
 static LRESULT WINAPI redraw_window_procA(
     HWND hwnd,

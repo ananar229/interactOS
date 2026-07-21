@@ -17,7 +17,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 /*
- * PROJECT:         ReactOS user32.dll
+ * PROJECT:         InteractOS user32.dll
  * FILE:            win32ss/user/user32/misc/object.c
  * PURPOSE:         DDE
  * PROGRAMMER:      Casper S. Hornstrup (chorns@users.sourceforge.net)

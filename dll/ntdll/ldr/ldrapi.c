@@ -80,7 +80,7 @@ BOOLEAN
 NTAPI
 LdrAlternateResourcesEnabled(VOID)
 {
-    /* ReactOS does not support this */
+    /* InteractOS does not support this */
     return FALSE;
 }
 

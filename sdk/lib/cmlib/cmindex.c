@@ -1559,7 +1559,7 @@ CmpAddSubKey(IN PHHIVE Hive,
         }
         else if (Hive->Version >= 3)
         {
-            /* Windows 2000 and ReactOS: Use fast leaf */
+            /* Windows 2000 and InteractOS: Use fast leaf */
             Index->Signature = CM_KEY_FAST_LEAF;
         }
         else

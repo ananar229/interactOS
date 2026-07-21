@@ -3463,7 +3463,7 @@ static void test_namedpipe_process_id(void)
     BOOL ret;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: GetNamedPipeClientProcessId is a STUB on ReactOS. */
+    /* FIXME: GetNamedPipeClientProcessId is a STUB on InteractOS. */
     if (is_reactos() || !pGetNamedPipeClientProcessId)
 #else
     if (!pGetNamedPipeClientProcessId)
@@ -3606,7 +3606,7 @@ static void test_namedpipe_session_id(void)
     BOOL ret;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: GetNamedPipeClientSessionId is a STUB on ReactOS. */
+    /* FIXME: GetNamedPipeClientSessionId is a STUB on InteractOS. */
     if (is_reactos() || !pGetNamedPipeClientSessionId)
 #else
     if (!pGetNamedPipeClientSessionId)

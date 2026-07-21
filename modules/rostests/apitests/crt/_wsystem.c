@@ -13,7 +13,7 @@ START_TEST(_wsystem)
     int ret;
     WCHAR szCmdExe[MAX_PATH];
 
-    /* ReactOS behaves like Vista here */
+    /* InteractOS behaves like Vista here */
     DWORD dwOsVer = is_reactos() ? _WIN32_WINNT_VISTA : GetNTVersion();
 
     GetSystemDirectoryW(szCmdExe, _countof(szCmdExe));

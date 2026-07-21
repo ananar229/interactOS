@@ -40,7 +40,7 @@
 #include <stdio.h>
 #include "wine/test.h"
 
-// ReactOS: Wine has this in mstcpip.h, but it doesn't belong there
+// InteractOS: Wine has this in mstcpip.h, but it doesn't belong there
 #define WSA_CMSG_ALIGN(len)     (((len) + sizeof(SIZE_T) - 1) & ~(sizeof(SIZE_T) - 1))
 
 #define MAX_CLIENTS 4      /* Max number of clients */

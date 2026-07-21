@@ -19,10 +19,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 /*
  * [NETIO] NETIO.SYS driver
  *
- * This files adds the NETIO.SYS driver to ReactOS. It is not
+ * This files adds the NETIO.SYS driver to InteractOS. It is not
  * feature complete (meaning some functionality is unimplemented)
  * but does its job quite good for what it originally was written
- * for (which is getting WinDRBD working on ReactOS/Windows 2003 SP2).
+ * for (which is getting WinDRBD working on InteractOS/Windows 2003 SP2).
  *
  * The driver re-uses parts of the AFD.SYS driver, namely those
  * functions that ease communitating with the transport device

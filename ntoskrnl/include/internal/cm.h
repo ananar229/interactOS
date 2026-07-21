@@ -239,7 +239,7 @@ typedef struct _CM_KEY_BODY
     HANDLE ProcessID;
     LIST_ENTRY KeyBodyList;
 
-    /* ReactOS specific -- boolean flag to avoid recursive locking of the KCB */
+    /* InteractOS specific -- boolean flag to avoid recursive locking of the KCB */
     BOOLEAN KcbLocked;
 } CM_KEY_BODY, *PCM_KEY_BODY;
 

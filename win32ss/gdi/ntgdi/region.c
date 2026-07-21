@@ -113,7 +113,7 @@ SOFTWARE.
  * the y-x-banding that's so nice to have...
  */
 
-// X11 sources for ReactOS region processing.
+// X11 sources for InteractOS region processing.
 //
 // libX11/src/PolyReg.c
 // libX11/src/Region.c

@@ -981,7 +981,7 @@ ClientSideInstallW(
         goto cleanup;
     }
 
-    /* Read the data. Some is just included for compatibility with Windows right now and not yet used by ReactOS.
+    /* Read the data. Some is just included for compatibility with Windows right now and not yet used by InteractOS.
        See umpnpmgr for more details. */
     if(!ReadFile(hPipe, &Value, sizeof(Value), &BytesRead, NULL))
     {

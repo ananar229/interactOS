@@ -355,7 +355,7 @@ CmpRemoveSubKeyInLeaf(
  * bootloader. Self healing is also triggered if such a
  * request was prompted by the user to fix a broken hive.
  * Such a request tipically comes from a registry repair
- * tool such as the ReactOS Check Registry Utility.
+ * tool such as the InteractOS Check Registry Utility.
  *
  * @param[in] FixHive
  * If set to TRUE, self heal is triggered and the target

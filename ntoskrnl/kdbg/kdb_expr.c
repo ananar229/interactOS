@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS kernel
+ * PROJECT:         InteractOS kernel
  * FILE:            ntoskrnl/kdbg/kdb_expr.c
  * PURPOSE:         Kernel debugger expression evaluation
  * PROGRAMMER:      Gregor Anich (blight@blight.eu.org)

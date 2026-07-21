@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS kernel
+ * PROJECT:         InteractOS kernel
  * FILE:            ntoskrnl/kdbg/kdb_cli.c
  * PURPOSE:         Kernel debugger command line interface
  * PROGRAMMER:      Gregor Anich (blight@blight.eu.org)
@@ -274,7 +274,7 @@ ComponentTable[] =
     KD_DEBUG_PRINT_FILTER(DFSC),
     KD_DEBUG_PRINT_FILTER(WOW64),
 //
-// Components specified in Vista+, some of which we also use in ReactOS
+// Components specified in Vista+, some of which we also use in InteractOS
 //
     KD_DEBUG_PRINT_FILTER(ALPC),
     KD_DEBUG_PRINT_FILTER(WDI),

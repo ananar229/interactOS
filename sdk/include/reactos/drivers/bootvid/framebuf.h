@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 /**
- * @brief   ReactOS Framebuffer-specific video device configuration data.
+ * @brief   InteractOS Framebuffer-specific video device configuration data.
  *
  * Supplemental data that extends CM_VIDEO_DEVICE_DATA.
  * It is appended to the standard configuration resource list,

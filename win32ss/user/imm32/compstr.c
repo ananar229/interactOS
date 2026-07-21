@@ -219,7 +219,7 @@ static DWORD CS_DoPrivate(HIMC hIMC, const COMPOSITIONSTRING *pCS, PVOID pBuffer
     if (!CtfImmIsGuidMapEnable(hIMC) || pCS->dwPrivateSize < sizeof(COMPSTR_PRIVATE))
         return IMM_ERROR_GENERAL;
 
-    /* Check boundary #1 (ReactOS only) */
+    /* Check boundary #1 (InteractOS only) */
     DWORD dwPrivateOffset = pCS->dwPrivateOffset;
     if (dwPrivateOffset >= pCS->dwSize || dwPrivateOffset + pCS->dwPrivateSize > pCS->dwSize)
         return IMM_ERROR_GENERAL;
@@ -228,7 +228,7 @@ static DWORD CS_DoPrivate(HIMC hIMC, const COMPOSITIONSTRING *pCS, PVOID pBuffer
     const COMPSTR_PRIVATE *pPrivate = (const COMPSTR_PRIVATE *)(pbCS + dwPrivateOffset);
     DWORD dwLen = pPrivate->dwLen, dwOffset = pPrivate->dwOffset;
 
-    /* Check boundary #2 (ReactOS only) */
+    /* Check boundary #2 (InteractOS only) */
     if (dwPrivateOffset + dwOffset > pCS->dwPrivateSize ||
         dwPrivateOffset + dwOffset + dwLen > pCS->dwPrivateSize)
     {

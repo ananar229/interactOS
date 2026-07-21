@@ -3,7 +3,7 @@
 // To revert conversion, please execute "code7bit -r <file>".
 /*
  *      translated by Caemyr (Jan-Feb, Apr, 2008)
- *      Use ReactOS forum PM or IRC to contact me
+ *      Use InteractOS forum PM or IRC to contact me
  *      https://reactos.org/
  *      IRC: irc.freenode.net #reactos-pl;
  *      Updated by Wojo664 (July, 2014)

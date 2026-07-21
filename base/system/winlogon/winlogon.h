@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /* COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS winlogon
+ * PROJECT:         InteractOS winlogon
  * FILE:            base/system/winlogon/winlogon.h
  * PURPOSE:         Winlogon
  * PROGRAMMER:

@@ -151,7 +151,7 @@ SIZE_T GetXStateOffset(void)
 {
     if (IsReactOS())
     {
-        return FIELD_OFFSET(KUSER_SHARED_DATA, XState); // ReactOS
+        return FIELD_OFFSET(KUSER_SHARED_DATA, XState); // InteractOS
     }
     if (NtDdiVersion < NTDDI_WIN8)
     {

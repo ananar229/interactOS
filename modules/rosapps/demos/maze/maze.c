@@ -513,7 +513,7 @@ begin_solve_maze()                             /* solve it with graphical feedba
   (void) memcpy(pbmi->bmiColors, argbq, sizeof(argbq));
   (void) memcpy(pbmi->bmiColors + 2, grayPattern, sizeof(grayPattern));
 #if 0
-  /* FIXME Pattern brushes not yet implemented in ReactOS */
+  /* FIXME Pattern brushes not yet implemented in InteractOS */
   hBrushDead = CreateDIBPatternBrushPt(pbmi, DIB_RGB_COLORS);
 #else
   hBrushDead = CreateSolidBrush(RGB(255, 0, 0));

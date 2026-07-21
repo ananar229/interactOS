@@ -525,7 +525,7 @@ PciIdeXInitialize(
     INFO("PciIdeXInitialize(%p '%wZ' %p 0x%lx)\n",
          DriverObject, RegistryPath, HwGetControllerProperties, ExtensionSize);
 
-    /* ReactOS-specific: Check for our legacy detection magic */
+    /* InteractOS-specific: Check for our legacy detection magic */
     if (ExtensionSize == PCIIDEX_GET_CONTROLLER_INTERFACE_SIGNATURE)
     {
 #if defined(ATA_DETECT_LEGACY_DEVICES)

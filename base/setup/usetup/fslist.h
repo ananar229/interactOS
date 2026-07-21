@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS text-mode setup
+ * PROJECT:         InteractOS text-mode setup
  * FILE:            base/setup/usetup/fslist.h
  * PURPOSE:         Filesystem list functions
  * PROGRAMMER:      Casper S. Hornstrup (chorns@users.sourceforge.net)

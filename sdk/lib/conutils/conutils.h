@@ -12,10 +12,10 @@
  * @file    conutils.h
  * @ingroup ConUtils
  *
- * @defgroup ConUtils   ReactOS Console Utilities Library
+ * @defgroup ConUtils   InteractOS Console Utilities Library
  *
  * @brief   This library contains common functions used in many places inside
- *          the ReactOS console utilities and the ReactOS Command-Line Interpreter.
+ *          the InteractOS console utilities and the InteractOS Command-Line Interpreter.
  *          Most of these functions are related with internationalisation and
  *          the problem of correctly displaying Unicode text on the console.
  *          Besides those, helpful functions for retrieving strings and messages

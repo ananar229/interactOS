@@ -5440,7 +5440,7 @@ static void test_CtrlHandlerSubsystem(void)
         }
 #ifdef __REACTOS__
         /* If the test fails to close when it should, force close.
-         * This prevents an issue where the test hangs on ReactOS. */
+         * This prevents an issue where the test hangs on InteractOS. */
         if (res != WAIT_OBJECT_0)
             TerminateProcess(info.hProcess, 0);
 #endif

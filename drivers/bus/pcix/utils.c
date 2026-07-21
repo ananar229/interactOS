@@ -612,7 +612,7 @@ PciGetHackFlags(IN USHORT VendorId,
     ULONG LastWeight, MatchWeight;
     ULONG EntryFlags;
 
-    /* ReactOS SetupLDR Hack */
+    /* InteractOS SetupLDR Hack */
     if (!PciHackTable) return 0;
 
     /* Initialize the variables before looping */

@@ -96,7 +96,7 @@
  * Windows' EventCreate.exe command   : ID_min = 1 and ID_max = 1000
  * Powershell "Write-EventLog" command: ID_min = 0 and ID_max = 65535
  *
- * ReactOS' EventCreate.exe command uses the same limits as Powershell.
+ * InteractOS' EventCreate.exe command uses the same limits as Powershell.
  */
 #define EVENT_ID_MIN    0
 #define EVENT_ID_MAX    65535
@@ -206,7 +206,7 @@ InstallEventSource(
     /*
      * Retrieve the full path of the current running executable.
      * We need it to install our custom event source.
-     * - In case of success, try to replace the ReactOS installation path
+     * - In case of success, try to replace the InteractOS installation path
      *   (if present in the executable path) by %SystemRoot%.
      * - In case of failure, use a default path.
      */
@@ -1090,7 +1090,7 @@ int wmain(int argc, WCHAR* argv[])
                    1,
                    sizeof(szEventType), &szEventType),
 
-        /* Event category (ReactOS additional option) */
+        /* Event category (InteractOS additional option) */
         NEW_OPT(L"C", TYPE_U32,
                 0,
                 1,

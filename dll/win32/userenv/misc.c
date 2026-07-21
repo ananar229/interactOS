@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS system libraries
+ * PROJECT:         InteractOS system libraries
  * FILE:            dll/win32/userenv/misc.c
  * PURPOSE:         User profile code
  * PROGRAMMER:      Eric Kohl

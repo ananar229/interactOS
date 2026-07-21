@@ -12,7 +12,7 @@
 /* DEFINES ********************************************************************/
 
 //
-// We are ReactOS PS/2 Mouse Driver Version 6.26, compatible MS-MOUSE 6.26
+// We are InteractOS PS/2 Mouse Driver Version 6.26, compatible MS-MOUSE 6.26
 //
 #define MOUSE_VERSION   MAKEWORD(0x26, 0x06)
 

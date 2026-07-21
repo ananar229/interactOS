@@ -33,7 +33,7 @@ KernelModeTest(IN PVOID Context)
 
     /* First of all, open \\SystemRoot
      * We're interested in 3 pieces of information about it:
-     * -> Its target (it's a symlink): \Windows or \ReactOS
+     * -> Its target (it's a symlink): \Windows or \InteractOS
      * -> Its associated File Object
      * -> Its associated FCB
      */
@@ -432,7 +432,7 @@ TestSymlinks(VOID)
     UNICODE_STRING SysDir, Foobar, Regedit;
     ULONG Size;
 
-    /* Get Windows/ReactOS directory */
+    /* Get Windows/InteractOS directory */
     InitializeObjectAttributes(&ObjectAttributes,
                                &SystemRoot,
                                OBJ_CASE_INSENSITIVE,

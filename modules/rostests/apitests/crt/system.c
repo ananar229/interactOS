@@ -16,7 +16,7 @@ START_TEST(system)
 #ifdef TEST_CRTDLL
     DWORD dwOsVer = _WIN32_WINNT_WIN2K;
 #else
-    /* ReactOS behaves like Vista here */
+    /* InteractOS behaves like Vista here */
     DWORD dwOsVer = is_reactos() ? _WIN32_WINNT_VISTA : GetNTVersion();
 #endif
 

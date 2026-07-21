@@ -3438,7 +3438,7 @@ static void test_settings(void)
     BOOL ret;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: QueryActCtxSettingsW() is a STUB on ReactOS. */
+    /* FIXME: QueryActCtxSettingsW() is a STUB on InteractOS. */
     if (is_reactos() || !pQueryActCtxSettingsW)
 #else
     if (!pQueryActCtxSettingsW)

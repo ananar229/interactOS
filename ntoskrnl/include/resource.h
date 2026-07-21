@@ -46,7 +46,7 @@
 #define IDB_CLUSTER_SERVER  17  // Compute Cluster Edition
 #define IDB_STORAGE_SERVER2 18
 
-/* ReactOS additions */
+/* InteractOS additions */
 #define IDB_LOGO_XMAS       19
 #define IDB_ROTATING_LINE   20
 #define IDB_PROGRESS_BAR    21

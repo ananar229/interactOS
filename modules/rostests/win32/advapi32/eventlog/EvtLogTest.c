@@ -309,7 +309,7 @@ VOID TestMyEventProvider(VOID)
     LONG lRet;
     HKEY hKey = NULL, hSourceKey = NULL;
     DWORD dwData;
-    // WCHAR DllPath[] = L"C:\\Users\\ReactOS\\Desktop\\EvtLogTest\\Debug\\" PROVIDER_NAME L".dll";
+    // WCHAR DllPath[] = L"C:\\Users\\InteractOS\\Desktop\\EvtLogTest\\Debug\\" PROVIDER_NAME L".dll";
     WCHAR DllPath[] = L"C:\\" PROVIDER_NAME L".dll";
 
     wprintf(L"Testing \"" PROVIDER_NAME L"\" in 'Application' log...");

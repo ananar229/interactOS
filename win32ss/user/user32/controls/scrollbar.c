@@ -783,7 +783,7 @@ IntScrollHandleScrollEvent(HWND Wnd, INT SBType, UINT Msg, POINT Pt)
   }
   if ((ScrollTrackHitTest == SCROLL_NOWHERE) && (Msg != WM_LBUTTONDOWN))
   {
-     //// ReactOS : Justin Case something goes wrong.
+     //// InteractOS : Justin Case something goes wrong.
      if (Wnd == GetCapture())
      {
         ReleaseCapture();

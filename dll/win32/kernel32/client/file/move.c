@@ -336,7 +336,7 @@ BasepGetComputerNameFromNtPath(IN PUNICODE_STRING NewPath,
         return ERROR_BAD_PATHNAME;
     }
 
-    /* Query DFS, currently not implemented - shouldn't be missing in ReactOS yet ;-) */
+    /* Query DFS, currently not implemented - shouldn't be missing in InteractOS yet ;-) */
     if (Query)
     {
         UNIMPLEMENTED_DBGBREAK("Querying DFS not implemented!\n");
@@ -948,7 +948,7 @@ MoveFileWithProgressW(IN LPCWSTR lpExistingFileName,
          */
         if (Status != STATUS_NOT_SAME_DEVICE || !(dwFlags & MOVEFILE_COPY_ALLOWED))
         {
-            /* ReactOS HACK! To be removed once all FSD have proper renaming support.
+            /* InteractOS HACK! To be removed once all FSD have proper renaming support.
              * Just leave status to error and leave. */
             if (Status == STATUS_NOT_IMPLEMENTED)
             {

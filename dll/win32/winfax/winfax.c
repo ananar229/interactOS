@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS FAX API Support
+ * PROJECT:         InteractOS FAX API Support
  * FILE:            lib/winfax/winfax.c
- * PURPOSE:         ReactOS FAX API Support
+ * PURPOSE:         InteractOS FAX API Support
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>
  *
  * UPDATE HISTORY:

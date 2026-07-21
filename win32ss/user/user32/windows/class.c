@@ -390,7 +390,7 @@ GetClassInfoExW(
         IS_ATOM(lpszClass) ? lpszClass : 0,
         lpwcx);
 
-    /* From wine, for speed only, ReactOS supports the correct return in
+    /* From wine, for speed only, InteractOS supports the correct return in
      * Win32k. cbSize is ignored.
      */
     if (!lpwcx)

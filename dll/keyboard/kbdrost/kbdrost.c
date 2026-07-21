@@ -2,7 +2,7 @@
 // code7bit: https://github.com/katahiromz/code7bit
 // To revert conversion, please execute "code7bit -r <file>".
 /*
- * ReactOS Romanian (Standard) Keyboard layout
+ * InteractOS Romanian (Standard) Keyboard layout
  * Copyright (C) 2018 ReactOS
  * Author: Ștefan Fulea (stefan dot fulea at mail dot com)
  * License: LGPL, see: LGPL.txt

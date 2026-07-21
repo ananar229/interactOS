@@ -186,7 +186,7 @@ STDMETHODIMP CFontExt::GetDetailsOf(PCUITEMID_CHILD pidl, UINT iColumn, SHELLDET
         return E_FAIL;
     }
 
-    // Name, ReactOS specific?
+    // Name, InteractOS specific?
     if (iColumn == FONTEXT_COL_NAME)
         return GetDisplayNameOf(pidl, 0, &psd->str);
 

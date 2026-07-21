@@ -277,7 +277,7 @@ static void test_font_caps(HDC hdc, int test_index)
 }
 
 
-/* Not working as of 2017-04-08 on ReactOS */
+/* Not working as of 2017-04-08 on InteractOS */
 static BOOL is_font_available(HDC hdc, const char* fontName)
 {
     char name[64];

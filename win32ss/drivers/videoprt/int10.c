@@ -174,7 +174,7 @@ IntInitializeVideoAddressSpace(VOID)
     /* We should only do that for CSRSS */
     ASSERT(PsGetCurrentProcess() == (PEPROCESS)CsrProcess);
 
-    /* Free the 1MB pre-reserved region. In reality, ReactOS should simply
+    /* Free the 1MB pre-reserved region. In reality, InteractOS should simply
      * support us mapping the view into the reserved area, but it doesn't. */
     BaseAddress = 0;
     ViewSize = 1024 * 1024;

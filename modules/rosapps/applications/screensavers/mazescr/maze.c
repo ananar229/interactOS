@@ -588,7 +588,7 @@ static BOOL OnCreate(HWND hWnd, LPCREATESTRUCT lpCreateStruct)
     bw = (size > 6 ? 3 : (size - 1) / 2);
 
 #if 0
-    /* FIXME Pattern brushes not yet implemented in ReactOS */
+    /* FIXME Pattern brushes not yet implemented in InteractOS */
     {
         static long grayPattern [] = {
             0x55555555,

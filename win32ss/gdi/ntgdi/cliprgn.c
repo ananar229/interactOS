@@ -745,7 +745,7 @@ CLIPPING_UpdateGCRegion(PDC pDC)
 
     /* Must have VisRgn set to a valid state! */
     ASSERT (pDC->prgnVis);
-#if 0 // (w2k3) This works with limitations. (w7u) ReactOS relies on Rao.
+#if 0 // (w2k3) This works with limitations. (w7u) InteractOS relies on Rao.
     if ( !pDC->dclevel.prgnClip &&
          !pDC->dclevel.prgnMeta &&
          !pDC->prgnAPI)

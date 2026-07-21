@@ -1242,7 +1242,7 @@ static void test_CopyFileEx(void)
     ret = DeleteFileA(dest);
     ok(!ret, "DeleteFileA unexpectedly succeeded\n");
 #ifdef __REACTOS__
-    /* Cover ReactOS bug in CORE-10271:
+    /* Cover InteractOS bug in CORE-10271:
      * BasepCopyFileExW was handling any set flags as COPY_FILE_FAIL_IF_EXISTS.
      * This affected CopyFileEx, PrivCopyFileEx, and MoveFileWithProgress */
     ret = GetTempFileNameA(temp_path, prefix, 0, source);
@@ -5518,7 +5518,7 @@ static void test_SetFileInformationByHandle(void)
     BOOL ret;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: SetFileInformationByHandle is a STUB on ReactOS. */
+    /* FIXME: SetFileInformationByHandle is a STUB on InteractOS. */
     if (is_reactos() || !pSetFileInformationByHandle)
 #else
     if (!pSetFileInformationByHandle)
@@ -5634,7 +5634,7 @@ static void test_SetFileRenameInfo(void)
     BOOL ret;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: SetFileInformationByHandle is a STUB on ReactOS. */
+    /* FIXME: SetFileInformationByHandle is a STUB on InteractOS. */
     if (is_reactos() || !pSetFileInformationByHandle)
 #else
     if (!pSetFileInformationByHandle)
@@ -5760,7 +5760,7 @@ static void test_post_completion(void)
     ok(GetLastError() == WAIT_TIMEOUT, "wrong error %lu\n", GetLastError());
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: GetQueuedCompletionStatusEx is a STUB on ReactOS. */
+    /* FIXME: GetQueuedCompletionStatusEx is a STUB on InteractOS. */
     if (is_reactos() || !pGetQueuedCompletionStatusEx)
 #else
     if (!pGetQueuedCompletionStatusEx)

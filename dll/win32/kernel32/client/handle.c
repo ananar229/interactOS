@@ -217,7 +217,7 @@ DWORD
 WINAPI
 GetHandleContext(IN HANDLE Handle)
 {
-    /* This is Windows behavior, not a ReactOS Stub */
+    /* This is Windows behavior, not a InteractOS Stub */
     DbgPrintEx(0, 0, "Unsupported API - kernel32!GetHandleContext() called\n");
     SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
     return FALSE;
@@ -230,7 +230,7 @@ HANDLE
 WINAPI
 CreateSocketHandle(VOID)
 {
-    /* This is Windows behavior, not a ReactOS Stub */
+    /* This is Windows behavior, not a InteractOS Stub */
     DbgPrintEx(0, 0, "Unsupported API - kernel32!CreateSocketHandle() called\n");
     SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
     return FALSE;
@@ -244,7 +244,7 @@ WINAPI
 SetHandleContext(IN HANDLE Handle,
                  IN DWORD Context)
 {
-    /* This is Windows behavior, not a ReactOS Stub */
+    /* This is Windows behavior, not a InteractOS Stub */
     DbgPrintEx(0, 0, "Unsupported API - kernel32!SetHandleContext() called\n");
     SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
     return FALSE;

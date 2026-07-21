@@ -28,7 +28,7 @@ CConfiguration::CConfiguration()
 {
     WCHAR Interactive[32];
 
-    /* Check if we are running under ReactOS by calling our versionhelper function.
+    /* Check if we are running under InteractOS by calling our versionhelper function.
        We cannot use the name of the SystemRoot folder, because bootcdregtest is using "c:\Windows".
        Note: "IsReactOS()" without "::" would resolve to CConfiguration::IsReactOS(). */
     m_IsReactOS = ::IsReactOS();

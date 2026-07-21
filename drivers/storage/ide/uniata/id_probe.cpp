@@ -57,7 +57,7 @@ ULONG         MCACount = 0;
 
 BOOLEAN FirstMasterOk = FALSE;
 // This is our own resource check,
-// ReactOS allows to allocate same I/O range for both PCI and ISA controllers
+// InteractOS allows to allocate same I/O range for both PCI and ISA controllers
 BOOLEAN AtdiskPrimaryClaimed = FALSE;
 BOOLEAN AtdiskSecondaryClaimed = FALSE;
 

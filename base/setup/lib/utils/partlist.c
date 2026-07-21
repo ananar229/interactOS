@@ -3583,7 +3583,7 @@ UseAlternativePartition:
      * We are here because we did not find any (active) candidate system
      * partition that we know how to support. What we are going to do is
      * to change the existing system partition and use the alternative partition
-     * (e.g. on which we install ReactOS) as the new system partition.
+     * (e.g. on which we install InteractOS) as the new system partition.
      * Then we will need to add in FreeLdr's boot menu an entry for booting
      * from the original system partition.
      */

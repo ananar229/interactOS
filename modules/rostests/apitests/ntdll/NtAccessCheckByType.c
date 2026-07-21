@@ -252,7 +252,7 @@ ParamsValidationTests(VOID)
      * On newer versions of Windows such as 10 the principal SID is validated
      * after the security descriptor so it will always trigger an invalid
      * descriptor case. On Windows Server 2003 the principal SID is captured
-     * before the security descriptor. ReactOS currently follows the Windows
+     * before the security descriptor. InteractOS currently follows the Windows
      * 10's behavior.
      */
     ok(Status == STATUS_ACCESS_VIOLATION || Status == STATUS_INVALID_SECURITY_DESCR,

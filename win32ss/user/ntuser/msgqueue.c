@@ -466,14 +466,14 @@ ClearMsgBitsMask(PTHREADINFO pti, UINT MessageBits)
    {
       if (--pti->nCntsQBits[QSRosPostMessage] == 0) ClrMask |= QS_POSTMESSAGE;
    }
-   if (MessageBits & QS_TIMER) // ReactOS hard coded.
+   if (MessageBits & QS_TIMER) // InteractOS hard coded.
    {  // Handle timer bits here.
       if ( pti->cTimersReady )
       {
          if (--pti->cTimersReady == 0) ClrMask |= QS_TIMER;
       }
    }
-   if (MessageBits & QS_PAINT) // ReactOS hard coded.
+   if (MessageBits & QS_PAINT) // InteractOS hard coded.
    {  // Handle paint bits here.
       if ( pti->cPaintsReady )
       {

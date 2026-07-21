@@ -21,9 +21,9 @@
 /* GLOBALS *******************************************************************/
 
 /*
- * ReactOS uses the same boot screen for all the products.
+ * InteractOS uses the same boot screen for all the products.
  *
- * Enable this define when ReactOS will have different SKUs
+ * Enable this define when InteractOS will have different SKUs
  * (Workstation, Server, Storage Server, Cluster Server, etc...).
  */
 // #define REACTOS_SKUS
@@ -67,7 +67,7 @@ extern BOOLEAN ShowProgressBar;
 
 /*
  * Values for PltRotBarStatus:
- * - PltRotBarStatus == 1, do palette fading-in (done elsewhere in ReactOS);
+ * - PltRotBarStatus == 1, do palette fading-in (done elsewhere in InteractOS);
  * - PltRotBarStatus == 2, do rotation bar animation;
  * - PltRotBarStatus == 3, stop the animation thread.
  * - Any other value is ignored and the animation thread continues to run.
@@ -730,7 +730,7 @@ DisplayBootBitmap(
 
         /*
          * Add a rotating bottom horizontal bar when using a progress bar,
-         * to show that ReactOS can be still alive when the bar does not
+         * to show that InteractOS can be still alive when the bar does not
          * appear to progress.
          */
         if (TempRotBarSelection == RB_PROGRESS_BAR)

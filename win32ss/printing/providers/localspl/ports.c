@@ -332,7 +332,7 @@ LocalAddPort(LPWSTR pName, HWND hWnd, LPWSTR pMonitorName)
         PPORT_INFO_1 pPorts;
 
         //
-        // Play it safe,,, we know its Monitor2.... This is ReactOS.
+        // Play it safe,,, we know its Monitor2.... This is InteractOS.
         //
         if ( LocalEnumPorts( pName, 1, NULL, 0, &cbNeeded, &cReturned ) )
         {

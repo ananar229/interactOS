@@ -494,7 +494,7 @@ BaseInitializeStaticServerData(IN PCSR_SERVER_DLL LoadedServerDll)
      * being queried twice, the first time as a ULONG!
      *
      * Somehow, in Windows this doesn't cause a buffer overflow, but it might
-     * in ReactOS, so this code is disabled until someone figures out WTF.
+     * in InteractOS, so this code is disabled until someone figures out WTF.
      */
     BaseStaticServerData->CSDNumber = 0;
     BaseStaticServerData->RCNumber = 0;

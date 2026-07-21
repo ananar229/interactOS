@@ -979,7 +979,7 @@ _WARN("MiSessionCommitPageTables halfplemented for amd64")
             /* We don't, so the PDE shouldn't be ready yet */
             ASSERT(StartPde->u.Hard.Valid == 0);
 
-            /* ReactOS check to avoid MiEnsureAvailablePageOrWait */
+            /* InteractOS check to avoid MiEnsureAvailablePageOrWait */
             ASSERT(MmAvailablePages >= 32);
 
             /* Acquire the PFN lock and grab a zero page */
@@ -1274,7 +1274,7 @@ MiMapViewOfDataSection(
     ViewSizeInPages = BYTES_TO_PAGES(*ViewSize);
 
     /* A VAD can now be allocated. Do so and zero it out */
-    /* FIXME: we are allocating a LONG VAD for ReactOS compatibility only */
+    /* FIXME: we are allocating a LONG VAD for InteractOS compatibility only */
     ASSERT((AllocationType & MEM_RESERVE) == 0); /* ARM3 does not support this */
     Vad = ExAllocatePoolWithTag(NonPagedPool, sizeof(MMVAD_LONG), 'ldaV');
     if (!Vad)
@@ -1549,7 +1549,7 @@ MmGetFileObjectForSection(IN PVOID SectionObject)
     ASSERT(KeGetCurrentIrql() == PASSIVE_LEVEL);
     ASSERT(SectionObject != NULL);
 
-    /* Check if it's an ARM3, or ReactOS section */
+    /* Check if it's an ARM3, or InteractOS section */
     if (MiIsRosSectionObject(SectionObject) == FALSE)
     {
         /* Return the file pointer stored in the control area */
@@ -2208,7 +2208,7 @@ MmCreateArm3Section(OUT PVOID *SectionObject,
                 return Status;
             }
 #else
-            /* ReactOS doesn't support this API yet, so do nothing */
+            /* InteractOS doesn't support this API yet, so do nothing */
             UNIMPLEMENTED;
             Status = STATUS_SUCCESS;
 #endif

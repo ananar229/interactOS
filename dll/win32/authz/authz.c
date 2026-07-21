@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS Authorization Framework
+ * PROJECT:         InteractOS Authorization Framework
  * FILE:            lib/authz/authz.c
  * PURPOSE:         Authorization Framework
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>

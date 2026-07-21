@@ -477,7 +477,7 @@ typedef VOID
     _In_ PVOID ControllerContext);
 typedef CONTROLLER_PNP_REMOVE_DEVICE *PCONTROLLER_PNP_REMOVE_DEVICE;
 
-/* ReactOS-specific legacy detection magic */
+/* InteractOS-specific legacy detection magic */
 #define PCIIDEX_GET_CONTROLLER_INTERFACE_SIGNATURE    (0xFFFFFFFF - 0x1000)
 
 /**

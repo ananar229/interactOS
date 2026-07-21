@@ -68,7 +68,7 @@ typedef struct _SETMENUITEMRECT
 
 
 //
-// Legacy ReactOS Menu transfer structures.
+// Legacy InteractOS Menu transfer structures.
 //
 typedef struct tagROSMENUINFO
 {

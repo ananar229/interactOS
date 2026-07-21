@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS text-mode setup
+ * PROJECT:         InteractOS text-mode setup
  * FILE:            base/setup/usetup/settings.h
  * PURPOSE:         Device settings support functions
  * PROGRAMMERS:     Colin Finck

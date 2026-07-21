@@ -2050,11 +2050,11 @@ CON_API(SrvGetConsoleLangId,
      * to the active console output code page. */
     switch (Console->OutputCodePage)
     {
-/** ReactOS-specific: do nothing if the code page is UTF-8. This will allow
+/** InteractOS-specific: do nothing if the code page is UTF-8. This will allow
  ** programs to naturally output in whatever current language they are. **/
     case CP_UTF8:
         return STATUS_NOT_SUPPORTED;
-/** End ReactOS-specific **/
+/** End InteractOS-specific **/
     case CP_JAPANESE:
         LangIdRequest->LangId = MAKELANGID(LANG_JAPANESE, SUBLANG_DEFAULT);
         break;

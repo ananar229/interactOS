@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * FILE:             base/services/umpnpmgr/event.c
  * PURPOSE:          PNP Event thread
  * PROGRAMMER:       Eric Kohl (eric.kohl@reactos.org)

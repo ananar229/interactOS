@@ -881,7 +881,7 @@ DATA_SEG("INITDATA") CM_SYSTEM_CONTROL_VECTOR CmControlVector[] =
     CM_DEBUG_PRINT_FILTER(DFSC),
     CM_DEBUG_PRINT_FILTER(WOW64),
 //
-// Components specified in Vista+, some of which we also use in ReactOS
+// Components specified in Vista+, some of which we also use in InteractOS
 //
     CM_DEBUG_PRINT_FILTER(ALPC),
     CM_DEBUG_PRINT_FILTER(WDI),

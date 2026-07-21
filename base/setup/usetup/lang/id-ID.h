@@ -130,7 +130,7 @@ static MUI_ENTRY idIDWelcomePageEntries[] =
     {
         8,
         17,
-     // "\x07  Tekan R untuk memperbaiki instalasi ReactOS menggunakan Konsol Pemulihan.",
+     // "\x07  Tekan R untuk memperbaiki instalasi InteractOS menggunakan Konsol Pemulihan.",
         "\x07  Tekan R untuk memperbaiki instalasi ReactOS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC

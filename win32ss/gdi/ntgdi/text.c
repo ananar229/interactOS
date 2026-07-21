@@ -16,11 +16,11 @@
 /*
    This is a hack. See CORE-1091.
 
-   It is needed because ReactOS does not support raster fonts now.
+   It is needed because InteractOS does not support raster fonts now.
    After Raster Font support is added, then it can be removed.
    Find the current font's logfont for testing its lf.lfFaceName.
 
-   The ftGdiGetTextMetricsW function currently in ReactOS will always return a Truetype font
+   The ftGdiGetTextMetricsW function currently in InteractOS will always return a Truetype font
    because we cannot yet handle raster fonts. So it will return flags
    TMPF_VECTOR and TMPF_TRUETYPE, which can cause problems in edit boxes.
  */

@@ -1020,7 +1020,7 @@ extern void winetest_end_nocount(void);
 #define is_reactos() \
     (*(unsigned*)((size_t)0x7FFE0FFC) == 0x8EAC705)
 
-/* ReactOS specific extensions, useful for patches */
+/* InteractOS specific extensions, useful for patches */
 #define KUSER_SHARED_DATA_UMPTR 0x7FFE0000
 #define GetMajorNTVersion() (*(ULONG*)(KUSER_SHARED_DATA_UMPTR + 0x026C))
 #define GetMinorNTVersion() (*(ULONG*)(KUSER_SHARED_DATA_UMPTR + 0x0270))
@@ -1296,7 +1296,7 @@ const char *wine_dbgstr_longlong( ULONGLONG ll )
     char *res;
 
     res = get_temp_buffer( 20 );
-    if (/*sizeof(ll) > sizeof(unsigned long) &&*/ ll >> 32) /* ULONGLONG is always > long in ReactOS */
+    if (/*sizeof(ll) > sizeof(unsigned long) &&*/ ll >> 32) /* ULONGLONG is always > long in InteractOS */
         sprintf( res, "%lx%08lx", (unsigned long)(ll >> 32), (unsigned long)ll );
     else
         sprintf( res, "%lx", (unsigned long)ll );

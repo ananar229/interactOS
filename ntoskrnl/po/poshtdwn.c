@@ -211,7 +211,7 @@ PopShutdownSystem(IN POWER_ACTION SystemAction)
             /* Call shutdown handler */
             //PopInvokeSystemStateHandler(PowerStateShutdownOff, NULL);
 
-            /* ReactOS Hack */
+            /* InteractOS Hack */
             PopSetSystemPowerState(PowerSystemShutdown, SystemAction);
             PopShutdownHandler();
 

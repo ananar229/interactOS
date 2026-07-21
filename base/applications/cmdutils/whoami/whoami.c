@@ -642,7 +642,7 @@ int WhoamiPriv(void)
 
 
         /* try to grab the size of the string, also, beware, as this call is
-           unimplemented in ReactOS/Wine at the moment */
+           unimplemented in InteractOS/Wine at the moment */
 
         LookupPrivilegeDisplayNameW(NULL, PrivName, NULL, &DispNameSize, &dwResult);
 

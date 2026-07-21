@@ -19,7 +19,7 @@
 
 static signed char g_ReportProductType = 0;
 
-/* HACK: ReactOS specific changes, see bug-reports CORE-6611 and CORE-4620 (aka. #5003) */
+/* HACK: InteractOS specific changes, see bug-reports CORE-6611 and CORE-4620 (aka. #5003) */
 static VOID NTAPI
 SetRosSpecificInfo(IN OUT PRTL_OSVERSIONINFOEXW VersionInformation)
 {
@@ -221,7 +221,7 @@ RtlGetVersion(IN OUT PRTL_OSVERSIONINFOW lpVersionInformation)
         InfoEx->wProductType = SharedUserData->NtProductType;
         InfoEx->wReserved = 0;
 
-        /* HACK: ReactOS specific changes, see bug-reports CORE-6611 and CORE-4620 (aka. #5003) */
+        /* HACK: InteractOS specific changes, see bug-reports CORE-6611 and CORE-4620 (aka. #5003) */
         SetRosSpecificInfo(InfoEx);
     }
 

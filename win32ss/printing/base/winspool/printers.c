@@ -12,7 +12,7 @@
 
 extern HINSTANCE hinstWinSpool;
 //
-// See winddiui.h, ReactOS version is limited.
+// See winddiui.h, InteractOS version is limited.
 // Loading from XyzUI.dll part of XyzDRV.dll set. example TTYUI.DLL or UniDrvUI.DLL.
 //
 typedef DWORD (WINAPI *DEVICECAPABILITIES) (HANDLE,PWSTR,WORD,PVOID,PDEVMODEW);
@@ -947,7 +947,7 @@ DocumentPropertySheets( PPROPSHEETUI_INFO pCPSUIInfo, LPARAM lparam )
                 else
                 {
                     //
-                    // ReactOS backup!!! Currently no supporting UI driver.
+                    // InteractOS backup!!! Currently no supporting UI driver.
                     //
                     PRINTER_INFO_9W * pi9 = get_devmodeW( pdphdr->hPrinter );
                     if ( pi9 )

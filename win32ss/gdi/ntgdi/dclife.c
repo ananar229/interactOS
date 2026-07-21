@@ -910,7 +910,7 @@ IntGdiDeleteDC(HDC hDC, BOOL Force)
             DC_UnlockDc(DCToDelete);
             if(UserReleaseDC(NULL, hDC, FALSE))
             {
-                /* ReactOS feature: Call UserReleaseDC
+                /* InteractOS feature: Call UserReleaseDC
                  * I don't think Windows does it.
                  * Still, complain, no one should ever call DeleteDC
                  * on a window DC */

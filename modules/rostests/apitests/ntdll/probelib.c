@@ -296,7 +296,7 @@ QuerySetThreadValidator(
                 }
 
                 /* ThreadNameInformation is Windows 10+, but
-                 * ReactOS supports this class, so don't exclude it */
+                 * InteractOS supports this class, so don't exclude it */
                 case ThreadNameInformation:
                 {
 #ifndef __REACTOS__
@@ -397,7 +397,7 @@ QuerySetThreadValidator(
                 }
 
                 /* ThreadNameInformation is Windows 10+, but
-                 * ReactOS supports this class, so don't exclude it */
+                 * InteractOS supports this class, so don't exclude it */
                 case ThreadNameInformation:
                 {
 #ifndef __REACTOS__

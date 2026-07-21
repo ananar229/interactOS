@@ -177,12 +177,12 @@ CicSystemModulePath::Init(
     SIZE_T cchPath;
     if (bSysWinDir)
     {
-        // Usually C:\Windows or C:\ReactOS
+        // Usually C:\Windows or C:\InteractOS
         cchPath = ::GetSystemWindowsDirectory(m_szPath, _countof(m_szPath));
     }
     else
     {
-        // Usually C:\Windows\system32 or C:\ReactOS\system32
+        // Usually C:\Windows\system32 or C:\InteractOS\system32
         cchPath = ::GetSystemDirectory(m_szPath, _countof(m_szPath));
     }
 

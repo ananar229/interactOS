@@ -17,9 +17,9 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS msgina.dll
+ * PROJECT:         InteractOS msgina.dll
  * FILE:            dll/win32/msgina/msgina.c
- * PURPOSE:         ReactOS Logon GINA DLL
+ * PURPOSE:         InteractOS Logon GINA DLL
  * PROGRAMMER:      Thomas Weidenmueller (w3seek@users.sourceforge.net)
  *                  Hervé Poussineau (hpoussin@reactos.org)
  */

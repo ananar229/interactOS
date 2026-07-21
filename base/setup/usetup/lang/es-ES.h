@@ -2,7 +2,7 @@
 // code7bit: https://github.com/katahiromz/code7bit
 // To revert conversion, please execute "code7bit -r <file>".
 /*
- * PROJECT:     ReactOS Setup
+ * PROJECT:     InteractOS Setup
  * LICENSE:     GPL-2.0-or-later (https://spdx.org/licenses/GPL-2.0-or-later)
  * PURPOSE:     Spanish resource file
  * TRANSLATORS: Copyright 2007 Gabriel Ilardi <gabrielilardi@hotmail.it>
@@ -143,7 +143,7 @@ static MUI_ENTRY esESWelcomePageEntries[] =
     {
         8,
         17,
-//      "\x07  Pulse R para reparar una instalación de ReactOS usando la Consola de Recuperación.",
+//      "\x07  Pulse R para reparar una instalación de InteractOS usando la Consola de Recuperación.",
         "\x07  Pulse R para reparar ReactOS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC

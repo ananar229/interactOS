@@ -815,7 +815,7 @@ IsValidConsoleFont2(
      */
 
     /*
-     * In ReactOS we relax some of the criteria:
+     * In InteractOS we relax some of the criteria:
      * - We allow fixed-pitch FF_MODERN (Monospace) TrueType fonts
      *   that can be italic or have negative A or C space.
      * - If it is not a TrueType font, it can be from another character set

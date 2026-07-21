@@ -5302,7 +5302,7 @@ static void test_GetCPInfo(void)
     ok( GetLastError() == ERROR_INVALID_PARAMETER, "wrong error %lu\n", GetLastError() );
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: NtGetNlsSectionPtr is a STUB on ReactOS! */
+    /* FIXME: NtGetNlsSectionPtr is a STUB on InteractOS! */
     if (!is_reactos() && pNtGetNlsSectionPtr)
 #else
     if (pNtGetNlsSectionPtr)
@@ -5891,7 +5891,7 @@ static void test_Idn(void)
     FILE *f;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: Idn functions are STUBS on ReactOS */
+    /* FIXME: Idn functions are STUBS on InteractOS */
     if (is_reactos() || !pIdnToAscii || !pIdnToUnicode || !pIdnToNameprepUnicode)
 #else
     if (!pIdnToAscii || !pIdnToUnicode || !pIdnToNameprepUnicode)
@@ -7245,7 +7245,7 @@ static void test_FindNLSStringEx(void)
     unsigned int i;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: FindNLSStringEx is a STUB on ReactOS! */
+    /* FIXME: FindNLSStringEx is a STUB on InteractOS! */
     if (is_reactos() || !pFindNLSStringEx)
 #else
     if (!pFindNLSStringEx)
@@ -8167,7 +8167,7 @@ static void test_NLSVersion(void)
     ok( GetLastError() == ERROR_INVALID_PARAMETER, "wrong error %lu\n", GetLastError() );
 
 #ifdef __REACTOS__
-    /* HACK: ReactOS's implementation for GetNLSVersionEx is a STUB! */
+    /* HACK: InteractOS's implementation for GetNLSVersionEx is a STUB! */
     if (pGetNLSVersionEx && !is_reactos())
 #else
     if (pGetNLSVersionEx)

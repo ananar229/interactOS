@@ -270,7 +270,7 @@ NameToOrdinal(
 
 /**
  * @brief
- * ReactOS-only helper routine for RtlFindExportedRoutineByName(),
+ * InteractOS-only helper routine for RtlFindExportedRoutineByName(),
  * that provides a finer granularity regarding the nature of the
  * export, and the failure reasons.
  *
@@ -2632,7 +2632,7 @@ MiSetPagingOfDriver(IN PMMPTE PointerPte,
             Pfn1 = MiGetPfnEntry(PageFrameIndex);
             ASSERT(Pfn1->u2.ShareCount == 1);
 
-            /* No working sets in ReactOS yet */
+            /* No working sets in InteractOS yet */
             PageCount++;
         }
 

@@ -17,7 +17,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /*
- * PROJECT:         ReactOS International Control Panel
+ * PROJECT:         InteractOS International Control Panel
  * FILE:            dll/cpl/intl/numbers.c
  * PURPOSE:         Numbers property page
  * PROGRAMMERS:     Eric Kohl

@@ -26,7 +26,7 @@ extern "C" {
  */
 #if (WINVER >= 0x400)
 #define STARTF_HASSHELLDATA     0x00000400 // As seen in um/minwin/winbasep.h
-#define STARTF_SHELLPRIVATE     STARTF_HASSHELLDATA // ReactOS-specific name
+#define STARTF_SHELLPRIVATE     STARTF_HASSHELLDATA // InteractOS-specific name
 #endif /* (WINVER >= 0x400) */
 #if (WINVER >= 0x0A00)
 #define STARTF_TITLEISLOCALALLOCED  0x00004000

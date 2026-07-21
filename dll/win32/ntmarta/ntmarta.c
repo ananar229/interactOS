@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS MARTA provider
+ * PROJECT:         InteractOS MARTA provider
  * FILE:            lib/ntmarta/ntmarta.c
- * PURPOSE:         ReactOS MARTA provider
+ * PURPOSE:         InteractOS MARTA provider
  * PROGRAMMER:      Thomas Weidenmueller <w3seek@reactos.com>
  *
  * UPDATE HISTORY:

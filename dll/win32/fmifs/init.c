@@ -180,7 +180,7 @@ InitializeFmIfsOnce(VOID)
 
     InitializeListHead(&ProviderListHead);
 
-    /* Read IFS providers from HKLM\SOFTWARE\ReactOS\ReactOS\CurrentVersion\IFS */
+    /* Read IFS providers from HKLM\SOFTWARE\InteractOS\InteractOS\CurrentVersion\IFS */
     InitializeObjectAttributes(&ObjectAttributes, &RegistryPath, 0, NULL, NULL);
     Status = NtOpenKey(&hKey, KEY_QUERY_VALUE, &ObjectAttributes);
     if (Status == STATUS_OBJECT_NAME_NOT_FOUND)

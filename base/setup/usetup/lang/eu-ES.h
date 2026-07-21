@@ -131,7 +131,7 @@ static MUI_ENTRY euESWelcomePageEntries[] =
     {
         8,
         17,
-     // "\x07  Sakatu R ReactOS instalazioa kompontzeko berreskuragailu erabiltzen.",
+     // "\x07  Sakatu R InteractOS instalazioa kompontzeko berreskuragailu erabiltzen.",
         "\x07  Sakatu R ReactOS instalazioa kompontzeko.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC

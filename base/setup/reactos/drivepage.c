@@ -144,7 +144,7 @@ ShowErrorTip(
 /**
  * @brief
  * Subclass edit window procedure to filter allowed characters
- * for the ReactOS installation directory.
+ * for the InteractOS installation directory.
  **/
 static LRESULT
 CALLBACK
@@ -2021,7 +2021,7 @@ DisableWizNext:
                     ASSERT(PartEntry);
 
                     /*
-                     * Check whether the user wants to install ReactOS on a disk that
+                     * Check whether the user wants to install InteractOS on a disk that
                      * is not recognized by the computer's firmware and if so, display
                      * a warning since such disks may not be bootable.
                      */

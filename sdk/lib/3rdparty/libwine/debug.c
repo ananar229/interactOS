@@ -53,7 +53,7 @@ static void debug_init(void);
 /* Wine format */
 static int winefmt_default_dbg_vlog( enum __wine_debug_class cls, struct __wine_debug_channel *channel,
                                      const char *file, const char *func, const int line, const char *format, va_list args );
-/* ReactOS format (default) */
+/* InteractOS format (default) */
 static int rosfmt_default_dbg_vlog( enum __wine_debug_class cls, struct __wine_debug_channel *channel,
                                     const char *file, const char *func, const int line, const char *format, va_list args );
 /* Extended format */
@@ -304,7 +304,7 @@ int wine_dbg_log( enum __wine_debug_class cls, struct __wine_debug_channel *chan
 }
 
 
-/* ReactOS compliant debug format wrapper for funcs.dbg_vlog */
+/* InteractOS compliant debug format wrapper for funcs.dbg_vlog */
 int ros_dbg_log( enum __wine_debug_class cls, struct __wine_debug_channel *channel,
                   const char *file, const char *func, const int line, const char *format, ... )
 {
@@ -481,7 +481,7 @@ static int winefmt_default_dbg_vlog( enum __wine_debug_class cls, struct __wine_
     return vDbgPrintExWithPrefix(prefix, -1, 0, format, args);
 }
 
-/* ReactOS format (default) */
+/* InteractOS format (default) */
 static int rosfmt_default_dbg_vlog( enum __wine_debug_class cls, struct __wine_debug_channel *channel,
                                     const char *file, const char *func, const int line, const char *format, va_list args )
 {

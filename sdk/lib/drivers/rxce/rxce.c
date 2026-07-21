@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * FILE:             sdk/lib/drivers/rxce/rxce.c
  * PURPOSE:          RXCE library
  * PROGRAMMER:       Pierre Schweitzer (pierre@reactos.org)

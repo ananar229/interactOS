@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS text-mode setup
+ * PROJECT:         InteractOS text-mode setup
  * FILE:            base/setup/usetup/usetup.h
  * PURPOSE:         Text-mode setup
  * PROGRAMMER:

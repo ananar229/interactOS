@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS Services
+ * PROJECT:          InteractOS Services
  * FILE:             base/services/wkssvc/rpcserver.c
  * PURPOSE:          Workstation service
  * PROGRAMMER:       Eric Kohl

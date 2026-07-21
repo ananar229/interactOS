@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS text-mode setup
+ * PROJECT:         InteractOS text-mode setup
  * FILE:            base/setup/usetup/usetup.c
  * PURPOSE:         Text-mode setup
  * PROGRAMMERS:     Casper S. Hornstrup (chorns@users.sourceforge.net)
@@ -1711,7 +1711,7 @@ SelectPartitionPage(PINPUT_RECORD Ir)
                 continue;
 
             /*
-             * Check whether the user wants to install ReactOS on a disk that
+             * Check whether the user wants to install InteractOS on a disk that
              * is not recognized by the computer's firmware and if so, display
              * a warning since such disks may not be bootable.
              */
@@ -3045,7 +3045,7 @@ InitInstallDir:
     }
 
     /*
-     * Check whether the user attempts to install ReactOS within the
+     * Check whether the user attempts to install InteractOS within the
      * installation source directory, or in a subdirectory thereof.
      * If so, fail with an error.
      */
@@ -4047,7 +4047,7 @@ RunUSetup(VOID)
         CONSOLE_ClearScreen();
         CONSOLE_Flush();
 
-        // CONSOLE_SetUnderlinedTextXY(4, 3, " ReactOS " KERNEL_VERSION_STR " Setup ");
+        // CONSOLE_SetUnderlinedTextXY(4, 3, " InteractOS " KERNEL_VERSION_STR " Setup ");
 
         switch (Page)
         {

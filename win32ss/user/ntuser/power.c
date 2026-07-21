@@ -169,7 +169,7 @@ IntDeployPowerCallout(VOID)
      * of the current calling thread might die or hang, so we should probably
      * lock the thread while we deploy our power callout. The thread info
      * provides a thread lock field for this purpose (see the ptl member from
-     * the _THREADINFO structure) but ReactOS lacks implementation to handle
+     * the _THREADINFO structure) but InteractOS lacks implementation to handle
      * this. Suppose a thread happens to get into this fate, the power callout
      * would never get signaled...
      */

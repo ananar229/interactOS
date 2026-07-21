@@ -248,7 +248,7 @@ IopStartRamdisk(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
     }
 
     //
-    // ReactOS hack (drive letter should not be hardcoded, and maybe set by mountmgr.sys)
+    // InteractOS hack (drive letter should not be hardcoded, and maybe set by mountmgr.sys)
     //
     {
         ANSI_STRING AnsiPath;

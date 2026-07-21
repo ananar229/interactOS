@@ -172,7 +172,7 @@ IntVideoPortResetDisplayParameters(ULONG Columns, ULONG Rows)
 }
 
 /*
- * (Adapted for ReactOS/Win2k3 from an original comment
+ * (Adapted for InteractOS/Win2k3 from an original comment
  *  by Gé van Geldorp, June 2003, r4937)
  *
  * DISPLAY OWNERSHIP
@@ -194,7 +194,7 @@ IntVideoPortResetDisplayParameters(ULONG Columns, ULONG Rows)
  * modes is text mode -> graphics mode -> text mode (the latter hopefully
  * happening very infrequently).
  *
- * In ReactOS things are a little bit different. We want to have a functional
+ * In InteractOS things are a little bit different. We want to have a functional
  * interactive text mode. We should be able to switch back and forth from
  * text mode to graphics mode when a GUI app is started and then finished.
  * Also, when the system bugchecks in graphics mode we want to switch back to

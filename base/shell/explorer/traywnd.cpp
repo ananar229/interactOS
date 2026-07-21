@@ -477,7 +477,7 @@ public:
 
         SaveState();
 
-        /* Display the ReactOS Shutdown Dialog */
+        /* Display the InteractOS Shutdown Dialog */
         ExitWindowsDialog(m_hWnd);
 
         /*

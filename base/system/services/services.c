@@ -326,7 +326,7 @@ wWinMain(HINSTANCE hInstance,
     /* Update the services database */
     ScmGetBootAndSystemDriverState();
 
-    /* Register the Service Control Manager process with the ReactOS Subsystem */
+    /* Register the Service Control Manager process with the InteractOS Subsystem */
     if (!RegisterServicesProcess(GetCurrentProcessId()))
     {
         DPRINT1("SERVICES: Could not register SCM process\n");

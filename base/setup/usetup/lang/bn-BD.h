@@ -130,7 +130,7 @@ static MUI_ENTRY bnBDWelcomePageEntries[] =
     {
         8,
         17,
-     // "\x07  Press R to repair a ReactOS installation using the Recovery Console.",
+     // "\x07  Press R to repair a InteractOS installation using the Recovery Console.",
         "\x07  Press R to repair a ReactOS installation.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC

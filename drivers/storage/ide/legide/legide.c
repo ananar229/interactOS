@@ -614,7 +614,7 @@ ReleaseResources:
 
     if (ControllerInferface->Version != PCIIDEX_INTERFACE_VERSION)
     {
-        /* ReactOS-specific: Retrieve the interface for legacy device detection */
+        /* InteractOS-specific: Retrieve the interface for legacy device detection */
         Status = PciIdeXInitialize(DriverObject,
                                    NULL,
                                    (PVOID)ControllerInferface,

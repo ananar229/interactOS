@@ -3433,7 +3433,7 @@ Quit:
 }
 
 ////
-//// ReactOS work around! Keep it the sames as in Combo.c and Controls.h
+//// InteractOS work around! Keep it the sames as in Combo.c and Controls.h
 ////
 /* combo state struct */
 typedef struct
@@ -3547,7 +3547,7 @@ Exit:
 }
 
 ////
-//// ReactOS work around! Keep it the sames as in Listbox.c
+//// InteractOS work around! Keep it the sames as in Listbox.c
 ////
 /* Listbox structure */
 typedef struct
@@ -4491,7 +4491,7 @@ NtUserDefSetText(HWND hWnd, PLARGE_STRING WindowText)
       return FALSE;
    }
 
-   // ReactOS uses Unicode and not mixed. Up/Down converting will take time.
+   // InteractOS uses Unicode and not mixed. Up/Down converting will take time.
    // Brought to you by: The Wine Project! Dysfunctional Thought Processes!
    // Now we know what the bAnsi is for.
    RtlInitUnicodeString(&UnicodeString, NULL);

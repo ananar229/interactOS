@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * FILE:             base/services/umpnpmgr/install.c
  * PURPOSE:          Device installer
  * PROGRAMMER:       Eric Kohl (eric.kohl@reactos.org)
@@ -211,7 +211,7 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
     WriteFile(hPipe, InstallEventName, Value, &BytesWritten, NULL);
 
     /* I couldn't figure out what the following value means under WinXP. It's usually 0 in my tests, but was also 5 once.
-       Therefore the following line is entirely ReactOS-specific. We use the value here to pass the ShowWizard variable. */
+       Therefore the following line is entirely InteractOS-specific. We use the value here to pass the ShowWizard variable. */
     WriteFile(hPipe, &ShowWizard, sizeof(ShowWizard), &BytesWritten, NULL);
 
     Value = (wcslen(DeviceInstance) + 1) * sizeof(WCHAR);

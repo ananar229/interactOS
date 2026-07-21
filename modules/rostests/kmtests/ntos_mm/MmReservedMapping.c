@@ -144,7 +144,7 @@ ValidateMapping(
     if (g_IsReactOS || GetNTVersion() >= _WIN32_WINNT_VISTA)
 #endif
     {
-        /* On ReactOS and on Vista+ the size is stored in
+        /* On InteractOS and on Vista+ the size is stored in
          * the NextEntry field of a MMPTE_LIST structure */
         ExpectedValue = ((ULONG64)TotalPtes + 2) << 32;
     }

@@ -54,7 +54,7 @@ START_TEST(wctomb)
         return;
     }
 
-    /* Output the current locale of the system and codepage for comparison between ReactOS and Windows */
+    /* Output the current locale of the system and codepage for comparison between InteractOS and Windows */
     loc = setlocale(LC_ALL, NULL);
     printf("The current codepage of your system tested is (%u) and locale (%s).\n\n", codepage, loc);
 

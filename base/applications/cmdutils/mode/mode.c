@@ -6,7 +6,7 @@
  *              Copyright 2016-2021 Hermes Belusca-Maito
  */
 /*
- *  ReactOS mode console command
+ *  InteractOS mode console command
  *
  *  mode.c
  *

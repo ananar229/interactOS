@@ -275,8 +275,8 @@ static void test_ConvertStringSidToSid(void)
         { "RS", "", 1 },
         { "SA", "", 1 },
 #ifdef __REACTOS__
-        { "s-1-12-1", "S-1-12-1", 1 },         /* Crashes on ReactOS if not optional. ROSTESTS-418 */
-        { "S-0x1-0XC-0x1a", "S-1-12-26", 1 },  /* Crashes on ReactOS if not optional. ROSTESTS-418 */
+        { "s-1-12-1", "S-1-12-1", 1 },         /* Crashes on InteractOS if not optional. ROSTESTS-418 */
+        { "S-0x1-0XC-0x1a", "S-1-12-26", 1 },  /* Crashes on InteractOS if not optional. ROSTESTS-418 */
 #else
         { "s-1-12-1", "S-1-12-1" },
         { "S-0x1-0XC-0x1a", "S-1-12-26" },
@@ -7702,7 +7702,7 @@ static void test_GetExplicitEntriesFromAclW(void)
     ok(count == 2, "Expected count == 2, got %ld\n", count);
 #ifdef __REACTOS__
     if (!access2) {
-        ok(FALSE, "FIXME: access2 should not be null!\n"); // Happens on ReactOS currently
+        ok(FALSE, "FIXME: access2 should not be null!\n"); // Happens on InteractOS currently
     } else {
 #endif
     ok(access2[0].grfAccessMode == GRANT_ACCESS, "Expected GRANT_ACCESS, got %d\n", access2[0].grfAccessMode);

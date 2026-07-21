@@ -276,7 +276,7 @@ AddWallpapersFromDirectory(UINT uCounter, HWND hwndBackgroundList, BackgroundIte
 }
 
 
-/* Add the images in the C:\ReactOS, the wallpaper directory and the current wallpaper if any */
+/* Add the images in the C:\InteractOS, the wallpaper directory and the current wallpaper if any */
 static VOID
 AddListViewItems(HWND hwndDlg, PBACKGROUND_DATA pData)
 {
@@ -436,7 +436,7 @@ AddListViewItems(HWND hwndDlg, PBACKGROUND_DATA pData)
         RegCloseKey(regKey);
     }
 
-    /* Add all the images in the C:\ReactOS directory. */
+    /* Add all the images in the C:\InteractOS directory. */
     if (GetWindowsDirectory(szSearchPath, MAX_PATH))
     {
         i = AddWallpapersFromDirectory(i, hwndBackgroundList, backgroundItem, pData, wallpaperFilename, szSearchPath);

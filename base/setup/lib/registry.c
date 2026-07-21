@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- * PROJECT:         ReactOS Setup Library
+ * PROJECT:         InteractOS Setup Library
  * FILE:            base/setup/lib/registry.c
  * PURPOSE:         Registry creation functions
  * PROGRAMMERS:     ...
@@ -780,7 +780,7 @@ RegInitializeRegistry(
                          0,
                          NULL,
                     // FIXME: Using REG_OPTION_VOLATILE works OK on Windows,
-                    // but I need to check whether it works OK on ReactOS too.
+                    // but I need to check whether it works OK on InteractOS too.
                          REG_OPTION_NON_VOLATILE, // REG_OPTION_VOLATILE,
                          &Disposition);
     if (!NT_SUCCESS(Status))
@@ -804,7 +804,7 @@ RegInitializeRegistry(
                          0,
                          NULL,
                     // FIXME: Using REG_OPTION_VOLATILE works OK on Windows,
-                    // but I need to check whether it works OK on ReactOS too.
+                    // but I need to check whether it works OK on InteractOS too.
                          REG_OPTION_NON_VOLATILE, // REG_OPTION_VOLATILE,
                          &Disposition);
     if (!NT_SUCCESS(Status))
@@ -863,7 +863,7 @@ RegInitializeRegistry(
                                  0,
                                  NULL,
                             // FIXME: Using REG_OPTION_VOLATILE works OK on Windows,
-                            // but I need to check whether it works OK on ReactOS too.
+                            // but I need to check whether it works OK on InteractOS too.
                                  REG_OPTION_NON_VOLATILE, // REG_OPTION_VOLATILE,
                                  &Disposition);
             if (!NT_SUCCESS(Status))

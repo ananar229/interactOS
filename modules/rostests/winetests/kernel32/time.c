@@ -779,7 +779,7 @@ static void test_GetDynamicTimeZoneInformation(void)
     DWORD ret, ret2;
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: GetDynamicTimeZoneInformation is a STUB on ReactOS */
+    /* FIXME: GetDynamicTimeZoneInformation is a STUB on InteractOS */
     if (is_reactos() || !pGetDynamicTimeZoneInformation)
 #else
     if (!pGetDynamicTimeZoneInformation)
@@ -999,7 +999,7 @@ static void test_GetTimeZoneInformationForYear(void)
     };
 
 #if defined(__REACTOS__) && DLL_EXPORT_VERSION >= 0x600
-    /* FIXME: GetTimeZoneInformationForYear and GetDynamicTimeZoneInformation are STUBS on ReactOS */
+    /* FIXME: GetTimeZoneInformationForYear and GetDynamicTimeZoneInformation are STUBS on InteractOS */
     if (is_reactos() || !pGetTimeZoneInformationForYear || !pGetDynamicTimeZoneInformation)
 #else
     if (!pGetTimeZoneInformationForYear || !pGetDynamicTimeZoneInformation)

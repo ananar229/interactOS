@@ -118,7 +118,7 @@ typedef struct _USETUP_DATA
      */
     UNICODE_STRING SystemRootPath;
 
-    /* Path to the installation directory inside the ReactOS boot partition */
+    /* Path to the installation directory inside the InteractOS boot partition */
     UNICODE_STRING DestinationArcPath;  /** Equivalent of 'NTOS_INSTALLATION::SystemArcPath' **/
     UNICODE_STRING DestinationPath;     /** Equivalent of 'NTOS_INSTALLATION::SystemNtPath' **/
     UNICODE_STRING DestinationRootPath;

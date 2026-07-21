@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * PURPOSE:          Bare filesystem template
  * PROGRAMMER:       David Welch (welch@mcmail.com)
  * UPDATE HISTORY:

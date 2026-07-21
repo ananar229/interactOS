@@ -573,14 +573,14 @@ PciAddDevice(IN PDRIVER_OBJECT DriverObject,
             }
             else
             {
-                /* Root PDO in ReactOS does not assign boot resources */
+                /* Root PDO in InteractOS does not assign boot resources */
                 UNIMPLEMENTED_DBGBREAK("Encountered during setup\n");
                 Descriptor = NULL;
             }
 
             if (Descriptor)
             {
-                /* Root PDO in ReactOS does not assign boot resources */
+                /* Root PDO in InteractOS does not assign boot resources */
                 UNIMPLEMENTED_DBGBREAK();
             }
             else

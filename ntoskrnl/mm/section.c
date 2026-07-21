@@ -563,7 +563,7 @@ l_ReadHeaderFromFile:
              * magic to any binary.
              *
              * This will break applications that depend on SxS when running with real Windows Kernel32/SxS/etc
-             * but honestly that's not tested. It will also break them when running no ReactOS once we implement
+             * but honestly that's not tested. It will also break them when running no InteractOS once we implement
              * the SxS support -- at which point, duh, this should be removed.
              *
              * But right now, any app depending on SxS is already broken anyway, so this flag only helps.
@@ -2175,7 +2175,7 @@ MmpDeleteSection(PVOID ObjectBody)
 {
     PSECTION Section = ObjectBody;
 
-    /* Check if it's an ARM3, or ReactOS section */
+    /* Check if it's an ARM3, or InteractOS section */
     if (!MiIsRosSectionObject(Section))
     {
         MiDeleteARM3Section(ObjectBody);

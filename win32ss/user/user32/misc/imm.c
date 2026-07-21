@@ -986,7 +986,7 @@ LRESULT ImeWnd_OnImeSetContext(PIMEUI pimeui, WPARAM wParam, LPARAM lParam)
 
 /* The window procedure of the default IME window */
 LRESULT WINAPI
-ImeWndProc_common(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam, BOOL unicode) // ReactOS
+ImeWndProc_common(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam, BOOL unicode) // InteractOS
 {
     PWND pWnd;
     PIMEUI pimeui;

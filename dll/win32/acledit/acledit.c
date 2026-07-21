@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 /*
- * PROJECT:         ReactOS Access Control List Editor
+ * PROJECT:         InteractOS Access Control List Editor
  * FILE:            lib/acledit/acledit.c
  * PURPOSE:         Access Control List Editor
  * PROGRAMMER:      Thomas Weidenmueller (w3seek@users.sourceforge.net)

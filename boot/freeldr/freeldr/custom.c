@@ -156,10 +156,10 @@ VOID OptionMenuCustomBoot(VOID)
             EditCustomBootLinux(&OperatingSystem);
             break;
 #endif /* _M_IX86 || _M_AMD64 */
-        case 2: // ReactOS
+        case 2: // InteractOS
             EditCustomBootReactOS(&OperatingSystem, FALSE);
             break;
-        case 3: // ReactOS Setup
+        case 3: // InteractOS Setup
             EditCustomBootReactOS(&OperatingSystem, TRUE);
             break;
     }
@@ -552,7 +552,7 @@ EditCustomBootReactOS(
     if (!IniAddSettingValueToSection(SectionId, "BootType", IsSetup ? "ReactOSSetup" : "Windows2003"))
         return;
 
-    /* Construct the ReactOS ARC system path */
+    /* Construct the InteractOS ARC system path */
     ConstructArcPath(ReactOSARCPath, ReactOSSystemPath,
                      DriveMapGetBiosDriveNumber(BootDriveString),
                      atoi(BootPartitionString));

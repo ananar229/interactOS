@@ -49,7 +49,7 @@ START_TEST(SHEnumClassesOfCategories)
     // Test (mostly) invalid arguments.
 
     // Implemented, '(ULONG)-1, NULL'.
-    // Keep this odd case, as ReactOS used to "implement" it.
+    // Keep this odd case, as InteractOS used to "implement" it.
 
     // hr = pSHEnumClassesOfCategories((ULONG)-1, NULL, 0, NULL, NULL);
     // ok_long(hr, E_INVALIDARG);

@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- * PROJECT:          ReactOS kernel
+ * PROJECT:          InteractOS kernel
  * FILE:             sdk/lib/drivers/copysup/copysup.c
  * PURPOSE:          CopySup library
  * PROGRAMMER:       Pierre Schweitzer (pierre@reactos.org)

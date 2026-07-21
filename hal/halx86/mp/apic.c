@@ -18,7 +18,7 @@
  */
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- * PROJECT:     ReactOS kernel
+ * PROJECT:     InteractOS kernel
  * FILE:        hal/halx86/mp/apic.c
  * PURPOSE:
  * PROGRAMMER:

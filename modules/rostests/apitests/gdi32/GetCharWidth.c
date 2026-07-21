@@ -135,7 +135,7 @@ static void Test_CharWidthI(HDC hDC)
     ok_int(ret, TRUE);
     ok_err(0xBEEFCAFE);
 
-#if 0 // These tests take time in ReactOS
+#if 0 // These tests take time in InteractOS
     INT count = 0x2710000 / sizeof(INT);
     PINT pn = malloc((count + 1) * sizeof(INT));
     PWORD pw = malloc((count + 1) * sizeof(WORD));

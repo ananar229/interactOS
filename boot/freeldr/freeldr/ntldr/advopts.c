@@ -57,7 +57,7 @@ static ADVBOOT_OPTIONS AdvBootOptions[] = // OptionsMenuList
     {ActionBootLog,             "Enable Boot Logging"},
     {ActionVGAMode,             "Enable VGA Mode"},
     {ActionLKGConfig,           "Last Known Good Configuration"},
-    {ActionSafeBootDSRepair,    "Directory Services Restore Mode"}, // "(ReactOS domain controllers only)"
+    {ActionSafeBootDSRepair,    "Directory Services Restore Mode"}, // "(InteractOS domain controllers only)"
     {ActionDebugMode,           "Debugging Mode"},
 
 #if DBG && defined(_M_IX86)
@@ -166,7 +166,7 @@ MenuNTOptions(
     ULONG SelectedMenuItem = 0;
 
     /* Build the menu, filtering out any item that may not be applicable,
-     * and set the "Start ReactOS normally" as default. */
+     * and set the "Start InteractOS normally" as default. */
     for (i = 0, MenuItemCount = 0; i < RTL_NUMBER_OF(AdvBootOptions); ++i)
     {
         /* Hide the "Return to OS Choices" item if no OS entry is selected */

@@ -25,7 +25,7 @@ typedef struct _ShimData
     DWORD dwMagic;
     SDBQUERYRESULT Query;
     WCHAR szLayer[MAX_LAYER_LENGTH];
-    // Start ReactOS specific
+    // Start InteractOS specific
     DWORD dwRosProcessCompatVersion;
 #ifdef _M_AMD64
     PVOID RtlGetCurrentDirectory_U_RtlpMsysDecoy;

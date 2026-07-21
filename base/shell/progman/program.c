@@ -19,7 +19,7 @@
  */
 
 /*
- * PROJECT:         ReactOS Program Manager
+ * PROJECT:         InteractOS Program Manager
  * COPYRIGHT:       GPL - See COPYING in the top level directory
  * FILE:            base/shell/progman/program.c
  * PURPOSE:         Program items helper functions

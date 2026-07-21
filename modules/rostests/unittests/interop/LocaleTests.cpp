@@ -298,7 +298,7 @@ static void TEST_LocaleTests(void)
     LPCWSTR pszFind = StrStrW(szBuffer, L"modules\\rostests\\unittests");
     if (pszFind)
     {
-        // We're running in ReactOS output folder
+        // We're running in InteractOS output folder
         WCHAR szNewDir[MAX_PATH];
 
         StringCchCopyNW(szNewDir, _countof(szNewDir), szBuffer, pszFind - szBuffer);

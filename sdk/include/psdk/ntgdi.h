@@ -3924,7 +3924,7 @@ NtGdiGetCurrentDpiInfo(
 #endif /* PRIVATE_DWM_INTERFACE */
 
 
-/* ReactOS Display Driver Model */
+/* InteractOS Display Driver Model */
 __kernel_entry
 W32KAPI
 BOOLEAN

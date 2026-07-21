@@ -186,7 +186,7 @@ KSPropertySetImpl_Get(
              WideCharToMultiByte(CP_ACP, 0, CapsOut.szPname, -1, Desc->DescriptionA, sizeof(Desc->DescriptionA), NULL, NULL);
          }
 
-          /* ReactOS doesnt support vxd or emulated */
+          /* InteractOS doesnt support vxd or emulated */
           Desc->Type = DIRECTSOUNDDEVICE_TYPE_WDM;
           Desc->ModuleA[0] = 0;
           Desc->ModuleW[0] = 0;

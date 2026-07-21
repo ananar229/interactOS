@@ -41,7 +41,7 @@ __in PUNICODE_STRING RegistryPath
 	//
 
 #ifndef __REACTOS__
-	// FIXME: disabled for now, since it's unimplemented in ReactOS
+	// FIXME: disabled for now, since it's unimplemented in InteractOS
 	ExInitializeDriverRuntime(DrvRtPoolNxOptIn);
 #endif
 

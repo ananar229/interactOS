@@ -1374,7 +1374,7 @@ IntSetFocusMessageQueue(PUSER_MESSAGE_QUEUE NewQueue)
     {
         gpqForeground = NULL;
         ERR("ptiLastInput is CLEARED!!\n");
-        ptiLastInput = NULL; // ReactOS hacks... should check for process death.
+        ptiLastInput = NULL; // InteractOS hacks... should check for process death.
     }
 }
 
