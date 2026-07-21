@@ -73,6 +73,7 @@ list(APPEND SOURCE
     CDefViewUtil.cpp
     CDefViewDual.cpp
     CDefViewBckgrndMenu.cpp
+    CMillerColumnsView.cpp
     stubs.cpp
     systray.cpp
     CUserNotification.cpp

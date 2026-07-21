@@ -84,6 +84,7 @@
 #include "CShellDispatch.h"
 #include "CDropTargetHelper.h"
 #include "CFolderOptions.h"
+#include "CMillerColumnsView.h"
 #include "folders/CFSFolder.h"
 #include "folders/CDrivesFolder.h"
 #include "folders/CDesktopFolder.h"

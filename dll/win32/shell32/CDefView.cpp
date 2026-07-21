@@ -242,6 +242,7 @@ private:
     CComPtr<IShellFolderViewDual> m_pShellFolderViewDual;
     ClipboardViewerChain      m_ClipboardChain;
     CListView                 m_ListView;
+    CMillerColumnsView        m_MillerView;
     HWND                      m_hWndParent;
     FOLDERSETTINGS            m_FolderSettings;
     HMENU                     m_hMenu;                // Handle to the menu bar of the browser
@@ -270,6 +271,7 @@ private:
     POINT                     m_ptLastMousePos;     // Mouse position at last DragOver call
     POINT                     m_ptFirstMousePos;    // Mouse position when the drag operation started
     DWORD                     m_grfKeyState;
+    int                       m_MillerScrollX;      // Horizontal scroll offset while in Miller Columns view
     //
     CComPtr<IContextMenu>     m_pCM;
     CComPtr<IContextMenu>     m_pFileMenu;
@@ -355,6 +357,10 @@ public:
     HRESULT drag_notify_subitem(DWORD grfKeyState, POINTL pt, DWORD *pdwEffect);
     HRESULT InvokeContextMenuCommand(CComPtr<IContextMenu>& pCM, LPCSTR lpVerb, POINT* pt = NULL, bool TryMapVerb = false);
     LRESULT OnExplorerCommand(UINT uCommand, BOOL bUseSelection);
+    LRESULT OnMillerColumnsNotify(int iColumn, LPNMHDR lpnmh, BOOL &bHandled);
+    LRESULT OnHScroll(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled);
+    void MillerColumns_OnItemSelected(int iColumn, int iItem);
+    void MillerColumns_UpdateLayout(BOOL bScrollToEnd);
     FOLDERVIEWMODE GetDefaultViewMode();
     HRESULT GetDefaultViewStream(DWORD Stgm, IStream **ppStream);
     HRESULT LoadViewState();
@@ -376,7 +382,10 @@ public:
 
     static inline bool IsSupportedFolderViewMode(int Mode)
     {
-        return Mode >= FVM_FIRST && Mode <= FVM_DETAILS; // We don't support Tile nor Thumbstrip
+        // We don't support Tile nor Thumbstrip. Miller Columns (ReactOS
+        // extension, see FVM_MILLERCOLUMNS) is not a real FOLDERVIEWMODE
+        // value, so it is explicitly allowed alongside the real range.
+        return (Mode >= FVM_FIRST && Mode <= FVM_DETAILS) || Mode == FVM_MILLERCOLUMNS;
     }
 
     // *** IOleWindow methods ***
@@ -570,6 +579,7 @@ public:
     MESSAGE_HANDLER(WM_INITMENUPOPUP, OnInitMenuPopup)
     MESSAGE_HANDLER(WM_CHANGECBCHAIN, OnChangeCBChain)
     MESSAGE_HANDLER(WM_DRAWCLIPBOARD, OnDrawClipboard)
+    MESSAGE_HANDLER(WM_HSCROLL, OnHScroll)
     END_MSG_MAP()
 
     BEGIN_COM_MAP(CDefView)
@@ -600,6 +610,7 @@ typedef void (CALLBACK *PFNSHGETSETTINGSPROC)(LPSHELLFLAGSTATE lpsfs, DWORD dwMa
 
 CDefView::CDefView() :
     m_ListView(),
+    m_MillerView(),
     m_hWndParent(NULL),
     m_hMenu(NULL),
     m_hMenuArrangeModes(NULL),
@@ -617,6 +628,7 @@ CDefView::CDefView() :
     m_dwAdvf(0),
     m_iDragOverItem(0),
     m_cScrollDelay(0),
+    m_MillerScrollX(0),
     m_isEditing(FALSE),
     m_SpecialFolder(-1),
     m_isFullStatusBar(true),
@@ -1790,6 +1802,13 @@ LRESULT CDefView::OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandl
         }
     }
 
+    if (m_FolderSettings.ViewMode == FVM_MILLERCOLUMNS)
+    {
+        m_MillerView.Create(m_hWnd, m_pSFParent);
+        m_ListView.ShowWindow(SW_HIDE);
+        MillerColumns_UpdateLayout(FALSE);
+    }
+
     if (m_FolderSettings.fFlags & FWF_DESKTOP)
     {
         HWND hwndSB;
@@ -1992,6 +2011,11 @@ HRESULT CDefView::CheckViewMode(HMENU hmenuView)
         UINT iItem = iItemFirst + m_FolderSettings.ViewMode - FVM_FIRST;
         CheckMenuRadioItem(hmenuView, iItemFirst, iItemLast, iItem, MF_BYCOMMAND);
     }
+
+    // Miller Columns (ReactOS extension) sits outside the FVM_FIRST..FVM_LAST
+    // radio group handled above, so it needs its own explicit check state.
+    CheckMenuItem(hmenuView, FCIDM_SHVIEW_MILLERCOLUMNS,
+                  MF_BYCOMMAND | (m_FolderSettings.ViewMode == FVM_MILLERCOLUMNS ? MF_CHECKED : MF_UNCHECKED));
 
     return S_OK;
 }
@@ -2428,8 +2452,16 @@ LRESULT CDefView::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled
     if (!m_ListView)
         return 0;
 
-    /* Resize the ListView to fit our window */
-    ::MoveWindow(m_ListView, 0, 0, wWidth, wHeight, TRUE);
+    if (m_FolderSettings.ViewMode == FVM_MILLERCOLUMNS && m_MillerView.IsActive())
+    {
+        /* Reflow all Miller columns (and the scrollbar range) to fit our window */
+        MillerColumns_UpdateLayout(FALSE);
+    }
+    else
+    {
+        /* Resize the ListView to fit our window */
+        ::MoveWindow(m_ListView, 0, 0, wWidth, wHeight, TRUE);
+    }
 
     _DoFolderViewCB(SFVM_SIZE, 0, 0);
 
@@ -2577,6 +2609,9 @@ LRESULT CDefView::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHand
         case 0x702F:
             SetCurrentViewMode(dwCmdID - FCIDM_SHVIEW_BIGICON + 1);
             break;
+        case FCIDM_SHVIEW_MILLERCOLUMNS:
+            SetCurrentViewMode(FVM_MILLERCOLUMNS);
+            break;
         case FCIDM_SHVIEW_SNAPTOGRID:
             m_ListView.Arrange(LVA_SNAPTOGRID);
             break;
@@ -2670,6 +2705,13 @@ LRESULT CDefView::OnNotify(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandl
     lpdi = (NMLVDISPINFOW *)lpnmh;
 
     TRACE("%p CtlID=%u lpnmh->code=%x\n", this, CtlID, lpnmh->code);
+
+    if (m_FolderSettings.ViewMode == FVM_MILLERCOLUMNS && m_MillerView.IsActive())
+    {
+        int iMillerColumn = m_MillerView.FindColumn(lpnmh->hwndFrom);
+        if (iMillerColumn >= 0)
+            return OnMillerColumnsNotify(iMillerColumn, lpnmh, bHandled);
+    }
 
     switch (lpnmh->code)
     {
@@ -2902,6 +2944,122 @@ LRESULT CDefView::OnNotify(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandl
             break;
     }
 
+    return 0;
+}
+
+// Handles WM_NOTIFY messages whose hwndFrom is one of the per-folder
+// listviews owned by m_MillerView (see CMillerColumnsView). Kept separate
+// from the classic single-listview OnNotify body above because none of that
+// code's state (m_pSFParent, m_apidl/m_cidl, m_ListView) applies here - each
+// Miller column has its own bound IShellFolder and its own selection.
+LRESULT CDefView::OnMillerColumnsNotify(int iColumn, LPNMHDR lpnmh, BOOL &bHandled)
+{
+    switch (lpnmh->code)
+    {
+        case LVN_ITEMCHANGED:
+        {
+            LPNMLISTVIEW lpnmlv = (LPNMLISTVIEW)lpnmh;
+            if ((lpnmlv->uNewState & LVIS_SELECTED) && !(lpnmlv->uOldState & LVIS_SELECTED))
+                MillerColumns_OnItemSelected(iColumn, lpnmlv->iItem);
+            break;
+        }
+        default:
+            break;
+    }
+    return 0;
+}
+
+// A row was newly selected in Miller column iColumn: drop every column to
+// its right (the user is choosing a new path from here on), then either
+// reveal the next column (subfolder) or update the preview pane (file).
+void CDefView::MillerColumns_OnItemSelected(int iColumn, int iItem)
+{
+    CComPtr<IShellFolder> psf = m_MillerView.GetColumnFolder(iColumn);
+    PCUITEMID_CHILD pidl = m_MillerView.GetItemPidl(iColumn, iItem);
+    if (!psf || !pidl)
+        return;
+
+    m_MillerView.TruncateAfter(iColumn);
+
+    SFGAOF attr = SFGAO_FOLDER;
+    CComPtr<IShellFolder> psfChild;
+    if (SUCCEEDED(psf->GetAttributesOf(1, &pidl, &attr)) && (attr & SFGAO_FOLDER) &&
+        SUCCEEDED(psf->BindToObject(pidl, NULL, IID_PPV_ARG(IShellFolder, &psfChild))))
+    {
+        m_MillerView.AppendFolderColumn(psfChild);
+    }
+    else
+    {
+        m_MillerView.ShowPreview(psf, pidl);
+    }
+
+    MillerColumns_UpdateLayout(TRUE);
+}
+
+// Recomputes column/preview positions for the current client size and
+// horizontal scroll offset, and shows/hides+ranges the horizontal scrollbar
+// according to whether the columns overflow the view's width.
+void CDefView::MillerColumns_UpdateLayout(BOOL bScrollToEnd)
+{
+    RECT rcClient;
+    GetClientRect(&rcClient);
+    int cx = rcClient.right - rcClient.left;
+    int cy = rcClient.bottom - rcClient.top;
+
+    int cxContent = m_MillerView.GetContentWidth();
+    int cxMaxScroll = max(0, cxContent - cx);
+
+    if (bScrollToEnd)
+        m_MillerScrollX = cxMaxScroll;
+    else if (m_MillerScrollX > cxMaxScroll)
+        m_MillerScrollX = cxMaxScroll;
+
+    m_MillerView.Layout(cx, cy, m_MillerScrollX);
+
+    if (cxMaxScroll > 0)
+    {
+        SCROLLINFO si = { sizeof(si) };
+        si.fMask = SIF_RANGE | SIF_PAGE | SIF_POS;
+        si.nMin = 0;
+        si.nMax = cxContent - 1;
+        si.nPage = cx;
+        si.nPos = m_MillerScrollX;
+        ShowScrollBar(SB_HORZ, TRUE);
+        SetScrollInfo(SB_HORZ, &si, TRUE);
+    }
+    else
+    {
+        ShowScrollBar(SB_HORZ, FALSE);
+    }
+}
+
+LRESULT CDefView::OnHScroll(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
+{
+    if (m_FolderSettings.ViewMode != FVM_MILLERCOLUMNS || !m_MillerView.IsActive())
+    {
+        bHandled = FALSE;
+        return 0;
+    }
+
+    SCROLLINFO si = { sizeof(si) };
+    si.fMask = SIF_ALL;
+    GetScrollInfo(SB_HORZ, &si);
+
+    int nPos = si.nPos;
+    switch (LOWORD(wParam))
+    {
+        case SB_LINELEFT:      nPos -= 20; break;
+        case SB_LINERIGHT:     nPos += 20; break;
+        case SB_PAGELEFT:      nPos -= (int)si.nPage; break;
+        case SB_PAGERIGHT:     nPos += (int)si.nPage; break;
+        case SB_THUMBTRACK:
+        case SB_THUMBPOSITION: nPos = si.nTrackPos; break;
+        default: return 0;
+    }
+
+    int cxMaxScroll = max(0, (si.nMax + 1) - (int)si.nPage);
+    m_MillerScrollX = max(0, min(nPos, cxMaxScroll));
+    MillerColumns_UpdateLayout(FALSE);
     return 0;
 }
 
@@ -3253,6 +3411,8 @@ HRESULT WINAPI CDefView::DestroyViewWindow()
         DestroyMenu(m_hMenu);
         m_hMenu = NULL;
     }
+
+    m_MillerView.Destroy();
 
     if (m_ListView)
     {
@@ -3621,8 +3781,35 @@ HRESULT STDMETHODCALLTYPE CDefView::SetCurrentViewMode(UINT ViewMode)
     TRACE("(%p)->(%u), stub\n", this, ViewMode);
 
     /* It's not redundant to check FVM_AUTO because it's a (UINT)-1 */
-    if (((INT)ViewMode < FVM_FIRST || (INT)ViewMode > FVM_LAST) && ((INT)ViewMode != FVM_AUTO))
+    if (((INT)ViewMode < FVM_FIRST || (INT)ViewMode > FVM_LAST) &&
+        ((INT)ViewMode != FVM_AUTO) && (ViewMode != FVM_MILLERCOLUMNS))
+    {
         return E_INVALIDARG;
+    }
+
+    if (ViewMode == FVM_MILLERCOLUMNS)
+    {
+        if (!m_MillerView.IsActive())
+            m_MillerView.Create(m_hWnd, m_pSFParent);
+        m_MillerView.ShowHide(TRUE);
+        m_ListView.ShowWindow(SW_HIDE);
+
+        m_FolderSettings.ViewMode = ViewMode;
+        MillerColumns_UpdateLayout(FALSE);
+        CheckToolbar();
+        return S_OK;
+    }
+
+    if (m_MillerView.IsActive())
+    {
+        m_MillerView.ShowHide(FALSE);
+        ShowScrollBar(SB_HORZ, FALSE);
+    }
+    m_ListView.ShowWindow(SW_SHOW);
+
+    RECT rcClient;
+    GetClientRect(&rcClient);
+    ::MoveWindow(m_ListView, 0, 0, rcClient.right - rcClient.left, rcClient.bottom - rcClient.top, TRUE);
 
     /* Windows before Vista uses LVM_SETVIEW and possibly
        LVM_SETEXTENDEDLISTVIEWSTYLE to set the style of the listview,
