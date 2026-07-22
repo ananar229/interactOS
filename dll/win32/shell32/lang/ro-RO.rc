@@ -14,6 +14,7 @@ BEGIN
     MENUITEM "Pictograme &mici", FCIDM_SHVIEW_SMALLICON
     MENUITEM "&Listă", FCIDM_SHVIEW_LISTVIEW
     MENUITEM "&Detalii", FCIDM_SHVIEW_REPORTVIEW
+    MENUITEM "&Coloane", FCIDM_SHVIEW_MILLERCOLUMNS
     MENUITEM "", -1, MFT_SEPARATOR
     POPUP "Aranjează &pictogramele mici după", FCIDM_SHVIEW_ARRANGE
     BEGIN
@@ -34,6 +35,7 @@ BEGIN
             MENUITEM "Pictograme &mici", FCIDM_SHVIEW_SMALLICON
             MENUITEM "&Listă", FCIDM_SHVIEW_LISTVIEW
             MENUITEM "&Detalii", FCIDM_SHVIEW_REPORTVIEW
+            MENUITEM "&Coloane", FCIDM_SHVIEW_MILLERCOLUMNS
         END
         MENUITEM "", -1, MFT_SEPARATOR
         POPUP "Aranjează &pictogramele mici după", FCIDM_SHVIEW_ARRANGE

@@ -6,6 +6,7 @@ BEGIN
     MENUITEM "&Малки значета", FCIDM_SHVIEW_SMALLICON
     MENUITEM "&Списък", FCIDM_SHVIEW_LISTVIEW
     MENUITEM "&Подробен", FCIDM_SHVIEW_REPORTVIEW
+    MENUITEM "&Колони", FCIDM_SHVIEW_MILLERCOLUMNS
     MENUITEM "", -1, MFT_SEPARATOR
     POPUP "Подреждане на &значетата", FCIDM_SHVIEW_ARRANGE
     BEGIN
@@ -26,6 +27,7 @@ BEGIN
             MENUITEM "&Малки значета", FCIDM_SHVIEW_SMALLICON
             MENUITEM "&Списък", FCIDM_SHVIEW_LISTVIEW
             MENUITEM "&Подробен", FCIDM_SHVIEW_REPORTVIEW
+            MENUITEM "&Колони", FCIDM_SHVIEW_MILLERCOLUMNS
         END
         MENUITEM "", -1, MFT_SEPARATOR
         POPUP "Подреждане на &значетата", FCIDM_SHVIEW_ARRANGE

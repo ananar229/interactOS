@@ -6,6 +6,7 @@ BEGIN
     MENUITEM "Μ&ικρά εικονίδια", FCIDM_SHVIEW_SMALLICON
     MENUITEM "&Λίστα", FCIDM_SHVIEW_LISTVIEW
     MENUITEM "Λ&επτομέρειες", FCIDM_SHVIEW_REPORTVIEW
+    MENUITEM "&Στήλες", FCIDM_SHVIEW_MILLERCOLUMNS
     MENUITEM "", -1, MFT_SEPARATOR
     POPUP "&Τακτοποίηση εικονιδίων κατά", FCIDM_SHVIEW_ARRANGE
     BEGIN
@@ -26,6 +27,7 @@ BEGIN
             MENUITEM "Μ&ικρά εικονίδια", FCIDM_SHVIEW_SMALLICON
             MENUITEM "&Λίστα", FCIDM_SHVIEW_LISTVIEW
             MENUITEM "Λ&επτομέρειες", FCIDM_SHVIEW_REPORTVIEW
+            MENUITEM "&Στήλες", FCIDM_SHVIEW_MILLERCOLUMNS
         END
         MENUITEM "", -1, MFT_SEPARATOR
         POPUP "&Τακτοποίηση εικονιδίων κατά", FCIDM_SHVIEW_ARRANGE

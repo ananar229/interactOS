@@ -14,6 +14,7 @@ BEGIN
     MENUITEM "&Ikony", FCIDM_SHVIEW_SMALLICON //FIXME: accelerator collision &I
     MENUITEM "&Seznam", FCIDM_SHVIEW_LISTVIEW
     MENUITEM "&Podrobnosti", FCIDM_SHVIEW_REPORTVIEW
+    MENUITEM "Sloupc&e", FCIDM_SHVIEW_MILLERCOLUMNS
     MENUITEM "", -1, MFT_SEPARATOR
     POPUP "Seřadit &ikony", FCIDM_SHVIEW_ARRANGE //FIXME: accelerator collision &I
     BEGIN
@@ -34,6 +35,7 @@ BEGIN
             MENUITEM "&Ikony", FCIDM_SHVIEW_SMALLICON
             MENUITEM "&Seznam", FCIDM_SHVIEW_LISTVIEW
             MENUITEM "&Podrobnosti", FCIDM_SHVIEW_REPORTVIEW
+            MENUITEM "Sloupc&e", FCIDM_SHVIEW_MILLERCOLUMNS
         END
         MENUITEM "", -1, MFT_SEPARATOR
         POPUP "Seřadit &ikony", FCIDM_SHVIEW_ARRANGE
