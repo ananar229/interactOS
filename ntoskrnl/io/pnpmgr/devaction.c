@@ -732,6 +732,11 @@ PiCallDriverAddDevice(
         PADD_DEV_DRIVERS_LIST driverEntry = ExAllocatePoolZero(PagedPool,
                                                                sizeof(*driverEntry),
                                                                TAG_PNP_DEVACTION);
+        if (!driverEntry)
+        {
+            Status = STATUS_INSUFFICIENT_RESOURCES;
+            goto Cleanup;
+        }
         driverEntry->DriverType = DeviceDriver;
         InsertTailList(&drvListHead, &driverEntry->ListEntry);
         DPRINT("No service for \"%wZ\" (RawDeviceOK)\n", &DeviceNode->InstancePath);

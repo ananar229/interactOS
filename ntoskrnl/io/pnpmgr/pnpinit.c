@@ -197,7 +197,7 @@ PipGetDriverTagPriority(IN HANDLE ServiceHandle)
     PKEY_VALUE_FULL_INFORMATION KeyValueInformationTag;
     PKEY_VALUE_FULL_INFORMATION KeyValueInformationGroupOrderList;
     PVOID Buffer;
-    UNICODE_STRING Group;
+    UNICODE_STRING Group = { 0, 0, NULL };
     PULONG GroupOrder;
     ULONG Count, Tag = 0;
     USHORT i = -1;
@@ -239,6 +239,15 @@ PipGetDriverTagPriority(IN HANDLE ServiceHandle)
 
     /* We can get rid of this now */
     ExFreePool(KeyValueInformationTag);
+
+    /* If the driver has no (valid) Group value, it has no tag order to look
+     * up either -- Group.Buffer would otherwise still be NULL here and get
+     * used as the registry value name. */
+    if (Group.Buffer == NULL)
+    {
+        Status = STATUS_OBJECT_NAME_NOT_FOUND;
+        goto Quickie;
+    }
 
     /* Now let's read the group's tag order */
     Status = IopGetRegistryValue(KeyHandle,

@@ -898,6 +898,13 @@ PnpRootQueryDeviceRelations(
 
     DeviceExtension = &PnpRootDOExtension;
 
+    /* Hold the list lock across the size computation, allocation and fill
+     * loop below: reading DeviceListCount here and filling Relations->Objects[]
+     * later under a separate lock acquisition would let a concurrent
+     * PnpRootRegisterDevice() grow the list in between, overflowing the
+     * buffer sized for the stale count. */
+    KeAcquireGuardedMutex(&DeviceExtension->DeviceListLock);
+
     Size = FIELD_OFFSET(DEVICE_RELATIONS, Objects) + sizeof(PDEVICE_OBJECT) * DeviceExtension->DeviceListCount;
     if (OtherRelations)
     {
@@ -911,6 +918,7 @@ PnpRootQueryDeviceRelations(
     {
         DPRINT("ExAllocatePoolWithTag() failed\n");
         Status = STATUS_NO_MEMORY;
+        KeReleaseGuardedMutex(&DeviceExtension->DeviceListLock);
         goto cleanup;
     }
     RtlZeroMemory(Relations, Size);
@@ -919,8 +927,6 @@ PnpRootQueryDeviceRelations(
         Relations->Count = OtherRelations->Count;
         RtlCopyMemory(Relations->Objects, OtherRelations->Objects, sizeof(PDEVICE_OBJECT) * OtherRelations->Count);
     }
-
-    KeAcquireGuardedMutex(&DeviceExtension->DeviceListLock);
 
     /* Start looping */
     for (NextEntry = DeviceExtension->DeviceListHead.Flink;

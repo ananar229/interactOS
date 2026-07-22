@@ -58,6 +58,17 @@ IopFindBusNumberResource(
     ASSERT(IoDesc->Type == CmDesc->Type);
     ASSERT(IoDesc->Type == CmResourceTypeBusNumber);
 
+    /* Reject a requirement whose length doesn't fit in [Min, Max] before the
+     * loop bound below is computed, or the subtraction underflows and the
+     * loop runs (near) forever. */
+    if ((IoDesc->u.BusNumber.Length == 0) ||
+        (IoDesc->u.BusNumber.MaxBusNumber < IoDesc->u.BusNumber.MinBusNumber) ||
+        (IoDesc->u.BusNumber.MaxBusNumber - IoDesc->u.BusNumber.MinBusNumber + 1 <
+         IoDesc->u.BusNumber.Length))
+    {
+        return FALSE;
+    }
+
     for (Start = IoDesc->u.BusNumber.MinBusNumber;
          Start <= IoDesc->u.BusNumber.MaxBusNumber - IoDesc->u.BusNumber.Length + 1;
          Start++)
@@ -94,6 +105,19 @@ IopFindMemoryResource(
     /* HACK */
     if (IoDesc->u.Memory.Alignment == 0)
         IoDesc->u.Memory.Alignment = 1;
+
+    /* Reject a requirement whose length doesn't fit in [Min, Max] before the
+     * loop bound below is computed, or the subtraction underflows and the
+     * loop runs over the entire 64-bit address space. */
+    if ((IoDesc->u.Memory.Length == 0) ||
+        ((ULONGLONG)IoDesc->u.Memory.MaximumAddress.QuadPart <
+         (ULONGLONG)IoDesc->u.Memory.MinimumAddress.QuadPart) ||
+        ((ULONGLONG)IoDesc->u.Memory.MaximumAddress.QuadPart -
+         (ULONGLONG)IoDesc->u.Memory.MinimumAddress.QuadPart + 1 <
+         IoDesc->u.Memory.Length))
+    {
+        return FALSE;
+    }
 
     for (Start = (ULONGLONG)IoDesc->u.Memory.MinimumAddress.QuadPart;
          Start <= (ULONGLONG)IoDesc->u.Memory.MaximumAddress.QuadPart - IoDesc->u.Memory.Length + 1;
@@ -132,6 +156,20 @@ IopFindPortResource(
     /* HACK */
     if (IoDesc->u.Port.Alignment == 0)
         IoDesc->u.Port.Alignment = 1;
+
+    /* Reject a requirement whose length doesn't fit in [Min, Max] before the
+     * loop bound below is computed, or the subtraction underflows and the
+     * loop runs over the entire 64-bit address space. */
+    if ((IoDesc->u.Port.Length == 0) ||
+        ((ULONGLONG)IoDesc->u.Port.MaximumAddress.QuadPart <
+         (ULONGLONG)IoDesc->u.Port.MinimumAddress.QuadPart) ||
+        ((ULONGLONG)IoDesc->u.Port.MaximumAddress.QuadPart -
+         (ULONGLONG)IoDesc->u.Port.MinimumAddress.QuadPart + 1 <
+         IoDesc->u.Port.Length))
+    {
+        DPRINT1("IopFindPortResource failed!\n");
+        return FALSE;
+    }
 
     for (Start = (ULONGLONG)IoDesc->u.Port.MinimumAddress.QuadPart;
          Start <= (ULONGLONG)IoDesc->u.Port.MaximumAddress.QuadPart - IoDesc->u.Port.Length + 1;
@@ -1325,6 +1363,11 @@ IopDetectResourceConflict(
                                  OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE,
                                  ResourceMapKey,
                                  NULL);
+      if (ChildKey2 != NULL)
+      {
+          ObCloseHandle(ChildKey2, KernelMode);
+          ChildKey2 = NULL;
+      }
       Status = ZwOpenKey(&ChildKey2,
                          KEY_ENUMERATE_SUB_KEYS | KEY_QUERY_VALUE,
                          &ObjectAttributes);
@@ -1378,6 +1421,11 @@ IopDetectResourceConflict(
                                      OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE,
                                      ChildKey2,
                                      NULL);
+          if (ChildKey3 != NULL)
+          {
+              ObCloseHandle(ChildKey3, KernelMode);
+              ChildKey3 = NULL;
+          }
           Status = ZwOpenKey(&ChildKey3, KEY_QUERY_VALUE, &ObjectAttributes);
           ExFreePoolWithTag(KeyInformation, TAG_IO);
           if (!NT_SUCCESS(Status))

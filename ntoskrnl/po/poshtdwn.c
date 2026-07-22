@@ -328,8 +328,8 @@ PopReadShutdownPolicy(VOID)
         Status = ZwQueryValueKey(KeyHandle,
                                  &KeyString,
                                  KeyValuePartialInformation,
-                                 &Info,
-                                 sizeof(Info),
+                                 Info,
+                                 sizeof(Buffer),
                                  &Length);
         if ((NT_SUCCESS(Status)) && (Info->Type == REG_DWORD))
         {

@@ -2048,6 +2048,10 @@ NtQueryDirectoryFile(IN HANDLE FileHandle,
                                                   CapturedFileName.Length +
                                                   sizeof(UNICODE_STRING),
                                                   TAG_IOBUF);
+                if (!AuxBuffer)
+                {
+                    _SEH2_YIELD(return STATUS_INSUFFICIENT_RESOURCES);
+                }
                 RtlCopyMemory((PVOID)((ULONG_PTR)AuxBuffer +
                                       sizeof(UNICODE_STRING)),
                               CapturedFileName.Buffer,

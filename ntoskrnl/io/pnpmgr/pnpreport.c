@@ -253,7 +253,12 @@ IoReportDetectedDevice(
     /* Open a handle to the instance path key */
     Status = IopCreateDeviceKeyPath(&DeviceNode->InstancePath, REG_OPTION_NON_VOLATILE, &InstanceKey);
     if (!NT_SUCCESS(Status))
+    {
+        /* DeviceNode was never linked into the device tree, so nothing else
+         * will free it for us */
+        IopFreeDeviceNode(DeviceNode);
         return Status;
+    }
 
     /* Save the driver name */
     RtlInitUnicodeString(&ValueName, L"Service");

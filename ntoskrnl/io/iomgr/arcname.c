@@ -851,7 +851,7 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     sprintf(Buffer, "\\ArcName\\%s", LoaderBlock->ArcBootDeviceName);
     RtlInitAnsiString(&TargetString, Buffer);
     Status = RtlAnsiStringToUnicodeString(&TargetName, &TargetString, TRUE);
-    if (!NT_SUCCESS(Status)) return FALSE;
+    if (!NT_SUCCESS(Status)) return Status;
 
     /* Initialize the attributes and open the link */
     InitializeObjectAttributes(&ObjectAttributes,
@@ -866,7 +866,7 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     {
         /* We failed, free the string */
         RtlFreeUnicodeString(&TargetName);
-        return FALSE;
+        return Status;
     }
 
     /* Query the current \\SystemRoot */
@@ -877,8 +877,9 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     if (!NT_SUCCESS(Status))
     {
         /* We failed, free the string */
+        ObCloseHandle(LinkHandle, KernelMode);
         RtlFreeUnicodeString(&TargetName);
-        return FALSE;
+        return Status;
     }
 
     /* Convert it to Ansi */
@@ -886,6 +887,12 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     ArcString.Length = 0;
     ArcString.MaximumLength = sizeof(AnsiBuffer);
     Status = RtlUnicodeStringToAnsiString(&ArcString, &ArcName, FALSE);
+    if (!NT_SUCCESS(Status))
+    {
+        ObCloseHandle(LinkHandle, KernelMode);
+        RtlFreeUnicodeString(&TargetName);
+        return Status;
+    }
     AnsiBuffer[ArcString.Length] = ANSI_NULL;
 
     /* Close the link handle and free the name */
@@ -895,7 +902,7 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     /* Setup the system root name again */
     RtlInitAnsiString(&TempString, "\\SystemRoot");
     Status = RtlAnsiStringToUnicodeString(&LinkName, &TempString, TRUE);
-    if (!NT_SUCCESS(Status)) return FALSE;
+    if (!NT_SUCCESS(Status)) return Status;
 
     /* Open the symbolic link for it */
     InitializeObjectAttributes(&ObjectAttributes,
@@ -906,7 +913,11 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
     Status = NtOpenSymbolicLinkObject(&LinkHandle,
                                       SYMBOLIC_LINK_ALL_ACCESS,
                                       &ObjectAttributes);
-    if (!NT_SUCCESS(Status)) return FALSE;
+    if (!NT_SUCCESS(Status))
+    {
+        RtlFreeUnicodeString(&LinkName);
+        return Status;
+    }
 
     /* Destroy it */
     NtMakeTemporaryObject(LinkHandle);
@@ -927,7 +938,11 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
                                NULL,
                                NULL);
     Status = RtlAnsiStringToUnicodeString(&ArcName, &TargetString, TRUE);
-    if (!NT_SUCCESS(Status)) return FALSE;
+    if (!NT_SUCCESS(Status))
+    {
+        RtlFreeUnicodeString(&LinkName);
+        return Status;
+    }
 
     /* Create it */
     Status = NtCreateSymbolicLinkObject(&LinkHandle,
@@ -935,11 +950,11 @@ IopReassignSystemRoot(IN PLOADER_PARAMETER_BLOCK LoaderBlock,
                                         &ObjectAttributes,
                                         &ArcName);
 
-    /* Free all the strings and close the handle and return success */
+    /* Free all the strings and close the handle and return the real status */
     RtlFreeUnicodeString(&ArcName);
     RtlFreeUnicodeString(&LinkName);
-    ObCloseHandle(LinkHandle, KernelMode);
-    return TRUE;
+    if (NT_SUCCESS(Status)) ObCloseHandle(LinkHandle, KernelMode);
+    return Status;
 }
 
 BOOLEAN

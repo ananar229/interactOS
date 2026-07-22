@@ -147,8 +147,16 @@ ApphelpDuplicateUnicodeString(
     {
         Destination->MaximumLength = Destination->Length + sizeof(WCHAR);
         Destination->Buffer = ApphelpAlloc(Destination->MaximumLength);
-        RtlCopyMemory(Destination->Buffer, Source->Buffer, Destination->Length);
-        Destination->Buffer[Destination->Length / sizeof(WCHAR)] = UNICODE_NULL;
+        if (Destination->Buffer)
+        {
+            RtlCopyMemory(Destination->Buffer, Source->Buffer, Destination->Length);
+            Destination->Buffer[Destination->Length / sizeof(WCHAR)] = UNICODE_NULL;
+        }
+        else
+        {
+            Destination->Length = 0;
+            Destination->MaximumLength = 0;
+        }
     }
     else
     {
@@ -273,6 +281,12 @@ ApphelpCacheParse(
     }
 
     NumEntries = Header->NumEntries;
+    if ((DataLength - SHIM_CACHE_HEADER_SIZE) / SHIM_PERSISTENT_CACHE_ENTRY_SIZE < NumEntries)
+    {
+        DPRINT1("SHIMS: ApphelpCacheParse header claims 0x%x entries but DataLength (0x%x) is too small\n",
+                NumEntries, DataLength);
+        return STATUS_INVALID_PARAMETER;
+    }
     DPRINT("SHIMS: ApphelpCacheParse walking %d entries\n", NumEntries);
     for (Cur = 0; Cur < NumEntries; ++Cur)
     {
@@ -387,6 +401,11 @@ ApphelpCacheWrite(VOID)
 
     /* Now we allocate and prepare some helpers */
     Buffer = ApphelpAlloc(Length);
+    if (!Buffer)
+    {
+        ApphelpCacheReleaseLock();
+        return FALSE;
+    }
     BufferNamePos = Buffer + Length;
     Header = (PSHIM_PERSISTENT_CACHE_HEADER)Buffer;
     WriteEntry = (PSHIM_PERSISTENT_CACHE_ENTRY)(Buffer + SHIM_CACHE_HEADER_SIZE);

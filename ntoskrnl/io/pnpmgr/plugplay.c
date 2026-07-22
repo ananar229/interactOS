@@ -450,7 +450,7 @@ IopGetInterfaceDeviceList(PPLUGPLAY_CONTROL_INTERFACE_DEVICE_LIST_DATA DeviceLis
     }
 
     Status = IoGetDeviceInterfaces(&FilterGuid, DeviceObject, StackList.Flags, &SymbolicLinkList);
-    ObDereferenceObject(DeviceObject);
+    if (DeviceObject) ObDereferenceObject(DeviceObject);
 
     if (!NT_SUCCESS(Status))
     {

@@ -349,6 +349,7 @@ PopSetSystemPowerState(SYSTEM_POWER_STATE PowerState, POWER_ACTION PowerAction)
         if (Fdo == DeviceObject)
         {
             DPRINT("An FDO was not attached\n");
+            ObDereferenceObject(Fdo);
             return STATUS_UNSUCCESSFUL;
         }
     }

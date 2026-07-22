@@ -256,7 +256,8 @@ IopStartRamdisk(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
         UNICODE_STRING NtSystemRoot;
         UNICODE_STRING DriveLetter = RTL_CONSTANT_STRING(L"\\??\\X:");
 
-        AnsiPath.Length = sprintf(Buffer, "X:%s", LoaderBlock->NtBootPathName);
+        AnsiPath.Length = _snprintf(Buffer, sizeof(Buffer) - 1, "X:%s", LoaderBlock->NtBootPathName);
+        Buffer[sizeof(Buffer) - 1] = ANSI_NULL;
         AnsiPath.MaximumLength = AnsiPath.Length + 1;
         AnsiPath.Buffer = Buffer;
         RtlInitEmptyUnicodeString(&NtSystemRoot,

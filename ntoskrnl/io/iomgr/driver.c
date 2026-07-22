@@ -585,7 +585,9 @@ IopInitializeDriverModule(
         return Status;
     }
 
-    /* Now reference it */
+    /* Now reference it. Note ObReferenceObjectByHandle zeroes its output
+     * pointer on failure, so keep our own copy for cleanup in that case. */
+    PDRIVER_OBJECT insertedDriverObject = driverObject;
     Status = ObReferenceObjectByHandle(hDriver,
                                        0,
                                        IoDriverObjectType,
@@ -598,6 +600,10 @@ IopInitializeDriverModule(
 
     if (!NT_SUCCESS(Status))
     {
+        /* The object is still permanent and in the \Driver\<name> namespace
+         * with no more references; make sure it actually goes away. */
+        ObMakeTemporaryObject(insertedDriverObject);
+        ObDereferenceObject(insertedDriverObject);
         ExFreePoolWithTag(nameInfo, TAG_IO); // container for RegistryPath
         RtlFreeUnicodeString(&ServiceName);
         RtlFreeUnicodeString(&DriverName);
@@ -1596,6 +1602,7 @@ IoCreateDriver(
     OBJECT_ATTRIBUTES ObjectAttributes;
     ULONG ObjectSize;
     PDRIVER_OBJECT DriverObject;
+    PDRIVER_OBJECT InsertedDriverObject;
     UNICODE_STRING ServiceKeyName;
     HANDLE hDriver;
     ULONG i, RetryCount = 0;
@@ -1704,7 +1711,9 @@ try_again:
 
     if (!NT_SUCCESS(Status)) return Status;
 
-    /* Now reference it */
+    /* Now reference it. Note ObReferenceObjectByHandle zeroes its output
+     * pointer on failure, so keep our own copy for cleanup in that case. */
+    InsertedDriverObject = DriverObject;
     Status = ObReferenceObjectByHandle(hDriver,
                                        0,
                                        IoDriverObjectType,
@@ -1718,8 +1727,8 @@ try_again:
     if (!NT_SUCCESS(Status))
     {
         /* Fail */
-        ObMakeTemporaryObject(DriverObject);
-        ObDereferenceObject(DriverObject);
+        ObMakeTemporaryObject(InsertedDriverObject);
+        ObDereferenceObject(InsertedDriverObject);
         return Status;
     }
 

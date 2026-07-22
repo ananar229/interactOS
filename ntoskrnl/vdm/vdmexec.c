@@ -32,8 +32,23 @@ VdmpGetVdmTib(OUT PVDM_TIB *VdmTib)
     Tib = NtCurrentTeb()->Vdm;
     if (!Tib) return STATUS_INVALID_SYSTEM_SERVICE;
 
-    /* Validate the size */
-    if (Tib->Size != sizeof(VDM_TIB)) return STATUS_INVALID_SYSTEM_SERVICE;
+    /* Tib is a raw pointer out of user-writable TEB storage, so a hostile or
+     * corrupted value must not be dereferenced unguarded. */
+    _SEH2_TRY
+    {
+        ProbeForRead(Tib, sizeof(VDM_TIB), sizeof(UCHAR));
+
+        /* Validate the size */
+        if (Tib->Size != sizeof(VDM_TIB))
+        {
+            _SEH2_YIELD(return STATUS_INVALID_SYSTEM_SERVICE);
+        }
+    }
+    _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+    {
+        _SEH2_YIELD(return STATUS_INVALID_SYSTEM_SERVICE);
+    }
+    _SEH2_END;
 
     /* Return it */
     *VdmTib = Tib;

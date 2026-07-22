@@ -856,7 +856,7 @@ ObpIncrementHandleCount(IN PVOID Object,
 
     /* Charge quota and remove the creator info flag */
     Status = ObpChargeQuotaForObject(ObjectHeader, ObjectType, &NewObject);
-    if (!NT_SUCCESS(Status)) return Status;
+    if (!NT_SUCCESS(Status)) goto Quickie;
 
     /* Check if the open is exclusive */
     if (HandleAttributes & OBJ_EXCLUSIVE)
@@ -1118,7 +1118,7 @@ ObpIncrementUnnamedHandleCount(IN PVOID Object,
 
     /* Charge quota and remove the creator info flag */
     Status = ObpChargeQuotaForObject(ObjectHeader, ObjectType, &NewObject);
-    if (!NT_SUCCESS(Status)) return Status;
+    if (!NT_SUCCESS(Status)) goto Quickie;
 
     /* Check if the open is exclusive */
     if (HandleAttributes & OBJ_EXCLUSIVE)

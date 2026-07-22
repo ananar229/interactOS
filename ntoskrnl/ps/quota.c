@@ -400,7 +400,7 @@ PspReturnProcessQuotaSpecifiedPool(
         if (QuotaBlock->QuotaEntry[QuotaType].Return > ReturnThreshold)
         {
             MmReturnPoolQuota(QuotaType, QuotaBlock->QuotaEntry[QuotaType].Return);
-            InterlockedExchangeSizeT(QuotaBlock->QuotaEntry[QuotaType].Return, 0);
+            InterlockedExchangeSizeT(&QuotaBlock->QuotaEntry[QuotaType].Return, 0);
         }
 
         /* And try to trim the limit */
@@ -1164,7 +1164,8 @@ PspSetQuotaLimits(
                                            TAG_QUOTA_BLOCK);
         if (QuotaBlock == NULL)
         {
-            ObDereferenceObject(Process);
+            /* Our caller (NtSetInformationProcess) already owns and releases
+             * its own reference on Process; don't drop an extra one here. */
             return STATUS_NO_MEMORY;
         }
 
