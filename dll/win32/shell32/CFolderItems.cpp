@@ -184,11 +184,20 @@ HRESULT STDMETHODCALLTYPE CFolderItem::put_Name(BSTR bs)
     if (SUCCEEDED(hr = psf->SetNameOf(GetHwnd(), pidlLeaf, bs, SHGDN_INFOLDER, &pidlNew)) && pidlNew)
     {
         LPITEMIDLIST pidlClone = ILClone(m_idlist);
-        ILRemoveLastID(pidlClone);
-        if (pidlClone && SUCCEEDED(SHILAppend(pidlNew, &pidlClone)))
+        if (!pidlClone)
         {
-            m_idlist.Free();
-            m_idlist.Attach(pidlClone);
+            /* SHILAppend below would take ownership of (and free) pidlNew;
+             * since it can't be called without a clone, free it ourselves. */
+            ILFree(pidlNew);
+        }
+        else
+        {
+            ILRemoveLastID(pidlClone);
+            if (SUCCEEDED(SHILAppend(pidlNew, &pidlClone)))
+            {
+                m_idlist.Free();
+                m_idlist.Attach(pidlClone);
+            }
         }
     }
     return hr;

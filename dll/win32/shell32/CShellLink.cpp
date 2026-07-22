@@ -512,6 +512,9 @@ static HRESULT Stream_ReadChunk(IStream* stm, LPVOID *data)
     if (FAILED(hr) || count != sizeof(size))
         return E_FAIL;
 
+    if (size < sizeof(size))
+        return E_FAIL;
+
     chunk = static_cast<sized_chunk *>(HeapAlloc(GetProcessHeap(), 0, size));
     if (!chunk)
         return E_OUTOFMEMORY;
@@ -531,7 +534,7 @@ static HRESULT Stream_ReadChunk(IStream* stm, LPVOID *data)
     return S_OK;
 }
 
-static BOOL Stream_LoadVolume(LOCAL_VOLUME_INFO *vol, CShellLink::volume_info *volume)
+static BOOL Stream_LoadVolume(LOCAL_VOLUME_INFO *vol, DWORD maxSize, CShellLink::volume_info *volume)
 {
     volume->serial = vol->dwVolSerial;
     volume->type = vol->dwType;
@@ -541,6 +544,12 @@ static BOOL Stream_LoadVolume(LOCAL_VOLUME_INFO *vol, CShellLink::volume_info *v
     if (vol->dwSize <= vol->dwVolLabelOfs)
         return FALSE;
     INT len = vol->dwSize - vol->dwVolLabelOfs;
+
+    /* vol->dwSize is attacker-controlled and not necessarily consistent with
+     * the actual record, so clamp against the real remaining buffer size too. */
+    if (vol->dwVolLabelOfs >= maxSize)
+        return FALSE;
+    len = min(len, (INT)(maxSize - vol->dwVolLabelOfs));
 
     LPSTR label = (LPSTR)vol;
     label += vol->dwVolLabelOfs; // FIXME: 0x14 Unicode
@@ -588,7 +597,7 @@ static HRESULT Stream_LoadLocation(IStream *stm,
         LOCAL_VOLUME_INFO *volume_info;
 
         volume_info = (LOCAL_VOLUME_INFO*) &p[loc->dwVolTableOfs];
-        Stream_LoadVolume(volume_info, volume);
+        Stream_LoadVolume(volume_info, loc->dwTotalSize - loc->dwVolTableOfs, volume);
     }
 
     /* if there's a local path, load it */

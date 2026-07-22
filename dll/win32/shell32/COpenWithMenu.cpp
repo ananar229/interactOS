@@ -1275,20 +1275,20 @@ COpenWithMenu::~COpenWithMenu()
 
         /* get item count */
         Count = GetMenuItemCount(m_hSubMenu);
-        if (Count == -1)
-            return;
-
-        /* setup menuitem info */
-        ZeroMemory(&mii, sizeof(mii));
-        mii.cbSize = sizeof(mii);
-        mii.fMask = MIIM_DATA | MIIM_FTYPE | MIIM_CHECKMARKS;
-
-        for(Index = 0; Index < Count; Index++)
+        if (Count != -1)
         {
-            if (GetMenuItemInfoW(m_hSubMenu, Index, TRUE, &mii))
+            /* setup menuitem info */
+            ZeroMemory(&mii, sizeof(mii));
+            mii.cbSize = sizeof(mii);
+            mii.fMask = MIIM_DATA | MIIM_FTYPE | MIIM_CHECKMARKS;
+
+            for(Index = 0; Index < Count; Index++)
             {
-                if (mii.hbmpChecked)
-                    DeleteObject(mii.hbmpChecked);
+                if (GetMenuItemInfoW(m_hSubMenu, Index, TRUE, &mii))
+                {
+                    if (mii.hbmpChecked)
+                        DeleteObject(mii.hbmpChecked);
+                }
             }
         }
     }

@@ -572,7 +572,7 @@ static INT_PTR CALLBACK RunDlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARA
                     LRESULT lRet;
                     HWND htxt = GetDlgItem(hwnd, IDC_RUNDLG_EDITPATH);
                     INT ic;
-                    WCHAR *psz, *pszExpanded, *parent = NULL;
+                    WCHAR *psz, *pszExpanded, *parent = NULL, *parentExpanded = NULL;
                     DWORD cchExpand;
                     SHELLEXECUTEINFOW sei = { sizeof(sei) };
                     NMRUNFILEDLGW nmrfd;
@@ -634,7 +634,7 @@ static INT_PTR CALLBACK RunDlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARA
                     else if (prfdp->uFlags & RFF_CALCDIRECTORY)
                     {
                         sei.lpDirectory = parent = RunDlg_GetParentDir(sei.lpFile);
-                        pszStartDir = parent = RunDlg_GetParentDir(pszExpanded);
+                        pszStartDir = parentExpanded = RunDlg_GetParentDir(pszExpanded);
                     }
                     else
                     {
@@ -701,6 +701,7 @@ static INT_PTR CALLBACK RunDlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARA
                     }
 
                     HeapFree(GetProcessHeap(), 0, parent);
+                    HeapFree(GetProcessHeap(), 0, parentExpanded);
                     HeapFree(GetProcessHeap(), 0, psz);
                     if (psz != pszExpanded)
                         HeapFree(GetProcessHeap(), 0, pszExpanded);

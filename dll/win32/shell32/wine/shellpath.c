@@ -2067,12 +2067,15 @@ static HRESULT _SHGetUserShellFolderPath(HKEY rootKey, HANDLE hToken, LPCWSTR us
         return E_FAIL;
     }
 
-    dwPathLen = MAX_PATH * sizeof(WCHAR);
+    dwPathLen = (MAX_PATH - 1) * sizeof(WCHAR);
     if (!RegQueryValueExW(userShellFolderKey, value, NULL, &dwType,
      (LPBYTE)path, &dwPathLen) && (dwType == REG_EXPAND_SZ || dwType == REG_SZ))
     {
         LONG ret;
 
+        /* dwPathLen is capped to MAX_PATH-1 WCHARs above, so the NUL below
+         * always lands within the MAX_PATH-sized path buffer even if the
+         * registry value wasn't itself NUL-terminated. */
         path[dwPathLen / sizeof(WCHAR)] = '\0';
         if (dwType == REG_EXPAND_SZ && path[0] == '%')
         {

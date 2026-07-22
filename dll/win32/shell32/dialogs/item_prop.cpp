@@ -57,6 +57,8 @@ struct ShellPropSheetDialog
     {
         if (pData->InitString)
             SHFree(pData->InitString);
+        if (pData->hEvent)
+            CloseHandle(pData->hEvent);
         SHFree(pData);
     }
 
@@ -101,6 +103,11 @@ struct ShellPropSheetDialog
                 // SHOpenPropSheetW is modal and we cannot wait for it to complete.
                 CoWaitForMultipleHandles(COWAIT_DEFAULT, INFINITE, 1, &hEvent, &index);
                 CloseHandle(hEvent);
+                // pData (and pData->hEvent) is still owned by the background
+                // thread (ShowPropertiesThread), which frees it later via
+                // FreeData() - clear the handle here so that later close
+                // doesn't double-close what we just closed.
+                pData->hEvent = NULL;
             }
         }
         else

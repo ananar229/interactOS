@@ -1230,6 +1230,7 @@ HRESULT CMenuStaticToolbar::FillToolbar(BOOL clearFirst)
             if (FAILED_UNEXPECTEDLY(hr))
             {
                 delete sminfo;
+                HeapFree(GetProcessHeap(), 0, info.dwTypeData);
                 return hr;
             }
 
@@ -1407,6 +1408,7 @@ HRESULT CMenuSFToolbar::FillToolbar(BOOL clearFirst)
         {
             ++i;
             CoTaskMemFree(MenuString);
+            ILFree(item);
             continue;
         }
 

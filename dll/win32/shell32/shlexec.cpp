@@ -979,10 +979,13 @@ static UINT SHELL_FindExecutableByVerb(LPCWSTR lpVerb, LPWSTR key, LPWSTR classn
     wcscat(classname, verb);
     wcscat(classname, L"\\command");
 
+    LONG maxCommandChars = commandlen / sizeof(WCHAR);
     if (RegQueryValueW(HKEY_CLASSES_ROOT, classname, command,
                        &commandlen) == ERROR_SUCCESS)
     {
         commandlen /= sizeof(WCHAR);
+        if (commandlen >= maxCommandChars)
+            commandlen = maxCommandChars - 1;
         if (key) wcscpy(key, classname);
 #if 0
         LPWSTR tmp;
@@ -1356,7 +1359,11 @@ static unsigned dde_connect(const WCHAR* key, const WCHAR* start, WCHAR* ddeexec
             *ptr = 0;
 
         ptr = const_cast<LPWSTR>(strrchrW(app, '.'));
-        assert(ptr);
+        if (!ptr)
+        {
+            FIXME("resolved app path %s has no extension\n", debugstr_w(app));
+            return 2;
+        }
         *ptr = 0;
     }
 

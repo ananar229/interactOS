@@ -545,7 +545,12 @@ STDMETHODIMP RecycleBin5::RemoveFromDatabase(
 STDMETHODIMP RecycleBin5::OnClosing(_In_ IRecycleBinEnumList *prbel)
 {
     TRACE("(%p, %p)\n", this, prbel);
-    m_EnumeratorCount--;
+    /* An enumerator whose construction failed before EnumObjects ever
+     * incremented the count (e.g. RecycleBin5Enum::Init failing) still runs
+     * its destructor, which unconditionally calls OnClosing. Guard against
+     * underflowing below zero in that case. */
+    if (m_EnumeratorCount != 0)
+        m_EnumeratorCount--;
     return S_OK;
 }
 

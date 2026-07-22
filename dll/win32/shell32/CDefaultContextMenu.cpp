@@ -1086,6 +1086,7 @@ HRESULT CDefaultContextMenu::DoPaste(LPCMINVOKECOMMANDINFOEX lpcmi, BOOL bLink)
             ERR("No drop effect obtained\n");
         }
         GlobalUnlock(medium2.hGlobal);
+        ReleaseStgMedium(&medium2);
     }
 
     if (bLink)
@@ -1327,10 +1328,9 @@ CDefaultContextMenu::DoCreateNewFolder(
 
     hr = psv->SelectItem(pidlNewItem, SVSI_DESELECTOTHERS | SVSI_EDIT | SVSI_ENSUREVISIBLE |
                           SVSI_FOCUSED | SVSI_SELECT);
+    SHFree(pidl);
     if (FAILED_UNEXPECTEDLY(hr))
         return hr;
-
-    SHFree(pidl);
 
     return S_OK;
 }

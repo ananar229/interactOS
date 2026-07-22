@@ -600,7 +600,7 @@ RSHELL_CStartMenu_CreateInstance(REFIID riid, void **ppv)
     CComPtr<IDeskBar> pDeskBar;
 
     HRESULT hr;
-    IShellFolder * psf;
+    CComPtr<IShellFolder> psf;
 
     LPITEMIDLIST pidlProgramsAbsolute;
     LPITEMIDLIST pidlPrograms;
@@ -627,6 +627,10 @@ RSHELL_CStartMenu_CreateInstance(REFIID riid, void **ppv)
     pCallback->Initialize(pShellMenu, pBandSite, pDeskBar);
 
     hr = pShellMenu->Initialize(pCallback, IDM_STARTMENUROOT, 0, SMINIT_TOPLEVEL | SMINIT_VERTICAL);
+    // pShellMenu now holds its own reference (via IShellMenuCallback), so release
+    // the extra manual AddRef taken above to work around CComObject::CreateInstance
+    // returning a zero-refcount object, regardless of success/failure here.
+    pCallback->Release();
     if (FAILED_UNEXPECTEDLY(hr))
         return hr;
 

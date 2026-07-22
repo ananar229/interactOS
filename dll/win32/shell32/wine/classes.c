@@ -233,10 +233,8 @@ BOOL HCR_GetExecuteCommandW( HKEY hkeyClass, LPCWSTR szClass, LPCWSTR szVerb, LP
         if (HCR_GetDefaultVerbW(hkeyClass, szVerb, sTempVerb, sizeof(sTempVerb)/sizeof(sTempVerb[0])))
         {
             WCHAR sTemp[MAX_PATH];
-            lstrcpyW(sTemp, L"shell\\");
-            lstrcatW(sTemp, sTempVerb);
-            lstrcatW(sTemp, L"\\command");
-            ret = (ERROR_SUCCESS == SHGetValueW(hkeyClass, sTemp, NULL, NULL, szDest, &len));
+            if (SUCCEEDED(StringCchPrintfW(sTemp, _countof(sTemp), L"shell\\%s\\command", sTempVerb)))
+                ret = (ERROR_SUCCESS == SHGetValueW(hkeyClass, sTemp, NULL, NULL, szDest, &len));
         }
         if (szClass)
             RegCloseKey(hkeyClass);

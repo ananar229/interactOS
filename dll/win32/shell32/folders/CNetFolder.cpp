@@ -257,7 +257,7 @@ HRESULT WINAPI CNetFolder::ParseDisplayName(HWND hwndOwner, LPBC pbcReserved, LP
 
     /* Can we use a CFSFolder on that path? */
     DWORD attrs = GetFileAttributes(lpszDisplayName);
-    if ((attrs & FILE_ATTRIBUTE_DIRECTORY))
+    if (attrs != INVALID_FILE_ATTRIBUTES && (attrs & FILE_ATTRIBUTE_DIRECTORY))
     {
         if (pchEaten)
             *pchEaten = 0;        /* strange but like the original */

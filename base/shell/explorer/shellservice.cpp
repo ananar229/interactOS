@@ -57,6 +57,7 @@ HRESULT InitShellServices(HDPA * phdpa)
     HDPA    hdpa;
     HRESULT hr = S_OK;
     int     count = 0;
+    DWORD   index = 0;
 
     *phdpa = NULL;
 
@@ -78,9 +79,14 @@ HRESULT InitShellServices(HDPA * phdpa)
         DWORD   name_len = MAX_PATH;
         DWORD   value_len = sizeof(value); /* byte count! */
 
-        ret = RegEnumValueW(hkey, count, name, &name_len, 0, &type, (LPBYTE) &value, &value_len);
+        ret = RegEnumValueW(hkey, index, name, &name_len, 0, &type, (LPBYTE) &value, &value_len);
         if (ret)
             break;
+
+        /* Advance the enum index unconditionally (independently of count,
+         * which tracks successfully created services) so a value with an
+         * unexpected type doesn't get re-queried forever below. */
+        index++;
 
         if (type != REG_SZ)
         {
@@ -103,7 +109,6 @@ HRESULT InitShellServices(HDPA * phdpa)
         }
 
         DPA_AppendPtr(hdpa, pOct);
-
         count++;
     }
     while (1);

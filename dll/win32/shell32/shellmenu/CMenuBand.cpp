@@ -943,6 +943,9 @@ HRESULT  CMenuBand::_KeyboardItemChange(DWORD change)
         }
     }
 
+    if (!tb)
+        return S_FALSE;
+
     // Ask the first toolbar to change
     hr = tb->KeyboardItemChange(change);
 
@@ -1010,6 +1013,8 @@ HRESULT CMenuBand::_MenuItemSelect(DWORD changeType)
     {
         CMenuToolbarBase * tb = m_hotBar;
         int item = m_hotItem;
+        if (!tb)
+            break;
         tb->PrepareExecuteItem(item);
         if (m_subMenuParent)
         {

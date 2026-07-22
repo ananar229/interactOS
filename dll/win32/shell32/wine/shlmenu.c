@@ -221,6 +221,7 @@ static int FM_InitMenuPopup(HMENU hmenu, LPCITEMIDLIST pAlternatePidl)
 		}
 
 		NumberOfItems++;
+		SHFree(pidlTemp);
 	      }
 	      IEnumIDList_Release (lpe);
 	    }

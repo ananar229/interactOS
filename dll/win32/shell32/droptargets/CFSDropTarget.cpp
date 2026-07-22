@@ -89,7 +89,7 @@ HRESULT CFSDropTarget::_CopyItems(IDataObject *pDO, IShellFolder * pSFFrom,
 {
     HRESULT ret;
     WCHAR wszDstPath[MAX_PATH + 1] = {0};
-    PWCHAR pwszSrcPathsList = (PWCHAR) HeapAlloc(GetProcessHeap(), 0, MAX_PATH * sizeof(WCHAR) * cidl + 1);
+    PWCHAR pwszSrcPathsList = (PWCHAR) HeapAlloc(GetProcessHeap(), 0, (MAX_PATH * cidl + 1) * sizeof(WCHAR));
     if (!pwszSrcPathsList)
         return E_OUTOFMEMORY;
 
@@ -758,6 +758,7 @@ HRESULT CFSDropTarget::_DoDrop(IDataObject *pDataObject,
             if (!lpdf)
             {
                 ERR("Error locking global\n");
+                ReleaseStgMedium(&medium);
                 return E_FAIL;
             }
             pszSrcList = (LPWSTR) (((byte*) lpdf) + lpdf->pFiles);
@@ -777,6 +778,8 @@ HRESULT CFSDropTarget::_DoDrop(IDataObject *pDataObject,
                 hr = E_FAIL;
             }
 
+            GlobalUnlock(medium.hGlobal);
+            ReleaseStgMedium(&medium);
             return hr;
         }
         ERR("Error calling GetData\n");

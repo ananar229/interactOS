@@ -104,7 +104,14 @@ HGLOBAL RenderHDROP(LPITEMIDLIST pidlRoot, LPITEMIDLIST * apidl, UINT cidl)
 	/* Fill the structure */
 	hGlobal = GlobalAlloc(GHND|GMEM_SHARE, size);
 #ifdef __REACTOS__
-        if(!hGlobal) goto cleanup;
+        if(!hGlobal)
+        {
+            /* The loop below (which normally frees each pidls[i] as it
+             * consumes it) never runs on this path, so free them here. */
+            for (i = 0; i < cidl; i++)
+                ILFree(pidls[i]);
+            goto cleanup;
+        }
 #else
 	if(!hGlobal) return hGlobal;
 #endif

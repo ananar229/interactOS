@@ -488,7 +488,7 @@ HRESULT STDMETHODCALLTYPE CMergedFolder::ParseDisplayName(
         *pchEaten = lstrlenW(info.parseName);
 
     if (pdwAttributes)
-        *pdwAttributes = info.parent->GetAttributesOf(1, (LPCITEMIDLIST*)ppidl, pdwAttributes);
+        info.parent->GetAttributesOf(1, (LPCITEMIDLIST*)ppidl, pdwAttributes);
 
     return S_OK;
 }

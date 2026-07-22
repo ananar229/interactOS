@@ -2347,6 +2347,7 @@ HPSXA WINAPI SHCreatePropSheetExtArrayEx(HKEY hKey, LPCWSTR pszSubKey, UINT max_
                             {
                                 /* Add the IShellPropSheetExt instance to the array */
                                 psxa->pspsx[psxa->uiCount++] = pspsx;
+                                psxi->lpVtbl->Release(psxi);
                             }
                             else
                             {

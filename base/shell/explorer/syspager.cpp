@@ -462,7 +462,17 @@ UINT WINAPI CIconWatcher::WatcherThread(_In_opt_ LPVOID lpParam)
         else if ((Status >= WAIT_OBJECT_0 + 1) && (Status < Size))
         {
             IconWatcherData *Icon;
+            EnterCriticalSection(&This->m_ListLock);
             Icon = This->GetListEntry(NULL, WatchList[Status], false);
+            LeaveCriticalSection(&This->m_ListLock);
+
+            if (!Icon)
+            {
+                // Already removed by the UI thread (AddIconToWatcher/
+                // RemoveIconFromWatcher) in the window between the wait
+                // above and re-acquiring the lock just now.
+                continue;
+            }
 
             TRACE("Pid %lu owns a notification icon and has stopped without deleting it. We'll cleanup on its behalf\n", Icon->ProcessId);
 

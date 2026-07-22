@@ -255,7 +255,8 @@ BOOL CControlPanelEnum::CreateCPanelEnumList(DWORD dwFlags)
                     continue;
 
                 if (!(wfd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-                    wcscpy(p, wfd.cFileName);
+                    if (FAILED(StringCchCopyW(p, MAX_PATH - (p - szPath), wfd.cFileName)))
+                        continue;
                     if (wcscmp(wfd.cFileName, L"ncpa.cpl"))
                         RegisterCPanelApp(szPath);
                 }

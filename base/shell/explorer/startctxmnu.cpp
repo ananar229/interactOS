@@ -243,6 +243,8 @@ public:
     }
 
     CStartMenuBtnCtxMenu()
+        : m_Owner(NULL)
+        , m_FolderPidl(NULL)
     {
     }
 

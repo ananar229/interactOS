@@ -68,6 +68,12 @@ HRESULT CTrayShowDesktopButton::DoCreate(HWND hwndParent)
         return E_FAIL;
 
     // Get desktop icon
+    if (m_icon)
+    {
+        // DoCreate can run again on the same instance (e.g. taskbar rebuild)
+        DestroyIcon(m_icon);
+        m_icon = NULL;
+    }
     bool bIconRetrievalFailed = ExtractIconExW(L"imageres.dll", -IDI_IMAGERES_DESKTOP, NULL, &m_icon, 1) == UINT_MAX;
     if (bIconRetrievalFailed || !m_icon)
         ExtractIconExW(L"shell32.dll", -IDI_SHELL32_DESKTOP, NULL, &m_icon, 1);
