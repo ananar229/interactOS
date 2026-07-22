@@ -891,14 +891,19 @@
 #define FCIDM_SHVIEW_REPORTVIEW  0x702C
 #define FCIDM_SHVIEW_TILEVIEW    0x702E
 /* 0x7030-0x703f are used by the shellbrowser */
-/* InteractOS extension: Miller Columns is not a real Windows FOLDERVIEWMODE,
- * so it deliberately does NOT participate in the FCIDM_SHVIEW_BIGICON..
- * 0x702F contiguous "dwCmdID - FCIDM_SHVIEW_BIGICON + 1 == FVM_*" arithmetic
- * used by CDefView::OnCommand; it gets its own explicit command handling. */
-#define FCIDM_SHVIEW_MILLERCOLUMNS 0x7030
 #define FCIDM_SHVIEW_AUTOARRANGE 0x7031
 #define FCIDM_SHVIEW_SNAPTOGRID  0x7032
 #define FCIDM_SHVIEW_ALIGNTOGRID 0x7033
+
+/* InteractOS extension: Miller Columns is not a real Windows FOLDERVIEWMODE,
+ * so it deliberately does NOT participate in the FCIDM_SHVIEW_BIGICON..
+ * 0x702F contiguous "dwCmdID - FCIDM_SHVIEW_BIGICON + 1 == FVM_*" arithmetic
+ * used by CDefView::OnCommand. It also deliberately sits outside the
+ * 0x7030-0x703f range reserved for the shellbrowser above (unlike
+ * FCIDM_SHVIEW_AUTOARRANGE/SNAPTOGRID/ALIGNTOGRID, which are pre-existing
+ * and not touched here) to avoid colliding with real shellbrowser command
+ * IDs; it gets its own explicit command handling. */
+#define FCIDM_SHVIEW_MILLERCOLUMNS 0x7040
 
 #define FCIDM_SHVIEW_HELP       0x7041
 #define FCIDM_SHVIEW_NEWLINK    0x7052

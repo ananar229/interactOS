@@ -252,7 +252,7 @@ HRESULT CMillerColumnsView::FillColumn(HWND hWndList, IShellFolder *psf)
     if (hr != S_OK)
         return FAILED(hr) ? hr : S_OK;
 
-    ListView_SetRedraw(hWndList, FALSE);
+    SendMessageW(hWndList, WM_SETREDRAW, FALSE, 0);
 
     PITEMID_CHILD pidl;
     DWORD dwFetched;
@@ -272,6 +272,7 @@ HRESULT CMillerColumnsView::FillColumn(HWND hWndList, IShellFolder *psf)
         iItem++;
     }
 
-    ListView_SetRedraw(hWndList, TRUE);
+    SendMessageW(hWndList, WM_SETREDRAW, TRUE, 0);
+    InvalidateRect(hWndList, NULL, TRUE);
     return S_OK;
 }
