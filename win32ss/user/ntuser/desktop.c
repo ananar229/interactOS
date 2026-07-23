@@ -821,10 +821,10 @@ IntResolveDesktop(
     StrSize = max(StrSize, (USHORT)MemSize);
 
     /* Size for the OBJECT_ATTRIBUTES */
-    MemSize = ALIGN_UP(sizeof(OBJECT_ATTRIBUTES), sizeof(PVOID));
+    MemSize = ALIGN_UP(sizeof(OBJECT_ATTRIBUTES), PVOID);
 
     /* Add the string size */
-    MemSize += ALIGN_UP(sizeof(UNICODE_STRING), sizeof(PVOID));
+    MemSize += ALIGN_UP(sizeof(UNICODE_STRING), PVOID);
     MemSize += StrSize;
 
     /* Allocate the memory in user-mode */
@@ -841,11 +841,11 @@ IntResolveDesktop(
     }
 
     ObjectName = (PUNICODE_STRING)((ULONG_PTR)ObjectAttributes +
-                     ALIGN_UP(sizeof(OBJECT_ATTRIBUTES), sizeof(PVOID)));
+                     ALIGN_UP(sizeof(OBJECT_ATTRIBUTES), PVOID));
 
     RtlInitEmptyUnicodeString(ObjectName,
                               (PWCHAR)((ULONG_PTR)ObjectName +
-                                  ALIGN_UP(sizeof(UNICODE_STRING), sizeof(PVOID))),
+                                  ALIGN_UP(sizeof(UNICODE_STRING), PVOID)),
                               StrSize);
 
 

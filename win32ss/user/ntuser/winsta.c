@@ -666,7 +666,7 @@ BuildUserModeWindowStationName(
     else
     {
         /* The TEB's static unicode string is too small, allocate some user-mode virtual memory */
-        MemSize += ALIGN_UP(sizeof(UNICODE_STRING), sizeof(PVOID));
+        MemSize += ALIGN_UP(sizeof(UNICODE_STRING), PVOID);
 
         /* Allocate the memory in user-mode */
         Status = ZwAllocateVirtualMemory(ZwCurrentProcess(),
@@ -683,7 +683,7 @@ BuildUserModeWindowStationName(
 
         RtlInitEmptyUnicodeString(*WindowStationName,
                                   (PWCHAR)((ULONG_PTR)*WindowStationName +
-                                      ALIGN_UP(sizeof(UNICODE_STRING), sizeof(PVOID))),
+                                      ALIGN_UP(sizeof(UNICODE_STRING), PVOID)),
                                   StrSize);
     }
 

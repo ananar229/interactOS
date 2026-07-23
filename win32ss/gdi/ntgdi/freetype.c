@@ -1511,7 +1511,7 @@ UINT FASTCALL IntGetCharSet(INT nIndex, FT_ULong CodePageRange1)
 
     for (BitIndex = 0; BitIndex < MAXTCIINDEX; ++BitIndex)
     {
-        if (CodePageRange1 & (1 << BitIndex))
+        if (CodePageRange1 & (1U << BitIndex))
         {
             CharSet = g_FontTci[BitIndex].ciCharset;
             if ((nIndex >= 0) && (nCount == (UINT)nIndex))
@@ -1710,7 +1710,7 @@ IntGdiLoadFontsFromMemory(PGDI_LOAD_FONT pLoadFont,
 
         for (BitIndex = 0; BitIndex < MAXTCIINDEX; ++BitIndex)
         {
-            if (os2_ulCodePageRange1 & (1 << BitIndex))
+            if (os2_ulCodePageRange1 & (1U << BitIndex))
             {
                 if (g_FontTci[BitIndex].ciCharset == DEFAULT_CHARSET)
                     continue;
