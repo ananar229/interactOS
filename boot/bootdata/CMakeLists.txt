@@ -186,6 +186,10 @@ add_livecd_shortcut("Registry Editor"
 add_livecd_shortcut("Task Manager"
     "shell:system\\taskmgr.exe" ICON_INDEX 0
     DESTINATION "${dir_startmenu_systemtools}")
+add_livecd_shortcut("Network Tool"
+    "shell:system\\networktool.exe" ICON_INDEX 0
+    WORKDIR "${envvar_homedrive}${envvar_homepath}"
+    DESTINATION "${dir_startmenu_systemtools}")
 add_livecd_shortcut("Calculator"
     "shell:system\\calc.exe" ICON_INDEX 0
     WORKDIR "${envvar_homedrive}${envvar_homepath}"
