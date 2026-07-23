@@ -2439,7 +2439,18 @@ IntCreateDesktop(
     /* In case the object was not created (eg if it existed), return now */
     if (Context == FALSE)
     {
-        TRACE("IntCreateDesktop opened desktop '%wZ'\n", ObjectAttributes->ObjectName);
+        /* ObjectAttributes may be user-mode-supplied and racy: only its
+         * fixed-size struct is guaranteed probed by the caller, not the
+         * string it embeds, so guard this debug print against a fault. */
+        _SEH2_TRY
+        {
+            TRACE("IntCreateDesktop opened desktop '%wZ'\n", ObjectAttributes->ObjectName);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            TRACE("IntCreateDesktop opened desktop (name unavailable)\n");
+        }
+        _SEH2_END;
         Status = STATUS_SUCCESS;
         goto Quit;
     }
@@ -2644,7 +2655,18 @@ NtUserOpenDesktop(
         return NULL;
     }
 
-    TRACE("Opened desktop %S with handle 0x%p\n", ObjectAttributes->ObjectName->Buffer, Desktop);
+    /* ObjectAttributes is the raw syscall parameter here (never probed by
+     * this function), and ObjectName may legitimately be NULL - guard this
+     * debug print instead of dereferencing it unconditionally. */
+    _SEH2_TRY
+    {
+        TRACE("Opened desktop %S with handle 0x%p\n", ObjectAttributes->ObjectName->Buffer, Desktop);
+    }
+    _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+    {
+        TRACE("Opened desktop (name unavailable) with handle 0x%p\n", Desktop);
+    }
+    _SEH2_END;
 
     return Desktop;
 }

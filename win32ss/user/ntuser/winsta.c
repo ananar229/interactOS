@@ -477,8 +477,19 @@ IntCreateWindowStation(
                                 (PVOID*)&hWinSta);
     if (NT_SUCCESS(Status))
     {
-        TRACE("IntCreateWindowStation opened window station '%wZ'\n",
-              ObjectAttributes->ObjectName);
+        /* ObjectAttributes is the raw pointer passed by our caller - not
+         * reprobed here, so guard this debug print instead of dereferencing
+         * it (and the UNICODE_STRING content it embeds) unconditionally. */
+        _SEH2_TRY
+        {
+            TRACE("IntCreateWindowStation opened window station '%wZ'\n",
+                  ObjectAttributes->ObjectName);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            TRACE("IntCreateWindowStation opened window station (name unavailable)\n");
+        }
+        _SEH2_END;
         *phWinSta = hWinSta;
         return Status;
     }
@@ -499,8 +510,17 @@ IntCreateWindowStation(
                             (PVOID*)&WindowStation);
     if (!NT_SUCCESS(Status))
     {
-        ERR("ObCreateObject failed for window station '%wZ', Status 0x%08lx\n",
-            ObjectAttributes->ObjectName, Status);
+        _SEH2_TRY
+        {
+            ERR("ObCreateObject failed for window station '%wZ', Status 0x%08lx\n",
+                ObjectAttributes->ObjectName, Status);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            ERR("ObCreateObject failed for window station (name unavailable), Status 0x%08lx\n",
+                Status);
+        }
+        _SEH2_END;
         SetLastNtError(Status);
         return Status;
     }
@@ -514,8 +534,17 @@ IntCreateWindowStation(
     Status = RtlCreateAtomTable(37, &WindowStation->AtomTable);
     if (!NT_SUCCESS(Status))
     {
-        ERR("RtlCreateAtomTable failed for window station '%wZ', Status 0x%08lx\n",
-            ObjectAttributes->ObjectName, Status);
+        _SEH2_TRY
+        {
+            ERR("RtlCreateAtomTable failed for window station '%wZ', Status 0x%08lx\n",
+                ObjectAttributes->ObjectName, Status);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            ERR("RtlCreateAtomTable failed for window station (name unavailable), Status 0x%08lx\n",
+                Status);
+        }
+        _SEH2_END;
         ObDereferenceObject(WindowStation);
         SetLastNtError(Status);
         return Status;
@@ -565,8 +594,17 @@ IntCreateWindowStation(
         WindowStation->Flags |= WSS_NOIO;
     }
 
-    TRACE("IntCreateWindowStation created window station '%wZ' object 0x%p handle 0x%p\n",
-          ObjectAttributes->ObjectName, WindowStation, hWinSta);
+    _SEH2_TRY
+    {
+        TRACE("IntCreateWindowStation created window station '%wZ' object 0x%p handle 0x%p\n",
+              ObjectAttributes->ObjectName, WindowStation, hWinSta);
+    }
+    _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+    {
+        TRACE("IntCreateWindowStation created window station (name unavailable) object 0x%p handle 0x%p\n",
+              WindowStation, hWinSta);
+    }
+    _SEH2_END;
 
     *phWinSta = hWinSta;
     EngSetLastError(ERROR_SUCCESS);
@@ -822,14 +860,32 @@ NtUserCreateWindowStation(
 
     if (NT_SUCCESS(Status))
     {
-        TRACE("NtUserCreateWindowStation created window station '%wZ' with handle 0x%p\n",
-              ObjectAttributes->ObjectName, hWinSta);
+        _SEH2_TRY
+        {
+            TRACE("NtUserCreateWindowStation created window station '%wZ' with handle 0x%p\n",
+                  ObjectAttributes->ObjectName, hWinSta);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            TRACE("NtUserCreateWindowStation created window station (name unavailable) with handle 0x%p\n",
+                  hWinSta);
+        }
+        _SEH2_END;
     }
     else
     {
         ASSERT(hWinSta == NULL);
-        ERR("NtUserCreateWindowStation failed to create window station '%wZ', Status 0x%08lx\n",
-            ObjectAttributes->ObjectName, Status);
+        _SEH2_TRY
+        {
+            ERR("NtUserCreateWindowStation failed to create window station '%wZ', Status 0x%08lx\n",
+                ObjectAttributes->ObjectName, Status);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            ERR("NtUserCreateWindowStation failed to create window station (name unavailable), Status 0x%08lx\n",
+                Status);
+        }
+        _SEH2_END;
     }
 
     /* Try to restore the user's ObjectAttributes and release the window station name */
@@ -972,14 +1028,32 @@ NtUserOpenWindowStation(
                                 (PVOID*)&hWinSta);
     if (NT_SUCCESS(Status))
     {
-        TRACE("NtUserOpenWindowStation opened window station '%wZ' with handle 0x%p\n",
-              ObjectAttributes->ObjectName, hWinSta);
+        _SEH2_TRY
+        {
+            TRACE("NtUserOpenWindowStation opened window station '%wZ' with handle 0x%p\n",
+                  ObjectAttributes->ObjectName, hWinSta);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            TRACE("NtUserOpenWindowStation opened window station (name unavailable) with handle 0x%p\n",
+                  hWinSta);
+        }
+        _SEH2_END;
     }
     else
     {
         ASSERT(hWinSta == NULL);
-        ERR("NtUserOpenWindowStation failed to open window station '%wZ', Status 0x%08lx\n",
-            ObjectAttributes->ObjectName, Status);
+        _SEH2_TRY
+        {
+            ERR("NtUserOpenWindowStation failed to open window station '%wZ', Status 0x%08lx\n",
+                ObjectAttributes->ObjectName, Status);
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            ERR("NtUserOpenWindowStation failed to open window station (name unavailable), Status 0x%08lx\n",
+                Status);
+        }
+        _SEH2_END;
     }
 
     /* Try to restore the user's ObjectAttributes and release the window station name */
