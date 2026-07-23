@@ -1936,7 +1936,27 @@ DIB_CreateDIBSection(
     bm.bmType = 0;
     bm.bmWidth = bi->biWidth;
     bm.bmHeight = effHeight;
-    bm.bmWidthBytes = ovr_pitch ? ovr_pitch : WIDTH_BYTES_ALIGN32(bm.bmWidth, bi->biBitCount);
+
+    if (ovr_pitch)
+    {
+        bm.bmWidthBytes = ovr_pitch;
+    }
+    else
+    {
+        /* biWidth/biBitCount are caller-controlled (BITMAPINFOHEADER from
+         * CreateDIBSection). WIDTH_BYTES_ALIGN32 multiplies them in 32-bit
+         * arithmetic, which can silently wrap for large values - compute it
+         * in 64 bit instead and reject anything that wouldn't fit back into
+         * the LONG bmWidthBytes field. */
+        ULONGLONG cjWidthBytes64 = (((ULONGLONG)bm.bmWidth * bi->biBitCount + 31) & ~31ULL) >> 3;
+        if (cjWidthBytes64 > MAXLONG)
+        {
+            DPRINT1("DIB_CreateDIBSection: bitmap width overflow (width=%ld bpp=%u)\n",
+                    bm.bmWidth, bi->biBitCount);
+            return (HBITMAP)NULL;
+        }
+        bm.bmWidthBytes = (LONG)cjWidthBytes64;
+    }
 
     bm.bmPlanes = bi->biPlanes;
     bm.bmBitsPixel = bi->biBitCount;
@@ -1944,8 +1964,26 @@ DIB_CreateDIBSection(
 
     // Get storage location for DIB bits.  Only use biSizeImage if it's valid and
     // we're dealing with a compressed bitmap.  Otherwise, use width * height.
-    totalSize = (bi->biSizeImage && (bi->biCompression != BI_RGB) && (bi->biCompression != BI_BITFIELDS))
-                ? bi->biSizeImage : (ULONG)(bm.bmWidthBytes * effHeight);
+    if (bi->biSizeImage && (bi->biCompression != BI_RGB) && (bi->biCompression != BI_BITFIELDS))
+    {
+        totalSize = bi->biSizeImage;
+    }
+    else
+    {
+        /* Same overflow concern as above: bmWidthBytes * effHeight can wrap
+         * a 32-bit ULONG for large bitmaps, yielding an undersized
+         * allocation while the bitmap object still reports the original,
+         * much larger dimensions - any later read/write through it would
+         * then run past the actual buffer. */
+        ULONGLONG cjSize64 = (ULONGLONG)bm.bmWidthBytes * (ULONGLONG)effHeight;
+        if (cjSize64 > MAXULONG)
+        {
+            DPRINT1("DIB_CreateDIBSection: bitmap size overflow (width=%ld height=%d bpp=%u)\n",
+                    bm.bmWidth, effHeight, bi->biBitCount);
+            return (HBITMAP)NULL;
+        }
+        totalSize = (ULONG)cjSize64;
+    }
 
     if (section)
     {
