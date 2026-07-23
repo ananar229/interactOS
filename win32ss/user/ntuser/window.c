@@ -2301,6 +2301,7 @@ co_UserCreateWindowEx(CREATESTRUCTW* Cs,
    UserRefObjectCo(Window, &Ref);
    UserDereferenceObject(Window);
    ObDereferenceObject(WinSta);
+   WinSta = NULL; /* Already dereferenced - don't do it again in cleanup */
 
    /* NCCREATE, WM_NCCALCSIZE and Hooks need the original values */
    Cs->lpszName = (LPCWSTR) WindowName;
@@ -2596,6 +2597,7 @@ cleanup:
    if (pCbtCreate) ExFreePoolWithTag(pCbtCreate, TAG_HOOK);
    if (pszName) UserHeapFree(pszName);
    if (pszClass) UserHeapFree(pszClass);
+   if (WinSta) ObDereferenceObject(WinSta);
 
    if (Window)
    {
