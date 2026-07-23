@@ -36,8 +36,8 @@
 **InteractOS** is a fork of [ReactOS](https://reactos.org/), created to explore how far AI can be used to extend and build out its features.
 
 Some new features:
--Miller Columns in Explorer
--Some Bugfixes
+-Miller Columns in Explorer.
+-Some Bugfixes.
 
 
 ## What is ReactOS?
