@@ -3,6 +3,7 @@ spec2def(shfolder.dll shfolder.spec)
 
 list(APPEND SOURCE
     version.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/shfolder_stubs.c
     ${CMAKE_CURRENT_BINARY_DIR}/shfolder.def)
 
 add_library(shfolder MODULE ${SOURCE})

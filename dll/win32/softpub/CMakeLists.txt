@@ -3,6 +3,7 @@ spec2def(softpub.dll softpub.spec)
 
 add_library(softpub MODULE
     softpub.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/softpub_stubs.c
     ${CMAKE_CURRENT_BINARY_DIR}/softpub.def)
 
 set_module_type(softpub win32dll ENTRYPOINT 0 )

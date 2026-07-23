@@ -3,6 +3,7 @@ spec2def(shdoclc.dll shdoclc.spec)
 
 add_library(shdoclc MODULE
     rsrc.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/shdoclc_stubs.c
     ${CMAKE_CURRENT_BINARY_DIR}/shdoclc.def)
 
 set_module_type(shdoclc win32dll ENTRYPOINT 0 )

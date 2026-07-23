@@ -3,6 +3,7 @@ spec2def(rsabase.dll rsabase.spec)
 
 list(APPEND SOURCE
     version.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/rsabase_stubs.c
     ${CMAKE_CURRENT_BINARY_DIR}/rsabase.def)
 
 add_library(rsabase MODULE ${SOURCE})

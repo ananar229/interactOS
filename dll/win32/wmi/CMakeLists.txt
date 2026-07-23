@@ -3,6 +3,7 @@ spec2def(wmi.dll wmi.spec)
 
 list(APPEND SOURCE
     wmi.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/wmi_stubs.c
     ${CMAKE_CURRENT_BINARY_DIR}/wmi.def)
 
 add_library(wmi MODULE ${SOURCE})
