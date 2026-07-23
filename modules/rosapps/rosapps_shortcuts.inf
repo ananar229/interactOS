@@ -17,6 +17,7 @@ GamesShortcuts=2, %GAMES%
 %SystemRoot%\system32\fontsub.exe, %FONTSUB_TITLE%, %FONTSUB_DESC%, 0
 %SystemRoot%\system32\screenshot.exe, %SCREENSHOT_TITLE%, %SCREENSHOT_DESC%, 0, %HOMEDRIVE%%HOMEPATH%
 %SystemRoot%\system32\vcdcontroltool.exe, %VCD_TITLE%, %VCD_DESC%, 0
+%SystemRoot%\system32\networktool.exe, %NETWORKTOOL_TITLE%, %NETWORKTOOL_DESC%, 0, %HOMEDRIVE%%HOMEPATH%
 
 ;-------------------------------- STRINGS -------------------------------
 
@@ -34,6 +35,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Take screenshot
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Bulgarian
 [Strings.0402]
@@ -50,6 +53,8 @@ SCREENSHOT_TITLE=Снимка
 SCREENSHOT_DESC=Заснемане на екрана
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Czech
 [Strings.0405]
@@ -66,6 +71,8 @@ SCREENSHOT_TITLE=Sejmout obrazovku
 SCREENSHOT_DESC=Sejmout obrazovku
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; German
 [Strings.0407]
@@ -82,6 +89,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Screenshot erstellen
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Netzwerk-Werkzeug
+NETWORKTOOL_DESC=Netzwerkdiagnose-Werkzeug starten
 
 ; Greek
 [Strings.0408]
@@ -98,6 +107,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Take screenshot
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Spanish
 [Strings.0a]
@@ -114,6 +125,8 @@ SCREENSHOT_TITLE=Captura de pantalla
 SCREENSHOT_DESC=Guarda secciones de la pantalla como un archivo de imagen.
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Gestiona CDRom virtuales.
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Estonian
 [Strings.0425]
@@ -130,6 +143,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Tee ekraanitõmmis
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; French
 [Strings.040C]
@@ -146,6 +161,8 @@ SCREENSHOT_TITLE=Capture d'écran
 SCREENSHOT_DESC=Faire une capture d'écran
 VCD_TITLE=Panneau de contrôle des CD-ROM virtuels
 VCD_DESC=Gérer les lecteurs CD-ROM virtuels
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Hebrew
 [Strings.040D]
@@ -162,6 +179,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=צילום מסך
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Hungarian
 [Strings.040E]
@@ -178,6 +197,8 @@ SCREENSHOT_TITLE=Képernyőkép
 SCREENSHOT_DESC=Képernyőkép készítése
 VCD_TITLE=Virtuális CD-ROM vezérlőpult
 VCD_DESC=Virtuális CD-ROM-ok kezelése
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Indonesian
 [Strings.0421]
@@ -194,6 +215,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Ambil foto layar
 VCD_TITLE=Panel Kontrol CDRom Maya
 VCD_DESC=Mengatur drive CDRom maya
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Italian
 [Strings.0410]
@@ -210,6 +233,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Salva una schermata
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 
 ; Japanese
@@ -227,6 +252,8 @@ SCREENSHOT_TITLE=スナップショット
 SCREENSHOT_DESC=スクリーンショットを撮ります
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Dutch
 [Strings.0413]
@@ -243,6 +270,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Take screenshot
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Norwegian
 [Strings.0414]
@@ -259,6 +288,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Ta skjermbilde
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Polish
 [Strings.0415]
@@ -275,6 +306,8 @@ SCREENSHOT_TITLE=Zrzut ekranu
 SCREENSHOT_DESC=Zrób zrzut ekranu
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Portuguese - Brazil
 [Strings.0416]
@@ -291,6 +324,8 @@ SCREENSHOT_TITLE=SnapShot
 SCREENSHOT_DESC=Capturar Tela
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Romanian
 [Strings.0418]
@@ -307,6 +342,8 @@ SCREENSHOT_TITLE=Captură de ecran
 SCREENSHOT_DESC=Program pentru executarea de capturi de ecran.
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Russian
 [Strings.0419]
@@ -323,6 +360,8 @@ SCREENSHOT_TITLE=Скриншот
 SCREENSHOT_DESC=Сделать снимок экрана
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Slovak
 [Strings.041B]
@@ -339,6 +378,8 @@ SCREENSHOT_TITLE=Momentka //SnapShot
 SCREENSHOT_DESC=Uložiť obrazovku
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Turkish
 [Strings.041f]
@@ -355,6 +396,8 @@ SCREENSHOT_TITLE=Ekran Görüntüsü
 SCREENSHOT_DESC=Ekran görüntüsü al
 VCD_TITLE=Virtual CDRom Control Panel
 VCD_DESC=Manage virtual CDRom drives
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Ukrainian
 [Strings.0422]
@@ -371,6 +414,8 @@ SCREENSHOT_TITLE=Знімок екрану
 SCREENSHOT_DESC=Зробити знімок екрана
 VCD_TITLE=Налаштування віртуального CDRom
 VCD_DESC=Керувати носіями віртуального CDRom
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Simplified Chinese
 [Strings.0804]
@@ -387,6 +432,8 @@ SCREENSHOT_TITLE=屏幕截图
 SCREENSHOT_DESC=屏幕截图
 VCD_TITLE=虚拟光驱控制面板
 VCD_DESC=管理虚拟光盘驱动器
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool
 
 ; Traditional Chinese
 [Strings.0404]
@@ -403,3 +450,5 @@ SCREENSHOT_TITLE=螢幕擷取
 SCREENSHOT_DESC=螢幕擷取
 VCD_TITLE=虛擬光碟機控制台
 VCD_DESC=管理虛擬光碟機
+NETWORKTOOL_TITLE=Network Tool
+NETWORKTOOL_DESC=Launch Network Tool

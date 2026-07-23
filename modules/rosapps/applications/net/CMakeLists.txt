@@ -1,5 +1,6 @@
 add_subdirectory(ncftp)
 add_subdirectory(netreg)
+add_subdirectory(networktool)
 add_subdirectory(niclist)
 add_subdirectory(roshttpd)
 add_subdirectory(tditest)
