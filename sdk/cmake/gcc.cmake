@@ -294,7 +294,7 @@ if(SEPARATE_DBG)
 
     if (NOT NO_ROSSYM)
         get_target_property(RSYM native-rsym IMPORTED_LOCATION)
-        set(strip_debug "${RSYM} -s ${REACTOS_SOURCE_DIR} <TARGET> <TARGET>")
+        set(strip_debug "\"${RSYM}\" -s \"${REACTOS_SOURCE_DIR}\" <TARGET> <TARGET>")
     else()
         set(strip_debug "${CMAKE_STRIP} --strip-debug <TARGET>")
     endif()
@@ -333,16 +333,16 @@ else()
 
     set(CMAKE_C_LINK_EXECUTABLE
         "<CMAKE_C_COMPILER> -Wl,--start-group ${CMAKE_C_FLAGS} <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> -o <TARGET> <OBJECTS> <LINK_LIBRARIES> -Wl,--end-group"
-        "${RSYM} -s ${REACTOS_SOURCE_DIR} <TARGET> <TARGET>")
+        "\"${RSYM}\" -s \"${REACTOS_SOURCE_DIR}\" <TARGET> <TARGET>")
     set(CMAKE_CXX_LINK_EXECUTABLE
         "<CMAKE_CXX_COMPILER> -Wl,--start-group ${CMAKE_CXX_FLAGS} <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> -o <TARGET> <OBJECTS> <LINK_LIBRARIES> -Wl,--end-group"
-        "${RSYM} -s ${REACTOS_SOURCE_DIR} <TARGET> <TARGET>")
+        "\"${RSYM}\" -s \"${REACTOS_SOURCE_DIR}\" <TARGET> <TARGET>")
     set(CMAKE_C_CREATE_SHARED_LIBRARY
         "<CMAKE_C_COMPILER> -Wl,--start-group ${CMAKE_C_FLAGS} <CMAKE_SHARED_LIBRARY_C_FLAGS> <LINK_FLAGS> <CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS> -o <TARGET> <OBJECTS> <LINK_LIBRARIES> -Wl,--end-group"
-        "${RSYM} -s ${REACTOS_SOURCE_DIR} <TARGET> <TARGET>")
+        "\"${RSYM}\" -s \"${REACTOS_SOURCE_DIR}\" <TARGET> <TARGET>")
     set(CMAKE_CXX_CREATE_SHARED_LIBRARY
         "<CMAKE_CXX_COMPILER> -Wl,--start-group ${CMAKE_CXX_FLAGS} <CMAKE_SHARED_LIBRARY_CXX_FLAGS> <LINK_FLAGS> <CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS> -o <TARGET> <OBJECTS> <LINK_LIBRARIES> -Wl,--end-group"
-        "${RSYM} -s ${REACTOS_SOURCE_DIR} <TARGET> <TARGET>")
+        "\"${RSYM}\" -s \"${REACTOS_SOURCE_DIR}\" <TARGET> <TARGET>")
     set(CMAKE_RC_CREATE_SHARED_LIBRARY
         "<CMAKE_C_COMPILER> -Wl,--start-group ${CMAKE_C_FLAGS} <CMAKE_SHARED_LIBRARY_C_FLAGS> <LINK_FLAGS> <CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS> -o <TARGET> <OBJECTS> <LINK_LIBRARIES> -Wl,--end-group")
 endif()
