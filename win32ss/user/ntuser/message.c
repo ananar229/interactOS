@@ -2039,6 +2039,8 @@ co_IntDoSendMessage( HWND hWnd,
        UserModeMsg.message = Msg;
        UserModeMsg.wParam  = wParam;
        UserModeMsg.lParam  = lParam;
+       UserModeMsg.pt      = gpsi->ptCursor;
+       UserModeMsg.time    = EngGetTickCount32();
        MsgMemoryEntry = FindMsgMemory(UserModeMsg.message);
        Status = CopyMsgToKernelMem(&KernelModeMsg, &UserModeMsg, MsgMemoryEntry);
        if (!NT_SUCCESS(Status))

@@ -140,12 +140,26 @@ EngStretchBltROP(
     BOOLEAN bLeftToRight, bTopToBottom;
     LONG lTmp;
 
-    DPRINT("Entering EngStretchBltROP: prclSrc: (%d/%d)-(%d/%d) prclDest: (%d,%d)-(%d,%d)\n",
-           prclSrc->left, prclSrc->top, prclSrc->right, prclSrc->bottom,
-           prclDest->left, prclDest->top, prclDest->right, prclDest->bottom);
+    /* prclSrc is only required for ROPs that actually use a source surface
+     * (see the UsesSource check below) - callers are allowed to pass NULL
+     * otherwise, so don't dereference it unconditionally. */
+    if (prclSrc)
+    {
+        DPRINT("Entering EngStretchBltROP: prclSrc: (%d/%d)-(%d/%d) prclDest: (%d,%d)-(%d,%d)\n",
+               prclSrc->left, prclSrc->top, prclSrc->right, prclSrc->bottom,
+               prclDest->left, prclDest->top, prclDest->right, prclDest->bottom);
 
-    cxSrc = prclSrc->right - prclSrc->left;
-    cySrc = prclSrc->bottom - prclSrc->top;
+        cxSrc = prclSrc->right - prclSrc->left;
+        cySrc = prclSrc->bottom - prclSrc->top;
+    }
+    else
+    {
+        DPRINT("Entering EngStretchBltROP: prclSrc: (none) prclDest: (%d,%d)-(%d,%d)\n",
+               prclDest->left, prclDest->top, prclDest->right, prclDest->bottom);
+
+        cxSrc = 0;
+        cySrc = 0;
+    }
     cxDest = prclDest->right - prclDest->left;
     cyDest = prclDest->bottom - prclDest->top;
 
