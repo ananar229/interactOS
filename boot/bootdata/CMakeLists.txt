@@ -126,7 +126,6 @@ add_livecd_shortcut("Install ReactOS"
 add_livecd_shortcut("Win32kBench"
     "shell:system\\cmd.exe"
     CMDLINE_ARGS "/C \"${envvar_systemroot}\\system32\\win32kbench-autorun.cmd\""
-    MINIMIZE
     DESTINATION "${dir_startmenu_startup}")
 
 add_livecd_shortcut("Read Me"

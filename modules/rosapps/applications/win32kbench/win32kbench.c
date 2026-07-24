@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <wine/debug.h>
+
+WINE_DEFAULT_DEBUG_CHANNEL(win32kbench);
 
 #define DEFAULT_ITERATIONS 10000
 #define BENCH_CLASS_NAME L"Win32kBenchWndClass"
@@ -21,10 +24,10 @@ QpcElapsedMs(LARGE_INTEGER Start, LARGE_INTEGER End, LARGE_INTEGER Freq)
     return (double)(End.QuadPart - Start.QuadPart) * 1000.0 / (double)Freq.QuadPart;
 }
 
-/* Mirrors reactos' own dbgprint.exe (base/applications/cmdutils/dbgprint):
- * OutputDebugStringA reaches the kernel debugger (DEBUGPORT=COM1 by default
- * on the LiveCD boot entry), so results are readable from the QEMU host
- * even with no interactive session inside the guest. */
+/* Raw OutputDebugStringA output from an unregistered console EXE was found
+ * not to reach the captured COM1 stream (unlike ERR()/WARN() from
+ * WINE_DEFAULT_DEBUG_CHANNEL-declared components, which reliably do) — use
+ * the same channel infrastructure win32k/user32 diagnostics already rely on. */
 static void
 BenchLog(const char *Format, ...)
 {
@@ -37,7 +40,7 @@ BenchLog(const char *Format, ...)
     buf[sizeof(buf) - 1] = '\0';
 
     printf("%s", buf);
-    OutputDebugStringA(buf);
+    ERR("%s", buf);
 }
 
 static void
@@ -274,6 +277,17 @@ BenchMessages(ULONG Iterations)
         return;
     }
     WaitForSingleObject(ctx.ReadyEvent, INFINITE);
+
+    if (!ctx.hWnd)
+    {
+        BenchLog("  worker's CreateWindowExW failed, skipping message workload\n");
+        PostThreadMessageW(GetThreadId(hThread), WM_QUIT, 0, 0);
+        WaitForSingleObject(hThread, INFINITE);
+        CloseHandle(hThread);
+        CloseHandle(ctx.ReadyEvent);
+        CloseHandle(ctx.DoneEvent);
+        return;
+    }
 
     QueryPerformanceFrequency(&freq);
 
