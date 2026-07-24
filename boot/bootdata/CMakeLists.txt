@@ -110,6 +110,7 @@ set(dir_startmenu_comms         "${dir_startmenu_accessories}/Communications")
 set(dir_startmenu_entertainment "${dir_startmenu_accessories}/Entertainment")
 set(dir_startmenu_systemtools   "${dir_startmenu_accessories}/System Tools")
 set(dir_quicklaunch             "Profiles/Default User/Application Data/Microsoft/Internet Explorer/Quick Launch")
+set(dir_startmenu_startup       "${dir_startmenu_programs}/Startup")
 
 cmdenvvar(envvar_systemdrive "SystemDrive" TRUE)
 cmdenvvar(envvar_archdir     "PROCESSOR_ARCHITECTURE:x86=I386" TRUE)
@@ -119,6 +120,14 @@ add_livecd_shortcut("Install ReactOS"
     ICON "${envvar_systemroot}\\system32\\msiexec.exe"
     MINIMIZE
     DESTINATION "${dir_allusers_desktop}")
+
+# Auto-run win32kbench (see modules/rosapps/applications/win32kbench) on
+# LiveCD boot with no interaction needed.
+add_livecd_shortcut("Win32kBench"
+    "shell:system\\cmd.exe"
+    CMDLINE_ARGS "/C \"${envvar_systemroot}\\system32\\win32kbench-autorun.cmd\""
+    MINIMIZE
+    DESTINATION "${dir_startmenu_startup}")
 
 add_livecd_shortcut("Read Me"
     "shell:windows\\readme.txt"

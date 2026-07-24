@@ -1,0 +1,5 @@
+add_executable(win32kbench win32kbench.c)
+set_module_type(win32kbench win32cui)
+add_importlibs(win32kbench user32 gdi32 kernel32 msvcrt)
+add_cd_file(TARGET win32kbench DESTINATION reactos/system32 FOR all)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/win32kbench-autorun.cmd DESTINATION reactos/system32 FOR livecd)
